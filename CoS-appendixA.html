@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>부록 A: 캐릭터 옵션 — 스트라드의 저주</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #faf6f0;
+    --text: #2c2416;
+    --accent: #8b1a1a;
+    --accent2: #a0522d;
+    --heading: #4a0e0e;
+    --border: #c9b99a;
+    --box-bg: #f0e8d8;
+    --quote-bg: #eee6d4;
+    --table-head: #5c3317;
+    --table-alt: #f5edd9;
+    --shadow: rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Serif KR', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 16px;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 28px 80px;
+  }
+
+  h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 2.4em;
+    color: var(--heading);
+    text-align: center;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    border-bottom: 3px double var(--accent);
+    padding-bottom: 16px;
+  }
+
+  h1 .subtitle {
+    display: block;
+    font-size: 0.45em;
+    font-weight: 400;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: 1.6em;
+    color: var(--accent);
+    margin: 48px 0 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  h3 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--heading);
+    margin: 32px 0 10px;
+  }
+
+  h4 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--accent2);
+    margin: 24px 0 8px;
+  }
+
+  p { margin: 0 0 14px; text-align: justify; }
+
+  .read-aloud {
+    background: var(--quote-bg);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-style: italic;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .read-aloud p:last-child { margin-bottom: 0; }
+
+  .sidebar {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    box-shadow: 2px 2px 8px var(--shadow);
+  }
+
+  .sidebar h3 {
+    margin-top: 0;
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+
+  blockquote {
+    background: var(--quote-bg);
+    border-left: 3px solid var(--accent2);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+  }
+
+  blockquote .attribution {
+    display: block;
+    text-align: right;
+    font-style: normal;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin-top: 8px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+  }
+
+  thead th {
+    background: var(--table-head);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:nth-child(even) { background: var(--table-alt); }
+
+  .area-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.08em;
+    color: var(--accent);
+    margin: 28px 0 8px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-divider {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--border);
+    font-size: 1.4em;
+    letter-spacing: 0.5em;
+  }
+
+  .map-note {
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+  }
+
+  .treasure {
+    background: #fdf5e6;
+    border: 1px solid #d4a937;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .treasure h4 { color: #8b6914; margin-top: 0; }
+
+  .fortunes {
+    background: #f0e0f0;
+    border: 1px solid #9c6b9c;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .fortunes h4 { color: #6b3a6b; margin-top: 0; }
+
+  .development {
+    background: #e8f0e8;
+    border: 1px solid #6b9c6b;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .development h4 { color: #3a6b3a; margin-top: 0; }
+
+  strong { color: var(--heading); }
+
+  .stat-block {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+    background: var(--box-bg);
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 10px 0;
+  }
+
+  .toc {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 24px 0;
+  }
+
+  .toc h3 { margin-top: 0; }
+  .toc ul { list-style: none; padding-left: 0; }
+  .toc li { padding: 3px 0; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    body { padding: 20px 14px 60px; font-size: 15px; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.3em; }
+  }
+
+  /* Tab System */
+  .chapter-nav {
+    display: flex;
+    gap: 0;
+    margin: 0 0 0;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    padding-top: 8px;
+  }
+  .chapter-nav a {
+    padding: 10px 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+    font-weight: 700;
+    color: var(--accent2);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: -2px;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+  }
+  .chapter-nav a:hover { background: var(--box-bg); }
+  .chapter-nav a.active {
+    background: var(--bg);
+    color: var(--accent);
+    border-color: var(--border);
+  }
+
+
+  /* Sidebar TOC */
+  .sidebar-toc-toggle {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    writing-mode: vertical-rl;
+    letter-spacing: 2px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+  }
+  .sidebar-toc-toggle:hover { background: var(--heading); }
+  .sidebar-toc-toggle.open { left: 280px; }
+
+  .sidebar-toc {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg);
+    border-right: 2px solid var(--border);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    z-index: 199;
+    overflow-y: auto;
+    padding: 60px 16px 20px;
+    transition: left 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+  }
+  .sidebar-toc.open { left: 0; }
+  .sidebar-toc h4 {
+    color: var(--accent);
+    margin: 0 0 12px;
+    font-size: 1.1em;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .sidebar-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sidebar-toc li {
+    padding: 3px 0;
+  }
+  .sidebar-toc li.toc-h2 {
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--heading);
+  }
+  .sidebar-toc li.toc-h3 {
+    padding-left: 14px;
+    font-size: 0.92em;
+  }
+  .sidebar-toc li.toc-h4 {
+    padding-left: 28px;
+    font-size: 0.85em;
+    color: var(--accent2);
+  }
+  .sidebar-toc a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  .sidebar-toc a:hover {
+    background: var(--box-bg);
+    color: var(--accent);
+  }
+  .sidebar-toc .toc-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--accent2);
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="chapter-nav">
+  <a href="CoS-foreword.html">머리말</a>
+  <a href="CoS-intro.html">서문</a>
+  <a href="CoS-ch1.html">제1장: 안개 속으로</a>
+  <a href="CoS-ch2.html">제2장: 바로비아의 땅</a>
+  <a href="CoS-ch3.html">제3장: 바로비아 마을</a>
+  <a href="CoS-ch4.html">제4장: 레이븐로프트 성</a>
+  <a href="CoS-ch5.html">제5장: 발라키 마을</a>
+  <a href="CoS-ch6.html">제6장: 늙은 뼈 분쇄기</a>
+  <a href="CoS-ch7.html">제7장: 아르긴보스트홀트</a>
+  <a href="CoS-ch8.html">제8장: 크레즈크 마을</a>
+  <a href="CoS-ch9.html">제9장: 촐렌카 고개</a>
+  <a href="CoS-ch10.html">제10장: 베레즈 폐허</a>
+  <a href="CoS-ch11.html">제11장: 반 리히텐의 탑</a>
+  <a href="CoS-ch12.html">제12장: 포도주 마법사</a>
+  <a href="CoS-ch13.html">제13장: 호박 사원</a>
+  <a href="CoS-ch14.html">제14장: 예스터 힐</a>
+  <a href="CoS-ch15.html">제15장: 늑대인간 소굴</a>
+  <a href="CoS-epilogue.html">에필로그</a>
+  <a href="CoS-appendixA.html" class="active">부록 A</a>
+  <a href="CoS-appendixB.html">부록 B</a>
+  <a href="CoS-appendixC.html">부록 C</a>
+  <a href="CoS-appendixD.html">부록 D</a>
+  <a href="CoS-appendixE.html">부록 E</a>
+  <a href="CoS-appendixF.html">부록 F</a>
+</nav>
+
+<h1>
+  부록 A: 캐릭터 옵션(Appendix A: Character Options)
+  <span class="subtitle">Appendix A: Character Options</span>
+</h1>
+
+<p>캐릭터 생성 과정에서 플레이어는 던전 마스터의 승인하에 자신의 캐릭터를 위해 다음 배경을 선택할 수 있다. 이 배경은 기이함이나 공포와 관련된 모든 캐릭터 또는 캠페인에 적합하다.</p>
+
+<h2 id="haunted-one">홀린 자(Haunted One)</h2>
+
+<p>당신은 차마 입에 담을 수 없을 만큼 끔찍한 무언가에 사로잡혀 있다. 그것을 묻어버리려 했고, 도망치려 했지만 소용없었다. 당신을 괴롭히는 이것은 칼로 벨 수도 없고 주문으로 추방할 수도 없다. 그것은 벽 위의 그림자로, 등골이 오싹한 악몽으로, 사라지지 않는 기억으로, 또는 어둠 속 악마의 속삭임으로 다가올 수 있다. 이 짐은 당신에게 큰 대가를 치르게 했으며, 대부분의 사람들로부터 고립시키고 자신의 정신을 의심하게 만들었다. 이것이 당신을 파멸시키기 전에 극복할 방법을 찾아야 한다.</p>
+
+<p><strong>기술 숙련:</strong> 신비학(Arcana), 수사(Investigation), 종교(Religion), 생존(Survival) 중 두 가지를 선택한다.</p>
+
+<p><strong>언어:</strong> 두 가지를 선택하며, 그중 하나는 특수 언어여야 한다 — 심연어(Abyssal), 천상어(Celestial), 심층어(Deep Speech), 용어(Draconic), 지옥어(Infernal), 원초어(Primordial), 숲요정어(Sylvan), 또는 지하공용어(Undercommon).</p>
+
+<p><strong>장비:</strong> 몬스터 사냥꾼의 꾸러미(Monster Hunter's Pack, 사이드바 참조), 특별한 의미를 지닌 장신구 하나(직접 선택하거나 고딕 장신구 표에서 굴림). 또한 평범한 옷 한 벌과 은화 1개를 얻는다.</p>
+
+<div class="sidebar">
+<h3>몬스터 사냥꾼의 꾸러미(Monster Hunter's Pack)</h3>
+<p>몬스터 사냥꾼의 꾸러미를 33 gp에 구입할 수 있으며, 이는 각 물품을 개별적으로 구매하는 것보다 저렴하다. 꾸러미에는 궤짝, 쇠지렛대, 망치, 나무 말뚝 3개, 성스러운 상징, 성수 한 병, 수갑 한 세트, 강철 거울, 기름 한 병, 부싯깃 상자, 횃불 3개가 포함된다.</p>
+</div>
+
+<h3 id="feature">특성: 어둠의 심장(Heart of Darkness)</h3>
+
+<p>당신의 눈을 들여다보는 자들은 당신이 상상할 수 없는 공포를 마주했으며 어둠에 낯설지 않다는 것을 알 수 있다. 그들이 당신을 두려워할 수도 있지만, 평민들은 당신에게 최대한의 예의를 갖추고 도울 수 있는 모든 것을 다할 것이다. 당신이 그들에게 위험한 존재임을 보여주지 않는 한, 당신이 홀로 적과 마주하게 되면 그들은 심지어 무기를 들고 당신과 함께 싸울 것이다.</p>
+
+<h3 id="harrowing-event">추천 배경 사건</h3>
+
+<h4>끔찍한 사건(Harrowing Event)</h4>
+
+<table>
+<thead>
+<tr><th>d10</th><th>끔찍한 사건</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>수십 명의 무고한 사람을 학살한 괴물이 당신의 목숨만은 살려주었고, 그 이유를 알 수 없다.</td></tr>
+<tr><td>2</td><td>당신은 어두운 별 아래 태어났다. 그것이 차갑고 멀리서 당신을 지켜보고 있음을 느낄 수 있다. 때때로 그것은 한밤중에 당신을 부른다.</td></tr>
+<tr><td>3</td><td>대대로 당신의 가문을 괴롭혀 온 유령이 이제 당신을 따라다닌다. 그것이 원하는 것이 무엇인지 모르며, 그것은 당신을 놓아주지 않는다.</td></tr>
+<tr><td>4</td><td>당신의 가문에는 흑마술(Dark Arts)을 행하던 역사가 있다. 한 번 손을 대보았더니 무언가 끔찍한 것이 영혼을 움켜쥐는 것을 느꼈고, 공포에 질려 도망쳤다.</td></tr>
+<tr><td>5</td><td>춥고 어두운 밤, 오니(Oni)가 당신의 형제자매를 데려갔고, 당신은 그것을 막을 수 없었다.</td></tr>
+<tr><td>6</td><td>수인증(Lycanthropy)에 저주받았다가 나중에 치료되었다. 이제 당신이 학살한 무고한 이들에게 시달리고 있다.</td></tr>
+<tr><td>7</td><td>마녀(Hag)가 당신을 납치하여 키웠다. 탈출했지만, 마녀는 여전히 마법적 지배력을 유지하며 당신의 마음을 사악한 생각으로 채운다.</td></tr>
+<tr><td>8</td><td>엘드리치 서적(Eldritch Tome)을 펼쳐 정상적인 정신으로는 감당할 수 없는 것들을 보았다. 책을 불태웠지만, 그 글과 이미지는 정신에 새겨져 있다.</td></tr>
+<tr><td>9</td><td>어린 시절 마귀(Fiend)에게 빙의되었다. 감금당했지만 탈출했다. 마귀는 여전히 내면에 있지만, 이제 그것을 가두어 두려 한다.</td></tr>
+<tr><td>10</td><td>사랑하는 사람의 살해에 복수하기 위해 끔찍한 일들을 저질렀다. 괴물이 되었고, 그것이 깨어 있는 꿈속에서 당신을 괴롭힌다.</td></tr>
+</tbody>
+</table>
+
+<h4>성격 특성(Personality Traits)</h4>
+
+<table>
+<thead>
+<tr><th>d8</th><th>성격 특성</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>나는 악으로부터 도망치지 않는다. 악이 나에게서 도망친다.</td></tr>
+<tr><td>2</td><td>시를 읽고 외우는 것을 좋아한다. 그것이 나를 진정시키고 순간적인 행복을 가져다준다.</td></tr>
+<tr><td>3</td><td>내일 죽을 수도 있다는 것을 알기에, 돈을 아끼지 않고 삶을 최대한 즐긴다.</td></tr>
+<tr><td>4</td><td>사냥의 전율을 위해 산다.</td></tr>
+<tr><td>5</td><td>나를 괴롭히는 것에 대해 이야기하지 않는다. 다른 이들에게 내 저주의 짐을 지우고 싶지 않다.</td></tr>
+<tr><td>6</td><td>모든 모퉁이에서 위험을 예상한다.</td></tr>
+<tr><td>7</td><td>피해자가 되기를 거부하며, 다른 이들이 희생되는 것도 허용하지 않는다.</td></tr>
+<tr><td>8</td><td>신성한 존재를 신뢰하지 않는다.</td></tr>
+</tbody>
+</table>
+
+<h4>이상(Ideals)</h4>
+
+<table>
+<thead>
+<tr><th>d6</th><th>이상</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>개인적인 대가가 무엇이든 도움이 필요한 이들을 돕고자 한다. (선)</td></tr>
+<tr><td>2</td><td>나를 괴롭히는 영혼들을 막겠다. 아니면 그 시도 끝에 죽겠다. (중립)</td></tr>
+<tr><td>3</td><td>세상을 더 안전하게 만들고 내 안의 악마를 쫓아내기 위해 괴물을 죽인다. (선)</td></tr>
+<tr><td>4</td><td>법 위에 서는 어둠의 소명이 있다. (혼돈)</td></tr>
+<tr><td>5</td><td>전투에 뛰어들기 전에 적의 능력과 약점을 파악하는 것을 좋아한다. (질서)</td></tr>
+<tr><td>6</td><td>나는 다른 괴물을 파괴하는 괴물이며, 내 길을 막는 모든 것도 마찬가지다. (악)</td></tr>
+</tbody>
+</table>
+
+<h4>유대(Bonds)</h4>
+
+<table>
+<thead>
+<tr><th>d6</th><th>유대</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>내 생각과 발견을 일지에 기록한다. 내 일지는 나의 유산이다.</td></tr>
+<tr><td>2</td><td>무고한 자들을 지키기 위해 내 생명과 영혼을 바칠 것이다.</td></tr>
+<tr><td>3</td><td>내 고통이 사랑하는 사람을 쫓아냈다. 잃어버린 사랑을 되찾기 위해 노력한다.</td></tr>
+<tr><td>4</td><td>끔찍한 죄책감이 나를 집어삼킨다. 행동을 통해 구원을 찾을 수 있기를 바란다.</td></tr>
+<tr><td>5</td><td>내 안에 악이 있다. 느낄 수 있다. 절대로 풀어놓아서는 안 된다.</td></tr>
+<tr><td>6</td><td>지켜야 할 아이가 있다. 그 아이를 위해 세상을 더 안전한 곳으로 만들어야 한다.</td></tr>
+</tbody>
+</table>
+
+<h4>결점(Flaws)</h4>
+
+<table>
+<thead>
+<tr><th>d6</th><th>결점</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>매일 따라야 하는 특정 의식이 있다. 절대 어길 수 없다.</td></tr>
+<tr><td>2</td><td>사람들에 대해 최악을 가정한다.</td></tr>
+<tr><td>3</td><td>죽은 자에 대해 동정심을 느끼지 않는다. 그들이야말로 운이 좋은 자들이다.</td></tr>
+<tr><td>4</td><td>중독된 것이 있다.</td></tr>
+<tr><td>5</td><td>희망 없는 세상에 사는 파멸과 암울의 전도사다.</td></tr>
+<tr><td>6</td><td>아무도 볼 수 없는 영혼들에게 말을 건다.</td></tr>
+</tbody>
+</table>
+
+<h2 id="gothic-trinkets">고딕 장신구(Gothic Trinkets)</h2>
+
+<p>캐릭터가 <strong>홀린 자(Haunted One)</strong> 배경을 가지고 있다면, 일반 장신구 표 대신 아래의 고딕 장신구(Gothic Trinkets) 표에서 장신구를 굴릴 수 있다.</p>
+
+<table>
+<thead>
+<tr><th>d100</th><th>고딕 장신구</th></tr>
+</thead>
+<tbody>
+<tr><td>01-02</td><td>어린 시절 상상 속 친구를 그린 그림</td></tr>
+<tr><td>03-04</td><td>열쇠 구멍에 피를 떨어뜨리면 열리는 자물쇠</td></tr>
+<tr><td>05-06</td><td>허수아비에게서 훔친 옷</td></tr>
+<tr><td>07-08</td><td>네 개의 얼굴이 새겨진 팽이: 행복, 슬픔, 분노, 죽음</td></tr>
+<tr><td>09-10</td><td>당신이 태어난 날 죽은 형제자매의 목걸이</td></tr>
+<tr><td>11-12</td><td>참수형에 처해진 사람의 가발</td></tr>
+<tr><td>13-14</td><td>임종을 앞둔 아버지가 보낸 뜯지 않은 편지</td></tr>
+<tr><td>15-16</td><td>매일 자정마다 한 시간 동안 거꾸로 가는 회중시계</td></tr>
+<tr><td>17-18</td><td>죽어가는 병사에게서 훔친 겨울 외투</td></tr>
+<tr><td>19-20</td><td>일몰 때만 읽을 수 있는 투명 잉크가 든 병</td></tr>
+<tr><td>21-22</td><td>죽은 사람과 함께 하룻밤 묻어두면 다시 차오르는 포도주 가죽부대</td></tr>
+<tr><td>23-24</td><td>왕이 마지막 식사에 사용한 은식기 세트</td></tr>
+<tr><td>25-26</td><td>항상 끔찍한 폭풍에 시달리는 세상을 보여주는 망원경</td></tr>
+<tr><td>27-28</td><td>얼굴이 긁혀 지워진 카메오 브로치</td></tr>
+<tr><td>29-30</td><td>녹색 불꽃으로 타며 절대 꺼지지 않는 검은 양초가 든 랜턴</td></tr>
+<tr><td>31-32</td><td>피가 묻은 어린이 다기 세트의 찻잔</td></tr>
+<tr><td>33-34</td><td>잠들면 당신의 꿈만을, 오직 당신의 꿈만을 기록하는 작은 검은 수첩</td></tr>
+<tr><td>35-36</td><td>열두 신의 성스러운 상징들이 서로 연결된 형태의 목걸이</td></tr>
+<tr><td>37-38</td><td>실제보다 무겁게 느껴지는 교수대의 올가미</td></tr>
+<tr><td>39-40</td><td>작은 새들이 날아들어 오지만 한번 들어가면 먹지도 떠나지도 않는 새장</td></tr>
+<tr><td>41-42</td><td>날개에 해골 무늬가 있는 죽은 나방들로 가득 찬 나비 수집가의 표본 상자</td></tr>
+<tr><td>43-44</td><td>절인 구울(Ghoul)의 혀가 담긴 병</td></tr>
+<tr><td>45-46</td><td>악명 높은 해적의 나무 의수</td></tr>
+<tr><td>47-48</td><td>죽은 친척의 유골이 담긴 항아리</td></tr>
+<tr><td>49-50</td><td>뒷면에 메두사(Medusa)가 청동으로 새겨진 손거울</td></tr>
+<tr><td>51-52</td><td>상아 손톱이 달린 창백한 가죽 장갑</td></tr>
+<tr><td>53-54</td><td>악명 높은 사기꾼의 손가락 관절 뼈로 만든 주사위</td></tr>
+<tr><td>55-56</td><td>잊혀진 자물쇠들을 위한 열쇠 묶음</td></tr>
+<tr><td>57-58</td><td>살인자의 관에서 뽑은 못</td></tr>
+<tr><td>59-60</td><td>가문 납골당의 열쇠</td></tr>
+<tr><td>61-62</td><td>항상 싱싱하게 보이고 향기로운 장례용 꽃다발</td></tr>
+<tr><td>63-64</td><td>어린 시절 훈육에 사용된 회초리</td></tr>
+<tr><td>65-66</td><td>들고 있는 사람이 춤출 때마다 저절로 연주되는 오르골</td></tr>
+<tr><td>67-68</td><td>돌 위에서 불꽃을 튀기는 철 끝마개가 달린 지팡이</td></tr>
+<tr><td>69-70</td><td>바다에서 실종된 배의 깃발</td></tr>
+<tr><td>71-72</td><td>항상 당신을 바라보는 것 같은 도자기 인형의 머리</td></tr>
+<tr><td>73-74</td><td>호루라기이기도 한 은으로 만든 늑대 머리</td></tr>
+<tr><td>75-76</td><td>보는 이의 훨씬 늙은 모습을 비추는 작은 거울</td></tr>
+<tr><td>77-78</td><td>낡고 작은 어린이 동요집</td></tr>
+<tr><td>79-80</td><td>미라가 된 까마귀의 발톱</td></tr>
+<tr><td>81-82</td><td>만지면 항상 차가운, 부서진 은룡 펜던트</td></tr>
+<tr><td>83-84</td><td>밤에 아름다운 선율을 조용히 흥얼거리지만 아침이면 항상 잊어버리는 작고 잠긴 상자</td></tr>
+<tr><td>85-86</td><td>응시하면 약간 메스꺼워지는 잉크병</td></tr>
+<tr><td>87-88</td><td>어둡고 단단한 나무로 만든 오래된 작은 인형으로, 한쪽 손과 한쪽 발이 없다</td></tr>
+<tr><td>89-90</td><td>검은 사형집행인의 두건</td></tr>
+<tr><td>91-92</td><td>힘줄로 된 조임끈이 달린 살가죽 주머니</td></tr>
+<tr><td>93-94</td><td>절대 떨어지지 않는 검은 실이 감긴 작은 실패</td></tr>
+<tr><td>95-96</td><td>톱니바퀴 하나가 빠져서 작동하지 않는 작은 태엽 무희 인형</td></tr>
+<tr><td>97-98</td><td>해골 모양의 연기를 만들어내는 검은 나무 파이프</td></tr>
+<tr><td>99-00</td><td>특정 생물만 향기를 감지할 수 있는 향수 한 병</td></tr>
+</tbody>
+</table>
+
+
+<div class="sidebar-toc" id="sidebarToc">
+  <button class="toc-close" onclick="toggleSidebar()">✕</button>
+  <h4>목차</h4>
+  <ul id="sidebarTocList"></ul>
+</div>
+<button class="sidebar-toc-toggle" id="sidebarToggle" onclick="toggleSidebar()">목 차</button>
+<script>
+function toggleSidebar() {
+  var toc = document.getElementById('sidebarToc');
+  var btn = document.getElementById('sidebarToggle');
+  toc.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+// Auto-generate TOC from headings
+(function() {
+  var headings = document.querySelectorAll('h2[id], h3[id], h4[id], .area-title[id]');
+  var list = document.getElementById('sidebarTocList');
+  if (!list) return;
+  for (var i = 0; i < headings.length; i++) {
+    var h = headings[i];
+    var li = document.createElement('li');
+    var tag = h.tagName.toLowerCase();
+    if (h.classList.contains('area-title')) tag = 'h3';
+    li.className = 'toc-' + tag;
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent.trim();
+    a.onclick = function() {
+      if (window.innerWidth < 768) toggleSidebar();
+    };
+    li.appendChild(a);
+    list.appendChild(li);
+  }
+})();
+</script>
+
+</body>
+</html>

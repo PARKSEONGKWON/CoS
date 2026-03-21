@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제15장: 늑대인간 소굴 — 스트라드의 저주</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #faf6f0;
+    --text: #2c2416;
+    --accent: #8b1a1a;
+    --accent2: #a0522d;
+    --heading: #4a0e0e;
+    --border: #c9b99a;
+    --box-bg: #f0e8d8;
+    --quote-bg: #eee6d4;
+    --table-head: #5c3317;
+    --table-alt: #f5edd9;
+    --shadow: rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Serif KR', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 16px;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 28px 80px;
+  }
+
+  h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 2.4em;
+    color: var(--heading);
+    text-align: center;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    border-bottom: 3px double var(--accent);
+    padding-bottom: 16px;
+  }
+
+  h1 .subtitle {
+    display: block;
+    font-size: 0.45em;
+    font-weight: 400;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: 1.6em;
+    color: var(--accent);
+    margin: 48px 0 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  h3 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--heading);
+    margin: 32px 0 10px;
+  }
+
+  h4 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--accent2);
+    margin: 24px 0 8px;
+  }
+
+  p { margin: 0 0 14px; text-align: justify; }
+
+  .read-aloud {
+    background: var(--quote-bg);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-style: italic;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .read-aloud p:last-child { margin-bottom: 0; }
+
+  .sidebar {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    box-shadow: 2px 2px 8px var(--shadow);
+  }
+
+  .sidebar h3 {
+    margin-top: 0;
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+
+  blockquote {
+    background: var(--quote-bg);
+    border-left: 3px solid var(--accent2);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+  }
+
+  blockquote .attribution {
+    display: block;
+    text-align: right;
+    font-style: normal;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin-top: 8px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+  }
+
+  thead th {
+    background: var(--table-head);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:nth-child(even) { background: var(--table-alt); }
+
+  .area-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.08em;
+    color: var(--accent);
+    margin: 28px 0 8px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-divider {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--border);
+    font-size: 1.4em;
+    letter-spacing: 0.5em;
+  }
+
+  .map-note {
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+  }
+
+  .treasure {
+    background: #fdf5e6;
+    border: 1px solid #d4a937;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .treasure h4 { color: #8b6914; margin-top: 0; }
+
+  .fortunes {
+    background: #f0e0f0;
+    border: 1px solid #9c6b9c;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .fortunes h4 { color: #6b3a6b; margin-top: 0; }
+
+  .development {
+    background: #e8f0e8;
+    border: 1px solid #6b9c6b;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .development h4 { color: #3a6b3a; margin-top: 0; }
+
+  strong { color: var(--heading); }
+
+  .stat-block {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+    background: var(--box-bg);
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 10px 0;
+  }
+
+  .toc {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 24px 0;
+  }
+
+  .toc h3 { margin-top: 0; }
+  .toc ul { list-style: none; padding-left: 0; }
+  .toc li { padding: 3px 0; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    body { padding: 20px 14px 60px; font-size: 15px; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.3em; }
+  }
+
+  /* Tab System */
+  .chapter-nav {
+    display: flex;
+    gap: 0;
+    margin: 0 0 0;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    padding-top: 8px;
+  }
+  .chapter-nav a {
+    padding: 10px 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+    font-weight: 700;
+    color: var(--accent2);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: -2px;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+  }
+  .chapter-nav a:hover { background: var(--box-bg); }
+  .chapter-nav a.active {
+    background: var(--bg);
+    color: var(--accent);
+    border-color: var(--border);
+  }
+
+
+  /* Sidebar TOC */
+  .sidebar-toc-toggle {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    writing-mode: vertical-rl;
+    letter-spacing: 2px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+  }
+  .sidebar-toc-toggle:hover { background: var(--heading); }
+  .sidebar-toc-toggle.open { left: 280px; }
+
+  .sidebar-toc {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg);
+    border-right: 2px solid var(--border);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    z-index: 199;
+    overflow-y: auto;
+    padding: 60px 16px 20px;
+    transition: left 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+  }
+  .sidebar-toc.open { left: 0; }
+  .sidebar-toc h4 {
+    color: var(--accent);
+    margin: 0 0 12px;
+    font-size: 1.1em;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .sidebar-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sidebar-toc li {
+    padding: 3px 0;
+  }
+  .sidebar-toc li.toc-h2 {
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--heading);
+  }
+  .sidebar-toc li.toc-h3 {
+    padding-left: 14px;
+    font-size: 0.92em;
+  }
+  .sidebar-toc li.toc-h4 {
+    padding-left: 28px;
+    font-size: 0.85em;
+    color: var(--accent2);
+  }
+  .sidebar-toc a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  .sidebar-toc a:hover {
+    background: var(--box-bg);
+    color: var(--accent);
+  }
+  .sidebar-toc .toc-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--accent2);
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="chapter-nav">
+  <a href="CoS-foreword.html">머리말</a>
+  <a href="CoS-intro.html">서문</a>
+  <a href="CoS-ch1.html">제1장: 안개 속으로</a>
+  <a href="CoS-ch2.html">제2장: 바로비아의 땅</a>
+  <a href="CoS-ch3.html">제3장: 바로비아 마을</a>
+  <a href="CoS-ch4.html">제4장: 레이븐로프트 성</a>
+  <a href="CoS-ch5.html">제5장: 발라키 마을</a>
+  <a href="CoS-ch6.html">제6장: 늙은 뼈 분쇄기</a>
+  <a href="CoS-ch7.html">제7장: 아르긴보스트홀트</a>
+  <a href="CoS-ch8.html">제8장: 크레즈크 마을</a>
+  <a href="CoS-ch9.html">제9장: 촐렌카 고개</a>
+  <a href="CoS-ch10.html">제10장: 베레즈 폐허</a>
+  <a href="CoS-ch11.html">제11장: 반 리히텐의 탑</a>
+  <a href="CoS-ch12.html">제12장: 포도주 마법사</a>
+  <a href="CoS-ch13.html">제13장: 호박 사원</a>
+  <a href="CoS-ch14.html">제14장: 이발드의 저택</a>
+  <a href="CoS-ch15.html" class="active">제15장: 늑대인간 소굴</a>
+  <a href="CoS-epilogue.html">에필로그</a>
+  <a href="CoS-appendixA.html">부록 A</a>
+  <a href="CoS-appendixB.html">부록 B</a>
+  <a href="CoS-appendixC.html">부록 C</a>
+  <a href="CoS-appendixD.html">부록 D</a>
+  <a href="CoS-appendixE.html">부록 E</a>
+  <a href="CoS-appendixF.html">부록 F</a>
+</nav>
+
+<h1>
+  제15장: 늑대인간 소굴(Werewolf Den)
+  <span class="subtitle">Chapter 15: Werewolf Den</span>
+</h1>
+
+<h2 id="ch15-intro">늑대인간 소굴</h2>
+
+<p>바라톡 호수(Lake Baratok) 서쪽에는 바로비아의 늑대인간(werewolf)들이 소굴로 사용하는 동굴 단지가 있다. 포획한 늑대인간을 심문하는 캐릭터들은 소굴의 위치를 알아낼 수 있다. 캐릭터들이 처음 도착할 때 대부분의 늑대인간 무리는 사냥 중이며, 무리의 우두머리인 키릴 스토야노비치(Kiril Stoyanovich)도 마찬가지다.</p>
+
+<p>늑대인간들은 스스로를 어머니 밤의 자녀들(Children of Mother Night)이라 부르는데, 모두 그 신격을 숭배하기 때문이다. 최근 키릴의 지도력에 대한 도전으로 무리 내에 분열이 생겼다. 이 균열은 또 다른 늑대인간 에밀 토라네스쿠(Emil Toranescu)가 무리에 납치된 아이들의 처우에 의문을 제기하면서 시작되었다.</p>
+
+<p>키릴은 아이들에게 무기를 쥐어주고 한 명만 남을 때까지 서로 싸워 죽이도록 강제했다. 승자는 늑대인간으로 변환되었으며, 키릴은 이를 "무리의 강인함과 순수성"이라 불렀다. 에밀은 모든 아이들을 살려두고 늑대인간으로 변환하여 무리의 규모를 키우자고 주장했다. 에밀은 더 큰 무리가 늑대인간들의 생존을 보장한다고 믿었지만, 키릴은 큰 무리를 통제하고 먹이기가 너무 어렵다고 보았다.</p>
+
+<p>이 이념적 분열은 화해할 수 없었고 많은 불화로 이어졌다. 다른 늑대인간들은 두 진영으로 갈라졌으며, 이 갈등이 해결되기 전에 키릴이나 에밀 중 하나가 죽을 것 같았다.</p>
+
+<blockquote>
+  <p>늑대들이 울부짖기 시작했다. 그들은 나를 알았다. 바로비아의 모든 늑대가 나를 알았다.</p>
+  <span class="attribution">— 스트라드 폰 자로비치(Strahd von Zarovich),<br>《나, 스트라드: 뱀파이어의 회고록(I, Strahd: The Memoirs of a Vampire)》 中</span>
+</blockquote>
+
+<p>그러고 나서 키릴은 며칠간 사라졌고, 다른 늑대인간들은 그가 도망친 것인지 아니면 에밀과 그의 동맹자들에 의해 조용히 처리된 것인지 궁금해했다. 키릴이 돌아왔을 때, 그는 스트라드(Strahd)에게 충성하는 수십 마리의 다이어 울프 무리를 데리고 있었으며, 레이븐로프트 성에서 온 소식을 전했다. 스트라드가 에밀의 무리 분열 시도에 불쾌해한다는 것이었다. 다이어 울프들이 에밀을 레이븐로프트 성으로 끌고 가 처벌을 받게 했고, 그 후 에밀은 다시 모습을 보이지 않았다.</p>
+
+<p>키릴은 지배력을 재확립했지만, 그의 사상과 전술은 무리의 나이든 구성원들에게 환영받지 못했고, 에밀의 짝인 줄레이카 토라네스쿠(Zuleika Toranescu)에게는 더욱 그러했다. 그녀는 혼자서 키릴을 죽일 수 없다는 것을 알고, 에밀에게 일어난 일 이후 나머지 무리도 키릴의 권위에 도전하여 스트라드의 분노를 감수할 의향이 없다. 키릴은 줄레이카에게 사냥을 허락하지 않아, 그녀는 사실상 소굴에 갇혀 있다.</p>
+
+<div class="sidebar">
+  <h3>안개를 통한 이동</h3>
+  <p>늑대인간들은 어머니 밤(Mother Night)이 스트라드에게 신과 같은 힘과 영생을 축복했다고 믿으며, 두려움에서 스트라드를 섬긴다. 스트라드는 바로비아를 떠날 수 없지만, 비스타니처럼 특정 생물들이 오가는 것을 허락할 수 있다. 그는 주기적으로 늑대인간들도 안개의 경계를 넘을 수 있게 허락하여, 다른 이들을 그의 영지로 끌어들이거나 유인할 수 있게 한다. 하지만 비스타니와 달리, 늑대인간들은 마음대로 오갈 수 없다.</p>
+</div>
+
+<h2 id="ch15-approach">소굴에 접근하기</h2>
+
+<p>캐릭터들이 처음 늑대인간 소굴에 접근할 때, 다음을 읽어준다:</p>
+
+<div class="read-aloud">
+  <p>수목한계선 위, 바위투성이 산마루 측면에 깎아 만들어진 넓고 횃불이 켜진 동굴이 거대한 늑대의 벌린 입처럼 보인다.</p>
+</div>
+
+<p>동굴 입구(구역 Z1) 위로 100피트, 경사진 산비탈을 더 올라간 곳에는 동굴 입구나 그 주변에서 보이지 않는 바위 난간(구역 Z8)이 있다. 캐릭터는 등반 도구나 능력 판정 없이도 경사면을 올라 난간에 도달할 수 있다.</p>
+
+<h2 id="ch15-areas">소굴의 구역(Areas of the Den)</h2>
+
+<p>아래 구역들은 늑대인간 소굴 지도의 표시에 해당한다.</p>
+
+<div class="map-note">지도 15.1: 늑대인간 소굴 (Z 구역)</div>
+
+<p>소굴 전체의 벽에는 불붙은 횃불이 꽂힌 철제 거치대가 부착되어 있다. 모든 구역은 밝게 비춰지지만, 그림자가 곳곳에 드리운다.</p>
+
+<h3 class="area-title" id="z1">Z1. 동굴 입구(Cave Mouth)</h3>
+
+<div class="read-aloud">
+  <p>늑대 머리의 벌린 턱이 동굴 입구 위에 15피트 높이의 바위 지붕을 형성하며, 자연적인 바위 기둥이 이를 떠받치고 있다. 동굴 안쪽의 천장은 20피트 높이까지 올라간다. 철제 거치대에 꽂힌 횃불이 벽을 따라 늘어서 있다. 깊은 곳 어딘가에서 피리 소리가 메아리친다. 음 중 일부는 불협화음이다 — 고통스러울 정도로.</p>
+</div>
+
+<p>구역 Z2의 경비병들은 숨지 않은 동굴 입구의 캐릭터들을 발견한다. 캐릭터들은 피리 소리를 추적하여 구역 Z3에 도달할 수 있다.</p>
+
+<div class="development">
+  <h4>전개</h4>
+  <p>캐릭터들이 에밀 토라네스쿠(제4장, 구역 K75a 참조)를 동행하거나 구금한 채로 여기에 도착하면, 에밀은 소굴의 다른 늑대인간들에게 캐릭터들이 안으로 들어가는 동안 공격하지 말라고 명령할 수 있다.</p>
+</div>
+
+<h3 class="area-title" id="z2">Z2. 경비 초소(Guard Post)</h3>
+
+<div class="read-aloud">
+  <p>여기서 동굴이 왼쪽과 오른쪽으로 갈라진다. 갈림길 사이의 5피트 높이 난간 위에 찢어진 옷을 입고 창을 쥔 야수 같은 두 여인이 서 있다.</p>
+</div>
+
+<p>아지아나(Aziana)와 다반카(Davanka), 인간 형태의 늑대인간 둘이 난간 위에서 경비를 선다. 그들은 침입자를 발견하면 경보를 울린다. 이곳에서의 큰 소리는 소굴 전체에 들리며, 구역 Z3과 Z5에서 빠른 지원이 온다. 늑대인간들은 죽을 때까지 싸운다.</p>
+
+<h3 class="area-title" id="z3">Z3. 늑대 소굴(Wolf Den)</h3>
+
+<p>아홉 마리의 늑대와 인간 형태의 늑대인간 한 명이 여기 있다. 늑대인간 스케니스(Skennis)는 36 히트 포인트를 가지고 있으며 사냥하기에는 너무 늙었다. 방해받지 않으면 그는 에렉트럼 피리(아래 "보물" 참조)를 연주하는데, 그리 잘하지는 못한다. 늑대들은 그 뒤에 모여 있으며 그가 가는 곳으로 따라간다. 전성기는 한참 지났지만, 그는 소굴을 지키기 위해 죽을 때까지 싸우며, 누군가 그의 늑대 동료를 죽이면 격분한다.</p>
+
+<div class="read-aloud">
+  <p>5피트 높이의 석재 난간이 이 넓은 동굴을 내려다본다. 동굴의 서쪽 끝에는 연기 나는 모닥불이 있다. 바닥은 갉아 먹은 뼈들로 덮여 있다.</p>
+</div>
+
+<p>스케니스가 0 히트 포인트로 줄어들면, 다음을 읽어준다:</p>
+
+<div class="read-aloud">
+  <p>늙은 남자가 킥킥 웃는다. "키릴이 돌아오면," 그가 마지막 숨을 내쉬며 말한다, "너희 가죽을 벗겨 줄 거다."</p>
+</div>
+
+<div class="treasure">
+  <h4>보물</h4>
+  <p>스케니스의 에렉트럼 피리는 비마법적이며 250 gp의 가치가 있다. 스케니스는 또한 50 gp 보석 네 개가 든 주머니를 지니고 있다.</p>
+</div>
+
+<h3 class="area-title" id="z4">Z4. 지하 샘(Underground Spring)</h3>
+
+<div class="read-aloud">
+  <p>바위 천장의 갈라진 틈으로 바깥의 회색빛과 차가운 이슬비가 이 축축하고 횃불이 켜진 동굴로 스며든다. 지하 샘이 대략 40피트 너비에 10피트 깊이의 웅덩이를 형성한다. 북쪽의 5피트 높이 난간이 웅덩이를 내려다본다. 동쪽 벽을 따라 비슷한 난간이 이어지며, 거친 계단이 그 위로 올라간다. 동쪽 난간 위에 몇 개의 상자가 놓여 있다.</p>
+</div>
+
+<p>물은 담수다. 천장은 수면 위로 대략 20피트 높이다. 천장의 갈라진 틈은 가장 넓은 곳이 3피트, 가장 좁은 곳이 6인치다.</p>
+
+<p>동쪽 난간의 상자들에는 성인용 옷더미가 들어 있다.</p>
+
+<h3 class="area-title" id="z5">Z5. 깊은 동굴(Deep Caves)</h3>
+
+<div class="read-aloud">
+  <p>횃불이 켜진 터널과 동굴의 미로가 눈앞에 펼쳐진다. 뼈들이 바닥에 흩어져 있다.</p>
+</div>
+
+<p>이곳의 천장 높이는 10피트다. 바닥의 뼈들은 경보 장치 역할을 한다. 밟으면 크게 우드득거리며, 이 구역을 조용히 이동하려는 민첩(은신) 판정에 불리함(disadvantage)이 적용된다.</p>
+
+<h4 class="area-title" id="z5a">Z5a. 남쪽 동굴(South Cave)</h4>
+
+<p>비앙카(Bianca), 키릴 스토야노비치의 짝인 백발의 늑대인간이 늑대 형태로 여기서 잠을 잔다. 그녀는 경보 소리에 빠르게 반응하며, 보이는 침입자를 공격한다.</p>
+
+<h4 class="area-title" id="z5b">Z5b. 북쪽 동굴(North Cave)</h4>
+
+<p>벤센시아(Wencensia), 늑대 형태의 늑대인간이 켈렌(Kellen)과 함께 여기서 잠을 잔다. 켈렌은 늑대 형태의 열 살 된 늑대인간이다. 켈렌은 비전투원으로 AC 10, 2 히트 포인트, 그리고 늑대인간의 피해 면역을 가진다. 그는 캐릭터 중 한 명을 섬뜩하게 닮은 나무 인형을 안고 있는데, 좀비처럼 칠하고 옷을 입혔다. 좀비 인형에 새겨진 작은 문구에는 "재미 없는 건, 블린스키(Blinsky) 아니다!"라고 적혀 있다.</p>
+
+<p>경보가 울리면, 벤센시아는 켈렌을 구역 Z7로 데려가 빈 우리 중 하나에 넣고 잠그며, 인간 형태를 취하라고 말한다. 켈렌은 그렇게 한다. 그 후 벤센시아는 동료 늑대인간들과 합류하여 소굴을 방어한다.</p>
+
+<p>켈렌은 포가튼 렐름(Forgotten Realms) 세팅의 미스티 숲 근처 마을인 리암스 홀드(Liam's Hold)에서 납치되었다. 그는 키릴의 비열한 대결에서 승리한 후 늑대인간 수인병에 감염되었다. 켈렌에게 <em>대복원(greater restoration)</em> 주문이나 <em>저주 해제(remove curse)</em> 주문을 시전하면 그의 수인병이 끝난다.</p>
+
+<h3 class="area-title" id="z6">Z6. 키릴의 동굴(Kiril's Cave)</h3>
+
+<div class="read-aloud">
+  <p>이 동굴의 안쪽에는 인간 가죽으로 만든 커튼이 걸려 있다.</p>
+</div>
+
+<p>집에 있을 때, 키릴 스토야노비치는 늑대 형태로 여기서 잠을 잔다.</p>
+
+<p>꿰맨 살가죽의 끔찍한 커튼 뒤에는 10피트 높이, 10피트 너비의 터널이 있으며, 중간중간 쉼터가 있는 거칠게 깎은 계단이 위로 이어진다. 터널은 비밀문에서 끝나며, 그 너머에는 구역 Z8이 있다. 비밀문은 터널 안쪽에서 쉽게 발견할 수 있다 (능력 판정 불필요).</p>
+
+<h3 class="area-title" id="z7">Z7. 어머니 밤의 성소(Shrine of Mother Night)</h3>
+
+<div class="read-aloud">
+  <p>거칠게 깎은 계단이 횃불 켜진 동굴로 내려가며 기묘한 광경이 펼쳐진다: 눈이 휘둥그레진 아이들이 나무 격자 뒤에 서서 겁에 질린 침묵 속에 당신을 바라본다. 동굴에는 여섯 개의 나무 우리가 있으며, 무거운 돌로 뚜껑이 눌려 있다. 우리 중 두 개는 비어 있고, 나머지 네 개에는 각각 겁에 질린 아이 두 명이 들어 있다.</p>
+  <p>우리 사이에 투박한 나무 조각상이 서 있다. 포도덩굴과 밤꽃 화환이 드리워진 늑대 머리 여인의 거친 형상이다. 조각상 받침대 주위에는 엄청난 양의 보물이 쌓여 있다. 찢어진 옷을 입은 여인이 조각상 앞에 무릎 꿇고 있다. 조각상 뒤에는 구더기가 들끓는 시체 두 구가 벽에 박힌 철제 족쇄에 매달려 있다.</p>
+</div>
+
+<p>이곳의 천장 높이는 20피트다. 조각상은 어머니 밤(Mother Night)의 투박한 묘사다. 그 앞에 무릎 꿇고 있는 이는 줄레이카 토라네스쿠(Zuleika Toranescu)라는 인간 형태의 늑대인간으로, 에밀의 아내다 (제4장, 구역 K75a 참조). 자신의 짝이 스트라드의 손에 죽었다고 믿으며, 그녀는 어머니 밤에게 인도를 기도한다. 여신이 스트라드에 충분한 영향력을 가져 그녀의 사랑하는 이를 풀어주도록 설득해 줄지 모른다는 희망에서다.</p>
+
+<div class="sidebar">
+  <h3>줄레이카 토라네스쿠</h3>
+  <p>키릴은 줄레이카에게 수감자들을 지키라고 명령했다. 캐릭터들이 에밀을 구출하여 줄레이카에게 무사히 돌려보내면, 그녀는 기꺼이 아이들을 풀어준다. 캐릭터들이 에밀이 그들의 손에 의해서든 스트라드의 손에 의해서든 진정으로 죽었음을 확인해 주면, 캐릭터들이 키릴 스토야노비치를 처리하는 것을 도와준다면 여전히 수감자들을 풀어줄 수 있다. 키릴을 무엇보다 원망하기 때문이다. 줄레이카는 캐릭터들을 자신의 기도에 대한 응답으로 보고, 키릴이 최근 사냥에서 돌아올 때 그를 죽여달라고 요청한다 (아래 "특별 이벤트" 섹션의 "무리의 우두머리" 참조).</p>
+</div>
+
+<p>여기에 갇힌 여덟 명의 아이들은 각각 AC 10, 1 히트 포인트이며 유효한 공격이 없다. 아이의 나이(년)를 결정하려면 1d6 + 6을 굴린다. 점령된 각 우리 위에 쌓인 돌들은 치우거나 들어올릴 수 있어, 우리를 열 수 있다. 아이들은 충격 상태에 있다. 풀려난 아이들은 늑대와 늑대인간에게 잡아먹힐까 두려워 캐릭터들에게서 멀리 벗어나지 않는다.</p>
+
+<p>조각상 뒤 벽에 매달린 시체들은 바로비아인 성인 남녀로, 무리에 의해 죽임당하고 어머니 밤에게 제물로 바쳐졌다. 늑대인간들은 시체를 먹는 구더기를 어머니 밤의 "식사"의 상징으로 여긴다. 이 시체들의 살이 다 먹히면, 무리는 대체할 새로운 제물을 찾는다.</p>
+
+<div class="treasure">
+  <h4>보물</h4>
+  <p>어머니 밤의 조각상 받침대 주위에 쌓인 보물은 다음을 포함한다:</p>
+  <ul>
+    <li>4,500 cp, 900 sp, 250 gp (모두 바로비아 외의 주조 화폐)</li>
+    <li>50 gp 보석 서른 개와 100 gp 보석 일곱 개</li>
+    <li>평범한 금 장신구 열두 점 (각 25 gp 가치)과 흑옥 파편이 박힌 정교한 금 망토핀 (250 gp 가치)</li>
+    <li>춤추는 드라이아드와 사티로스 피리 연주자가 새겨진 상아 음주뿔 (250 gp 가치)</li>
+    <li>백금 세공의 장식적인 에렉트럼 향로 (750 gp 가치)</li>
+  </ul>
+  <p>어머니 밤에게서 훔치는 자는 저주를 받는다. 늑대인간들은 이를 알기에, 보물을 특별히 지키려 하지 않는다.</p>
+  <p>이 더미에서 보물을 가져가는 모든 생물은 해질녘부터 새벽까지 매일 밤 끔찍한 악몽에 시달린다. 저주는 훔친 생물에게만 영향을 미치며, 나중에 그 물건을 소유하게 된 다른 이에게는 전이되지 않는다. 훔친 물건을 보물 더미에 되돌려놔도 저주는 끝나지 않는다.</p>
+  <p>이런 식으로 저주받은 생물은 밤에 짧은 휴식이나 긴 휴식을 마쳐도 이득을 얻지 못한다 (저주가 새벽부터 해질녘까지 잠재하므로, 낮 동안의 휴식은 정상적으로 작동한다). 저주받은 생물에게 <em>대복원(greater restoration)</em>이나 <em>저주 해제(remove curse)</em> 주문을 시전하면 저주가 끝난다. 생물이 바로비아를 떠나면 저주도 역시 끝난다.</p>
+</div>
+
+<div class="fortunes">
+  <h4>라벤로프트의 운명</h4>
+  <p>카드 점이 여기에 보물이 있다고 밝히면, 그것은 조각상 받침대의 다른 물건들 사이에 놓여 있다. 위에 설명한 저주가 이 보물에도 적용된다.</p>
+</div>
+
+<h3 class="area-title" id="z8">Z8. 돌의 고리(Ring of Stone)</h3>
+
+<div class="read-aloud">
+  <p>지름 20피트의 돌로 된 원형 고리가 산비탈의 바위 난간을 지배하고 있다. 고리 안에는 핏자국과 작게 갉아 먹은 뼈들이 보인다. 원 바깥 바닥에는 마른 피가 묻은 창 여러 자루가 놓여 있다.</p>
+</div>
+
+<p>늑대인간 무리는 이곳에 모여 어린 포로들이 돌 고리 안에서 창으로 싸우는 것을 지켜본다. 마지막으로 서 있는 아이는 물려서 늑대인간으로 변하고, 죽은 아이들의 시체는 뜯어먹혀 뼈만 남는다.</p>
+
+<p>산비탈에는 밀어서 열 수 있는 비밀문이 있으며, 구역 Z6으로 내려가는 거칠게 깎은 계단이 있는 터널이 드러난다.</p>
+
+<div class="section-divider">* * *</div>
+
+<h2 id="ch15-events">특별 이벤트(Special Events)</h2>
+
+<p>캐릭터들이 소굴을 탐험하거나 휴식하는 동안 다음 특별 이벤트 중 하나 또는 둘 다를 사용할 수 있다.</p>
+
+<h3 id="ch15-event-leader">무리의 우두머리(Leader of the Pack)</h3>
+
+<p>이 이벤트는 캐릭터들이 이전에 키릴의 사냥 무리를 만나 격파한 경우 발생하지 않는다 (제11장, "특별 이벤트" 섹션의 "무리 습격" 참조).</p>
+
+<div class="sidebar">
+  <h3>키릴 스토야노비치</h3>
+  <p>캐릭터들이 늑대인간 소굴 안에서 보내는 매 시간마다 d20을 굴린다. 18 이상이 나오면, 죽은 산양을 끌고 늑대인간 사냥단이 돌아온다. 기껏해야 빈약한 잔치거리다. 사냥단은 키릴 스토야노비치(90 히트 포인트의 늑대인간), 일반 늑대인간 여섯 명, 늑대 아홉 마리로 구성된다. 모든 늑대인간은 늑대 형태로 도착한다.</p>
+  <p>늑대들이 소굴에 대한 공격의 증거(예를 들어 구역 Z2의 경비병이 없거나 죽어 있는 경우)를 볼 수 있으면, 늑대인간들은 혼합 형태를 취한다. 키릴은 늑대인간 세 명을 산비탈 위 구역 Z8로 보내 위에서 소굴에 진입하게 하고, 자신과 나머지 사냥단은 소굴 깊숙이 들어간다.</p>
+</div>
+
+<div class="development">
+  <h4>전개</h4>
+  <p>키릴이 살아 있는 한, 캐릭터들은 늑대인간들과 협상할 수 없다. 키릴이 죽고 캐릭터들이 우세하면, 무리는 그들과 기꺼이 협상한다.</p>
+  <p>에밀 토라네스쿠가 키릴이 돌아올 때 현장에 있으면, 에밀은 라이벌을 죽이고 새 무리의 우두머리가 되겠다고 결심한다. 성공하면, 그는 캐릭터들이 소굴을 무사히 떠나도록 허락하지만, 줄레이카가 현장에서 설득하지 않는 한 납치된 아이들을 풀어주길 거부한다 (캐릭터들이 아이들을 놓아주지 않으면 남편을 죽일까 봐 두렵기 때문이다).</p>
+  <p>키릴과 에밀 모두 죽으면, 줄레이카가 무리의 우두머리가 되어 스트라드와의 모든 유대를 끊는다. 스트라드가 이 사태를 알게 되면 일반 늑대들은 무리를 떠난다. 캐릭터들이 "안개 속의 늑대인간" 모험 갈고리로 바로비아에 끌려왔다면, 줄레이카의 지도하에 소드 코스트(Sword Coast)에 대한 늑대인간 공격이 종결된다. 그녀마저 죽으면, 젊지만 사나운 늑대인간 프란츠 그로자(Franz Groza)가 무리의 우두머리가 된다. 그는 잔인하고 배신적이며, 캐릭터들에게 자비를 베풀지 않는다.</p>
+</div>
+
+<h3 id="ch15-event-kinder">아이들(Die Kinder)</h3>
+
+<p>캐릭터들이 키릴이 살아 있는 동안 아이들을 소굴에서 빼내면, 키릴은 사냥단을 재소집하여 잃어버린 포로들을 집요하게 추적한다. 키릴이 죽었으면, 늑대인간 무리는 키릴의 후계자를 결정하느라 바빠서 사냥단을 조직할 여유가 없다.</p>
+
+<p>캐릭터들이 아이들을 어디로 데려갈지 확신이 없다면, 까마귀 형태로 소굴을 정찰해 온 늑대까마귀(wereraven, 부록 D 참조) 한 마리가 혼합 형태를 취하고 근처 마을인 크레즈크(Krezk, 제8장)에서 피난처를 찾으라고 제안한다. 캐릭터들이 그쪽으로 향하면, 늑대까마귀는 캐릭터들이 마을에 도착할 때까지 상공에서 정찰한 뒤, 남쪽의 포도주 마법사(Wizard of Wines) 포도원 (제12장)으로 날아가 다비안 마르티코프(Davian Martikov)에게 상황을 보고한다.</p>
+
+<p>아이들은 늑대인간 소굴에서의 감금으로 당연히 충격을 받은 상태다. 캐릭터들과 함께 있는 내내 울고 비명을 지른다. <em>감정 진정(calm emotions)</em> 주문은 주문 지속 시간 동안 그들의 고통을 잠재운다 (내성 굴림 불필요). 캐릭터는 위협하거나 (진짜든 거짓이든) 희망을 제시하여 더 오랜 기간 동안 아이들을 조용하게 만들 수 있다. 캐릭터는 적절한 DC 15 매력(위협, 설득, 또는 기만) 판정을 해야 한다. 판정에 성공하면, 아이들은 무서운 일이 생길 때까지 조용히 있는다.</p>
+
+<p>캐릭터들이 아이들을 크레즈크로 데려가면, 그곳 마을 사람들이 아이들을 보살피고 먹이며 적절한 옷을 입힌다. 대신 발라키(Vallaki)로 데려가면, 마르티코프 일가가 캐릭터들이 돌아와 데려갈 때까지 아이들을 푸른 물 여관(Blue Water Inn)에 머물게 해 준다.</p>
+
+
+<div class="sidebar-toc" id="sidebarToc">
+  <button class="toc-close" onclick="toggleSidebar()">✕</button>
+  <h4>목차</h4>
+  <ul id="sidebarTocList"></ul>
+</div>
+<button class="sidebar-toc-toggle" id="sidebarToggle" onclick="toggleSidebar()">목 차</button>
+<script>
+function toggleSidebar() {
+  var toc = document.getElementById('sidebarToc');
+  var btn = document.getElementById('sidebarToggle');
+  toc.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+// Auto-generate TOC from headings
+(function() {
+  var headings = document.querySelectorAll('h2[id], h3[id], h4[id], .area-title[id]');
+  var list = document.getElementById('sidebarTocList');
+  if (!list) return;
+  for (var i = 0; i < headings.length; i++) {
+    var h = headings[i];
+    var li = document.createElement('li');
+    var tag = h.tagName.toLowerCase();
+    if (h.classList.contains('area-title')) tag = 'h3';
+    li.className = 'toc-' + tag;
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent.trim();
+    a.onclick = function() {
+      if (window.innerWidth < 768) toggleSidebar();
+    };
+    li.appendChild(a);
+    list.appendChild(li);
+  }
+})();
+</script>
+
+</body>
+</html>

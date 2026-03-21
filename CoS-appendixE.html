@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>부록 E: 타로카 덱 — 스트라드의 저주</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #faf6f0;
+    --text: #2c2416;
+    --accent: #8b1a1a;
+    --accent2: #a0522d;
+    --heading: #4a0e0e;
+    --border: #c9b99a;
+    --box-bg: #f0e8d8;
+    --quote-bg: #eee6d4;
+    --table-head: #5c3317;
+    --table-alt: #f5edd9;
+    --shadow: rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Serif KR', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 16px;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 28px 80px;
+  }
+
+  h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 2.4em;
+    color: var(--heading);
+    text-align: center;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    border-bottom: 3px double var(--accent);
+    padding-bottom: 16px;
+  }
+
+  h1 .subtitle {
+    display: block;
+    font-size: 0.45em;
+    font-weight: 400;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: 1.6em;
+    color: var(--accent);
+    margin: 48px 0 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  h3 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--heading);
+    margin: 32px 0 10px;
+  }
+
+  h4 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--accent2);
+    margin: 24px 0 8px;
+  }
+
+  p { margin: 0 0 14px; text-align: justify; }
+
+  .read-aloud {
+    background: var(--quote-bg);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-style: italic;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .read-aloud p:last-child { margin-bottom: 0; }
+
+  .sidebar {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    box-shadow: 2px 2px 8px var(--shadow);
+  }
+
+  .sidebar h3 {
+    margin-top: 0;
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+
+  blockquote {
+    background: var(--quote-bg);
+    border-left: 3px solid var(--accent2);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+  }
+
+  blockquote .attribution {
+    display: block;
+    text-align: right;
+    font-style: normal;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin-top: 8px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+  }
+
+  thead th {
+    background: var(--table-head);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:nth-child(even) { background: var(--table-alt); }
+
+  .area-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.08em;
+    color: var(--accent);
+    margin: 28px 0 8px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-divider {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--border);
+    font-size: 1.4em;
+    letter-spacing: 0.5em;
+  }
+
+  .map-note {
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+  }
+
+  .treasure {
+    background: #fdf5e6;
+    border: 1px solid #d4a937;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .treasure h4 { color: #8b6914; margin-top: 0; }
+
+  .fortunes {
+    background: #f0e0f0;
+    border: 1px solid #9c6b9c;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .fortunes h4 { color: #6b3a6b; margin-top: 0; }
+
+  .development {
+    background: #e8f0e8;
+    border: 1px solid #6b9c6b;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .development h4 { color: #3a6b3a; margin-top: 0; }
+
+  strong { color: var(--heading); }
+
+  .stat-block {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+    background: var(--box-bg);
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 10px 0;
+  }
+
+  .toc {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 24px 0;
+  }
+
+  .toc h3 { margin-top: 0; }
+  .toc ul { list-style: none; padding-left: 0; }
+  .toc li { padding: 3px 0; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    body { padding: 20px 14px 60px; font-size: 15px; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.3em; }
+  }
+
+  /* Tab System */
+  .chapter-nav {
+    display: flex;
+    gap: 0;
+    margin: 0 0 0;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    padding-top: 8px;
+  }
+  .chapter-nav a {
+    padding: 10px 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+    font-weight: 700;
+    color: var(--accent2);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: -2px;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+  }
+  .chapter-nav a:hover { background: var(--box-bg); }
+  .chapter-nav a.active {
+    background: var(--bg);
+    color: var(--accent);
+    border-color: var(--border);
+  }
+
+
+  /* Sidebar TOC */
+  .sidebar-toc-toggle {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    writing-mode: vertical-rl;
+    letter-spacing: 2px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+  }
+  .sidebar-toc-toggle:hover { background: var(--heading); }
+  .sidebar-toc-toggle.open { left: 280px; }
+
+  .sidebar-toc {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg);
+    border-right: 2px solid var(--border);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    z-index: 199;
+    overflow-y: auto;
+    padding: 60px 16px 20px;
+    transition: left 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+  }
+  .sidebar-toc.open { left: 0; }
+  .sidebar-toc h4 {
+    color: var(--accent);
+    margin: 0 0 12px;
+    font-size: 1.1em;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .sidebar-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sidebar-toc li {
+    padding: 3px 0;
+  }
+  .sidebar-toc li.toc-h2 {
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--heading);
+  }
+  .sidebar-toc li.toc-h3 {
+    padding-left: 14px;
+    font-size: 0.92em;
+  }
+  .sidebar-toc li.toc-h4 {
+    padding-left: 28px;
+    font-size: 0.85em;
+    color: var(--accent2);
+  }
+  .sidebar-toc a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  .sidebar-toc a:hover {
+    background: var(--box-bg);
+    color: var(--accent);
+  }
+  .sidebar-toc .toc-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--accent2);
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="chapter-nav">
+  <a href="CoS-foreword.html">머리말</a>
+  <a href="CoS-intro.html">서문</a>
+  <a href="CoS-ch1.html">제1장: 안개 속으로</a>
+  <a href="CoS-ch2.html">제2장: 바로비아의 땅</a>
+  <a href="CoS-ch3.html">제3장: 바로비아 마을</a>
+  <a href="CoS-ch4.html">제4장: 레이븐로프트 성</a>
+  <a href="CoS-ch5.html">제5장: 발라키 마을</a>
+  <a href="CoS-ch6.html">제6장: 늙은 뼈 분쇄기</a>
+  <a href="CoS-ch7.html">제7장: 아르긴보스트홀트</a>
+  <a href="CoS-ch8.html">제8장: 크레즈크 마을</a>
+  <a href="CoS-ch9.html">제9장: 촐렌카 고개</a>
+  <a href="CoS-ch10.html">제10장: 베레즈 폐허</a>
+  <a href="CoS-ch11.html">제11장: 반 리히텐의 탑</a>
+  <a href="CoS-ch12.html">제12장: 포도주 마법사</a>
+  <a href="CoS-ch13.html">제13장: 호박 사원</a>
+  <a href="CoS-ch14.html">제14장: 예스터 힐</a>
+  <a href="CoS-ch15.html">제15장: 늑대인간 소굴</a>
+  <a href="CoS-epilogue.html">에필로그</a>
+  <a href="CoS-appendixA.html">부록 A</a>
+  <a href="CoS-appendixB.html">부록 B</a>
+  <a href="CoS-appendixC.html">부록 C</a>
+  <a href="CoS-appendixD.html">부록 D</a>
+  <a href="CoS-appendixE.html" class="active">부록 E</a>
+  <a href="CoS-appendixF.html">부록 F</a>
+</nav>
+
+<h1>
+  부록 E: 타로카 덱(The Tarokka Deck)
+  <span class="subtitle">Appendix E: The Tarokka Deck</span>
+</h1>
+
+<h2 id="appE-intro">타로카 덱(The Tarokka Deck)</h2>
+
+<p>타로카 덱(Tarokka deck)은 비스타니(Vistani)가 점술에 사용하는 카드 덱이다. 덱의 카드는 비스타니의 의식과 전통에 깊이 뿌리박고 있으며, 비스타니 문화에서 신성한 의미를 지닌다.</p>
+
+<p>타로카 덱은 전통적으로 비스타니 장인이 직접 만든다. 카드는 양피지나 가죽 위에 그려지며, 종종 뼈나 나무로 만든 정교한 상자에 보관된다. 비스타니는 자신의 타로카 덱을 소중히 여기며, 이를 타인에게 빌려주는 일은 극히 드물다.</p>
+
+<h3>구성</h3>
+
+<p>타로카 덱은 총 54장의 카드로 구성된다. 그중 40장은 <strong>일반 덱(common deck)</strong>을 이루며, 네 가지 문양(suit)으로 나뉜다: <strong>검(Swords)</strong>, <strong>동전(Coins)</strong>, <strong>별(Stars)</strong>, <strong>문양(Glyphs)</strong>. 각 문양에는 1번부터 9번까지의 카드와 마스터(master) 카드가 하나씩, 총 10장의 카드가 있다. 나머지 14장의 카드는 <strong>상위 덱(high deck)</strong>을 구성한다.</p>
+
+<h2 id="high-deck">상위 덱(High Deck)</h2>
+
+<p>상위 덱(high deck)은 14장의 카드로 구성되며, 각 카드는 강력한 힘이나 인물을 상징한다. 상위 덱의 카드는 일반 덱의 어떤 문양에도 속하지 않으며, 독립적인 의미를 가진다.</p>
+
+<table>
+<thead>
+<tr>
+  <th>카드</th>
+  <th>이름</th>
+  <th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>유물(Artifact)</td>
+  <td>큰 힘을 지닌 유물이나 성물을 나타낸다. 선과 악 양쪽에 사용될 수 있는 강력한 힘의 원천이다.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>야수(Beast)</td>
+  <td>큰 힘을 가진 야수나 사냥감을 나타낸다. 위험과 야생의 힘, 그리고 자연의 분노를 상징한다.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>부서진 자(Broken One)</td>
+  <td>비극이나 상실로 인해 부서진 인물을 나타낸다. 고통, 광기, 또는 회복의 가능성을 상징한다.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>암흑 군주(Darklord)</td>
+  <td>어둠의 영역을 지배하는 강력한 존재를 나타낸다. 압제, 공포, 그리고 절대적 권력을 상징한다.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>감옥(Donjon)</td>
+  <td>감금, 속박, 또는 격리를 나타낸다. 물리적 감옥이든 정신적 감옥이든, 자유의 상실을 상징한다.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>유령(Ghost)</td>
+  <td>죽음 이후에도 남은 영혼, 또는 과거의 잔재를 나타낸다. 미완의 과업이나 해소되지 않은 원한을 상징한다.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>집행인(Executioner)</td>
+  <td>심판과 처벌을 집행하는 자를 나타낸다. 정의든 부정의든, 최종적인 결정과 그 결과를 상징한다.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>기수(Horseman)</td>
+  <td>임박한 파멸이나 변화의 전조를 나타낸다. 전쟁, 죽음, 역병 등 거스를 수 없는 힘을 상징한다.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td>무고한 자(Innocent)</td>
+  <td>순수함과 연약함을 나타낸다. 보호가 필요한 존재, 또는 아직 세상의 어둠에 물들지 않은 영혼을 상징한다.</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td>꼭두각시(Marionette)</td>
+  <td>타인의 의지에 의해 조종당하는 존재를 나타낸다. 자유 의지의 상실과 지배당하는 관계를 상징한다.</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td>안개(Mists)</td>
+  <td>미지의 것, 신비, 또는 속임수를 나타낸다. 진실을 감추는 장막이자 다른 세계로의 관문을 상징한다.</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td>까마귀(Raven)</td>
+  <td>전조나 예언, 그리고 죽음과 삶 사이의 경계를 나타낸다. 메신저이자 감시자를 상징한다.</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td>예언자(Seer)</td>
+  <td>미래를 내다보는 능력, 또는 숨겨진 진실을 꿰뚫어 보는 지혜를 나타낸다. 통찰과 계시를 상징한다.</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td>유혹자(Tempter)</td>
+  <td>유혹과 타락을 나타낸다. 달콤한 약속으로 영혼을 어둠으로 이끄는 존재를 상징한다.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="common-deck">일반 덱(Common Deck)</h2>
+
+<p>일반 덱(common deck)은 40장의 카드로 구성되며, 네 가지 문양으로 나뉜다. 각 문양에는 1번부터 9번까지의 카드와 마스터 카드가 하나씩 있다. 마스터 카드는 해당 문양의 가장 높은 카드이며, 문양의 본질을 가장 순수하게 구현하는 인물을 나타낸다.</p>
+
+<h2 id="suit-swords">검(Swords)</h2>
+
+<p>검(Swords) 문양은 공격성과 용맹을 상징한다. 이 문양의 카드는 전사, 군인, 그리고 무력을 통해 의지를 관철하는 자들을 나타낸다. 검 문양의 카드는 힘, 갈등, 명예, 그리고 전투와 관련된 주제를 다룬다.</p>
+
+<table>
+<thead>
+<tr>
+  <th>번호</th>
+  <th>이름</th>
+  <th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>마스터</td>
+  <td>전사(Warrior)</td>
+  <td>전투에서의 힘과 용기를 나타낸다. 모든 전사의 이상형이자 전장의 지배자를 상징한다.</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>복수자(Avenger)</td>
+  <td>잘못된 일을 바로잡기 위해 행동하는 자를 나타낸다. 정의를 위한 복수와 보복의 힘을 상징한다.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>성기사(Paladin)</td>
+  <td>신성한 대의에 헌신하는 거룩한 전사를 나타낸다. 의로운 힘, 신앙, 그리고 보호를 상징한다.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>병사(Soldier)</td>
+  <td>의무와 충성에 따라 싸우는 자를 나타낸다. 규율, 복종, 그리고 동료에 대한 헌신을 상징한다.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>용병(Mercenary)</td>
+  <td>보수를 위해 싸우는 자를 나타낸다. 실용주의, 기회주의, 그리고 충성심의 가격을 상징한다.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>용사(Myrmidon)</td>
+  <td>맹목적인 충성으로 주인을 섬기는 전사를 나타낸다. 흔들림 없는 헌신과 전투적 기량을 상징한다.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>광전사(Berserker)</td>
+  <td>분노에 사로잡힌 전사를 나타낸다. 통제할 수 없는 격노, 파괴, 그리고 야만적인 힘을 상징한다.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>두건 쓴 자(Hooded One)</td>
+  <td>은밀하게 행동하는 전사를 나타낸다. 암살, 첩보, 그리고 그림자 속에서의 전투를 상징한다.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>독재자(Dictator)</td>
+  <td>무력으로 지배하는 폭군을 나타낸다. 압제, 두려움을 통한 통치, 그리고 권력의 남용을 상징한다.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td>고문관(Torturer)</td>
+  <td>고통을 가하는 것에서 목적이나 쾌락을 찾는 자를 나타낸다. 잔인함, 심문, 그리고 인간성의 상실을 상징한다.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="suit-stars">별(Stars)</h2>
+
+<p>별(Stars) 문양은 마법과 지식을 상징한다. 이 문양의 카드는 마법사, 현자, 그리고 신비한 힘을 다루는 자들을 나타낸다. 별 문양의 카드는 지혜, 마법, 연구, 그리고 초자연적 힘과 관련된 주제를 다룬다.</p>
+
+<table>
+<thead>
+<tr>
+  <th>번호</th>
+  <th>이름</th>
+  <th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>마스터</td>
+  <td>마법사(Wizard)</td>
+  <td>마법 지식의 정점에 선 자를 나타낸다. 비전 마법의 완전한 숙달과 심오한 지혜를 상징한다.</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>변환술사(Transmuter)</td>
+  <td>물질의 형태와 본질을 변화시키는 자를 나타낸다. 변형, 적응, 그리고 변화의 힘을 상징한다.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>점술사(Diviner)</td>
+  <td>과거, 현재, 미래를 읽어내는 자를 나타낸다. 예지, 통찰, 그리고 숨겨진 지식의 발견을 상징한다.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>부여술사(Enchanter)</td>
+  <td>마음과 감정을 조종하는 마법을 다루는 자를 나타낸다. 매혹, 지배, 그리고 의지의 굴복을 상징한다.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>방호술사(Abjurer)</td>
+  <td>보호와 방어의 마법을 다루는 자를 나타낸다. 수호, 봉인, 그리고 해로운 것을 물리치는 힘을 상징한다.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>원소술사(Elementalist)</td>
+  <td>자연의 원소적 힘을 다루는 자를 나타낸다. 불, 물, 바람, 대지 등 근원적인 에너지의 지배를 상징한다.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>환기술사(Evoker)</td>
+  <td>순수한 마법 에너지를 폭발적으로 방출하는 자를 나타낸다. 파괴적 마법, 원시적 힘, 그리고 전투 마법을 상징한다.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>환영술사(Illusionist)</td>
+  <td>감각을 속이고 환영을 만들어내는 자를 나타낸다. 속임수, 허상, 그리고 현실과 환상의 경계를 상징한다.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>사령술사(Necromancer)</td>
+  <td>죽음의 에너지와 망자를 다루는 자를 나타낸다. 죽음, 언데드, 그리고 삶과 죽음의 경계를 넘는 힘을 상징한다.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td>소환술사(Conjurer)</td>
+  <td>다른 차원의 존재나 물질을 불러오는 자를 나타낸다. 소환, 차원 이동, 그리고 타계와의 연결을 상징한다.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="suit-coins">동전(Coins)</h2>
+
+<p>동전(Coins) 문양은 부와 교환, 그리고 세속적 힘을 상징한다. 이 문양의 카드는 상인, 도둑, 그리고 재물을 통해 영향력을 행사하는 자들을 나타낸다. 동전 문양의 카드는 탐욕, 관대함, 교활함, 그리고 물질적 세계와 관련된 주제를 다룬다.</p>
+
+<table>
+<thead>
+<tr>
+  <th>번호</th>
+  <th>이름</th>
+  <th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>마스터</td>
+  <td>도적(Rogue)</td>
+  <td>교활함과 기지의 달인을 나타낸다. 모든 도둑과 사기꾼의 이상형이자, 그림자 속에서 번영하는 자를 상징한다.</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>협객(Swashbuckler)</td>
+  <td>대담하고 화려한 모험가를 나타낸다. 용감무쌍한 행동, 매력, 그리고 운명에 맞서는 담대함을 상징한다.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>자선가(Philanthropist)</td>
+  <td>자신의 재산을 나누는 관대한 자를 나타낸다. 자비, 관용, 그리고 부의 고귀한 사용을 상징한다.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>상인(Trader)</td>
+  <td>물건을 사고파는 것으로 생계를 잇는 자를 나타낸다. 교섭, 공정한 거래, 그리고 상호 이익을 상징한다.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>무역상(Merchant)</td>
+  <td>큰 규모의 상업을 영위하는 자를 나타낸다. 부의 축적, 사업적 수완, 그리고 경제적 영향력을 상징한다.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>길드원(Guild Member)</td>
+  <td>조직에 속하여 활동하는 자를 나타낸다. 연대, 공동의 이익, 그리고 집단적 힘을 상징한다.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>거지(Beggar)</td>
+  <td>가진 것이 없는 자를 나타낸다. 빈곤, 겸손, 또는 모든 것을 잃은 후의 상태를 상징한다.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>도둑(Thief)</td>
+  <td>타인의 것을 훔치는 자를 나타낸다. 탐욕, 기회주의, 그리고 은밀한 행동을 상징한다.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>세리(Tax Collector)</td>
+  <td>빚이나 세금을 걷는 자를 나타낸다. 권위, 의무, 그리고 때로는 억압적인 징수를 상징한다.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td>수전노(Miser)</td>
+  <td>재산을 쌓아두기만 하고 쓰지 않는 자를 나타낸다. 인색함, 집착, 그리고 탐욕의 극단을 상징한다.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="suit-glyphs">문양(Glyphs)</h2>
+
+<p>문양(Glyphs) 문양은 신앙과 영성을 상징한다. 이 문양의 카드는 사제, 성직자, 그리고 신성한 힘이나 영적 영역과 관련된 자들을 나타낸다. 문양 문양의 카드는 믿음, 종교, 치유, 그리고 영혼과 관련된 주제를 다룬다.</p>
+
+<table>
+<thead>
+<tr>
+  <th>번호</th>
+  <th>이름</th>
+  <th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>마스터</td>
+  <td>사제(Priest)</td>
+  <td>신앙의 가장 높은 봉사자를 나타낸다. 신성한 권위, 영적 지도력, 그리고 신과 필멸자 사이의 중재를 상징한다.</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>수도승(Monk)</td>
+  <td>고독 속에서 명상과 수행에 전념하는 자를 나타낸다. 금욕, 내적 평화, 그리고 자기 수양을 상징한다.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>선교사(Missionary)</td>
+  <td>신앙을 전파하기 위해 먼 곳까지 여행하는 자를 나타낸다. 열정, 헌신, 그리고 메시지의 전달을 상징한다.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>치유사(Healer)</td>
+  <td>상처와 병을 고치는 자를 나타낸다. 자비, 치유의 손길, 그리고 고통의 경감을 상징한다.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>목자(Shepherd)</td>
+  <td>양떼를 이끄는 자처럼 사람들을 돌보는 자를 나타낸다. 보호, 인도, 그리고 공동체의 수호를 상징한다.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>드루이드(Druid)</td>
+  <td>자연의 영적인 힘과 교감하는 자를 나타낸다. 자연 숭배, 계절의 순환, 그리고 야생의 지혜를 상징한다.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>무정부주의자(Anarchist)</td>
+  <td>확립된 종교적 질서에 반기를 드는 자를 나타낸다. 반항, 기존 체제의 전복, 그리고 혼돈을 상징한다.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>사기꾼(Charlatan)</td>
+  <td>거짓 신앙이나 가짜 기적으로 타인을 속이는 자를 나타낸다. 위선, 기만, 그리고 신뢰의 배반을 상징한다.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>주교(Bishop)</td>
+  <td>종교적 위계에서 높은 지위를 차지한 자를 나타낸다. 교회의 권위, 교리, 그리고 조직화된 신앙을 상징한다.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td>배신자(Traitor)</td>
+  <td>신앙이나 동료를 저버린 자를 나타낸다. 변절, 배반, 그리고 신뢰의 파괴를 상징한다.</td>
+</tr>
+</tbody>
+</table>
+
+<div class="section-divider">* * *</div>
+
+<footer style="text-align:center; font-family:'Noto Sans KR', sans-serif; font-size:0.85em; color:var(--accent2); margin-top:40px; padding-top:20px; border-top:1px solid var(--border);">
+  <p>스트라드의 저주(Curse of Strahd) 한국어 번역 &mdash; 부록 E: 타로카 덱</p>
+</footer>
+
+
+<div class="sidebar-toc" id="sidebarToc">
+  <button class="toc-close" onclick="toggleSidebar()">✕</button>
+  <h4>목차</h4>
+  <ul id="sidebarTocList"></ul>
+</div>
+<button class="sidebar-toc-toggle" id="sidebarToggle" onclick="toggleSidebar()">목 차</button>
+<script>
+function toggleSidebar() {
+  var toc = document.getElementById('sidebarToc');
+  var btn = document.getElementById('sidebarToggle');
+  toc.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+// Auto-generate TOC from headings
+(function() {
+  var headings = document.querySelectorAll('h2[id], h3[id], h4[id], .area-title[id]');
+  var list = document.getElementById('sidebarTocList');
+  if (!list) return;
+  for (var i = 0; i < headings.length; i++) {
+    var h = headings[i];
+    var li = document.createElement('li');
+    var tag = h.tagName.toLowerCase();
+    if (h.classList.contains('area-title')) tag = 'h3';
+    li.className = 'toc-' + tag;
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent.trim();
+    a.onclick = function() {
+      if (window.innerWidth < 768) toggleSidebar();
+    };
+    li.appendChild(a);
+    list.appendChild(li);
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>부록 D: 몬스터와 NPC — 스트라드의 저주</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #faf6f0;
+    --text: #2c2416;
+    --accent: #8b1a1a;
+    --accent2: #a0522d;
+    --heading: #4a0e0e;
+    --border: #c9b99a;
+    --box-bg: #f0e8d8;
+    --quote-bg: #eee6d4;
+    --table-head: #5c3317;
+    --table-alt: #f5edd9;
+    --shadow: rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Serif KR', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 16px;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 28px 80px;
+  }
+
+  h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 2.4em;
+    color: var(--heading);
+    text-align: center;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    border-bottom: 3px double var(--accent);
+    padding-bottom: 16px;
+  }
+
+  h1 .subtitle {
+    display: block;
+    font-size: 0.45em;
+    font-weight: 400;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: 1.6em;
+    color: var(--accent);
+    margin: 48px 0 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  h3 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--heading);
+    margin: 32px 0 10px;
+  }
+
+  h4 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--accent2);
+    margin: 24px 0 8px;
+  }
+
+  p { margin: 0 0 14px; text-align: justify; }
+
+  .read-aloud {
+    background: var(--quote-bg);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-style: italic;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .read-aloud p:last-child { margin-bottom: 0; }
+
+  .sidebar {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    box-shadow: 2px 2px 8px var(--shadow);
+  }
+
+  .sidebar h3 {
+    margin-top: 0;
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+
+  blockquote {
+    background: var(--quote-bg);
+    border-left: 3px solid var(--accent2);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+  }
+
+  blockquote .attribution {
+    display: block;
+    text-align: right;
+    font-style: normal;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin-top: 8px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+  }
+
+  thead th {
+    background: var(--table-head);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:nth-child(even) { background: var(--table-alt); }
+
+  .area-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.08em;
+    color: var(--accent);
+    margin: 28px 0 8px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-divider {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--border);
+    font-size: 1.4em;
+    letter-spacing: 0.5em;
+  }
+
+  .treasure {
+    background: #fdf5e6;
+    border: 1px solid #d4a937;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .treasure h4 { color: #8b6914; margin-top: 0; }
+
+  .development {
+    background: #e8f0e8;
+    border: 1px solid #6b9c6b;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .development h4 { color: #3a6b3a; margin-top: 0; }
+
+  strong { color: var(--heading); }
+
+  .toc {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 24px 0;
+  }
+
+  .toc h3 { margin-top: 0; }
+  .toc ul { list-style: none; padding-left: 0; }
+  .toc li { padding: 3px 0; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .toc li.indent { padding-left: 18px; font-size: 0.95em; }
+
+  /* Tab System */
+  .chapter-nav {
+    display: flex;
+    gap: 0;
+    margin: 0 0 0;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    padding-top: 8px;
+  }
+  .chapter-nav a {
+    padding: 10px 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+    font-weight: 700;
+    color: var(--accent2);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: -2px;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+  }
+  .chapter-nav a:hover { background: var(--box-bg); }
+  .chapter-nav a.active {
+    background: var(--bg);
+    color: var(--accent);
+    border-color: var(--border);
+  }
+
+  /* Stat Block */
+  .stat-block {
+    background: #fdf8ef;
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.93em;
+    box-shadow: 2px 2px 8px var(--shadow);
+  }
+
+  .stat-block .stat-name {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 1.4em;
+    color: var(--accent);
+    margin-bottom: 2px;
+  }
+
+  .stat-block .stat-type {
+    font-style: italic;
+    color: var(--accent2);
+    margin-bottom: 10px;
+    font-size: 0.95em;
+  }
+
+  .stat-block hr {
+    border: none;
+    border-top: 1px solid var(--accent);
+    margin: 10px 0;
+    opacity: 0.4;
+  }
+
+  .stat-block .stat-line {
+    margin: 3px 0;
+    line-height: 1.6;
+  }
+
+  .stat-block .stat-line strong {
+    color: var(--accent);
+  }
+
+  .stat-block .ability-scores {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+  }
+
+  .stat-block .ability-scores div {
+    min-width: 60px;
+    padding: 4px 6px;
+  }
+
+  .stat-block .ability-scores .label {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 0.85em;
+  }
+
+  .stat-block .ability-scores .value {
+    font-size: 1em;
+  }
+
+  .stat-block .section-title {
+    font-weight: 700;
+    font-size: 1.1em;
+    color: var(--accent);
+    margin: 12px 0 6px;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px;
+  }
+
+  .stat-block .trait-name {
+    font-weight: 700;
+    font-style: italic;
+    color: var(--heading);
+  }
+
+  .trait-block {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 20px 0;
+  }
+
+  .trait-block h4 {
+    margin-top: 0;
+    color: var(--accent);
+  }
+
+  .spell-list {
+    margin: 6px 0 6px 16px;
+    line-height: 1.7;
+  }
+
+  .spell-list p {
+    margin: 2px 0;
+    text-align: left;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 20px 14px 60px; font-size: 15px; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.3em; }
+    .stat-block .ability-scores { flex-wrap: wrap; }
+    .stat-block .ability-scores div { min-width: 50px; }
+  }
+
+
+  /* Sidebar TOC */
+  .sidebar-toc-toggle {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    writing-mode: vertical-rl;
+    letter-spacing: 2px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+  }
+  .sidebar-toc-toggle:hover { background: var(--heading); }
+  .sidebar-toc-toggle.open { left: 280px; }
+
+  .sidebar-toc {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg);
+    border-right: 2px solid var(--border);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    z-index: 199;
+    overflow-y: auto;
+    padding: 60px 16px 20px;
+    transition: left 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+  }
+  .sidebar-toc.open { left: 0; }
+  .sidebar-toc h4 {
+    color: var(--accent);
+    margin: 0 0 12px;
+    font-size: 1.1em;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .sidebar-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sidebar-toc li {
+    padding: 3px 0;
+  }
+  .sidebar-toc li.toc-h2 {
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--heading);
+  }
+  .sidebar-toc li.toc-h3 {
+    padding-left: 14px;
+    font-size: 0.92em;
+  }
+  .sidebar-toc li.toc-h4 {
+    padding-left: 28px;
+    font-size: 0.85em;
+    color: var(--accent2);
+  }
+  .sidebar-toc a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  .sidebar-toc a:hover {
+    background: var(--box-bg);
+    color: var(--accent);
+  }
+  .sidebar-toc .toc-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--accent2);
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="chapter-nav">
+  <a href="CoS-foreword.html">머리말</a>
+  <a href="CoS-intro.html">서문</a>
+  <a href="CoS-ch1.html">제1장: 안개 속으로</a>
+  <a href="CoS-ch2.html">제2장: 바로비아의 땅</a>
+  <a href="CoS-ch3.html">제3장: 바로비아 마을</a>
+  <a href="CoS-ch4.html">제4장: 레이븐로프트 성</a>
+  <a href="CoS-ch5.html">제5장: 발라키 마을</a>
+  <a href="CoS-ch6.html">제6장: 늙은 뼈 분쇄기</a>
+  <a href="CoS-ch7.html">제7장: 아르긴보스트홀트</a>
+  <a href="CoS-ch8.html">제8장: 크레즈크 마을</a>
+  <a href="CoS-ch9.html">제9장: 촐렌카 고개</a>
+  <a href="CoS-ch10.html">제10장: 베레즈 폐허</a>
+  <a href="CoS-ch11.html">제11장: 반 리히텐의 탑</a>
+  <a href="CoS-ch12.html">제12장: 포도주 마법사</a>
+  <a href="CoS-ch13.html">제13장: 호박 사원</a>
+  <a href="CoS-ch14.html">제14장: 예스터 힐</a>
+  <a href="CoS-ch15.html">제15장: 늑대인간 소굴</a>
+  <a href="CoS-epilogue.html">에필로그</a>
+  <a href="CoS-appendixA.html">부록 A</a>
+  <a href="CoS-appendixB.html">부록 B</a>
+  <a href="CoS-appendixC.html">부록 C</a>
+  <a href="CoS-appendixD.html" class="active">부록 D</a>
+  <a href="CoS-appendixE.html">부록 E</a>
+  <a href="CoS-appendixF.html">부록 F</a>
+</nav>
+
+<h1>
+  부록 D: 몬스터와 NPC
+  <span class="subtitle">Appendix D: Monsters and NPCs</span>
+</h1>
+
+<!-- 목차: 부록 D 전체 -->
+<!-- 소개 -->
+<section id="appD-intro">
+<h2>소개</h2>
+
+<p>바로비아(Barovia)는 흡혈귀, 유령, 그리고 늑대인간의 땅이다. 이 불경한 영역을 탐험하는 모험가들은 밤에 소란을 일으키는 것들을 마주하게 되는데, 여기에는 스트라드(Strahd)의 악에서 태어난 피조물도 포함된다. 이 모험에 등장하는 새로운 몬스터들이 아래에 기술되어 있으며, 흡혈귀의 동맹과 적들 중 일부도 함께 소개된다. 이들은 모험가들의 운명과 얽혀 있는 영혼들이다. 스트라드 자신도 여기에 등장한다.</p>
+
+<p>몬스터와 NPC는 알파벳 순서로 제시된다.</p>
+</section>
+
+<!-- 도전 지수별 새 크리처 표 -->
+<section id="appD-cr-table">
+<h3>도전 지수별 새 크리처(New Creatures by Challenge Rating)</h3>
+
+<table>
+  <thead>
+    <tr><th>크리처</th><th>도전 지수(CR)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>바바 리사가(Baba Lysaga)</td><td>11</td></tr>
+    <tr><td>바바 리사가의 기어다니는 오두막(Baba Lysaga's Creeping Hut)</td><td>11</td></tr>
+    <tr><td>공격하는 마법 빗자루(Broom of Animated Attack)</td><td>1/4</td></tr>
+    <tr><td>바로비아 마녀(Barovian Witch)</td><td>1/2</td></tr>
+    <tr><td>에즈메렐다 다브니르(Ezmerelda d'Avenir)</td><td>8</td></tr>
+    <tr><td>수호 초상화(Guardian Portrait)</td><td>1</td></tr>
+    <tr><td>이젝 스트라즈니(Izek Strazni)</td><td>5</td></tr>
+    <tr><td>마담 에바(Madam Eva)</td><td>10</td></tr>
+    <tr><td>혼종인간(Mongrelfolk)</td><td>1/4</td></tr>
+    <tr><td>유령 전사(Phantom Warrior)</td><td>3</td></tr>
+    <tr><td>피들윅 II(Pidlwick II)</td><td>1/4</td></tr>
+    <tr><td>라하딘(Rahadin)</td><td>10</td></tr>
+    <tr><td>릭타비오(Rictavio)</td><td>5</td></tr>
+    <tr><td>스트라드의 마법 갑옷(Strahd's Animated Armor)</td><td>6</td></tr>
+    <tr><td>스트라드 폰 자로비치(Strahd von Zarovich)</td><td>15</td></tr>
+    <tr><td>스트라드 좀비(Strahd Zombie)</td><td>1</td></tr>
+    <tr><td>나무 역병(Tree Blight)</td><td>7</td></tr>
+    <tr><td>블라디미르 혼가드(Vladimir Horngaard)</td><td>7</td></tr>
+    <tr><td>까마귀인간(Wereraven)</td><td>2</td></tr>
+  </tbody>
+</table>
+</section>
+
+<div class="section-divider">* * *</div>
+
+<h2>크리처 (A-H)</h2>
+
+<!-- 수도원장 -->
+<section id="the-abbot">
+<h3>수도원장(The Abbot)</h3>
+
+<p>바로비아에서 크레즈크(Krezk)에 있는 성 마르코비아 수도원(Abbey of Saint Markovia)의 주인보다 오래된 존재는 없다. 다른 이들이 수도원장(The Abbot)이라 부르는 이 이름 없는 거룩한 존재는 성 마르코비아(Saint Markovia)가 스트라드의 손에 죽은 뒤 수도원에 이끌려 왔다. 그는 타락에 빠진 수도원을 복원하고자 했으나, 자신 역시 타락하고 말았다.</p>
+
+<h4>변장한 천사(Angel in Disguise)</h4>
+<p>수도원장은 수천 년을 살아온 데바(deva)이다. 그는 보통 20대 후반이나 30대 초반의 매우 잘생긴 인간 사제의 모습을 취한다. 백 년도 더 전에, 이 데바는 상위 차원계(Upper Planes)에서 보내져 성 마르코비아의 유산을 기리게 되었다. 그는 수도원을 다시 열고 육체적, 정신적으로 아픈 이들을 돌보기 시작했다. 이를 통해 바로비아에 절실히 필요한 빛을 가져오고자 했다. 그의 노력은 한동안 성과를 거두었으나, 이윽고 어둠의 힘(Dark Powers)이 그를 타락시키기 시작했다.</p>
+
+<h4>불완전함(Imperfections)</h4>
+<p>수도원장의 은총으로부터의 추락은 벨뷰(Belview) 가문 - 병약하고 근친혼으로 쇠약해진 나병 환자 가족 -이 구원을 찾아 수도원에 왔을 때 시작되었다. 데바는 그들의 질병을 치유했고, 그들은 이에 영원히 감사했으나, 태어날 때부터 있었던 특정한 인간적 결함까지는 치료할 수 없었다. 수도원장은 가엾은 벨뷰 가문의 남아 있는 불완전함을 없애려는 자만에 찬, 집착적인 욕망에 사로잡혔다. 그러나 벨뷰 가문은 완벽해진다는 것이 무엇을 의미하는지에 대해 기이한 생각을 가지고 있었다. 그들은 평범한 인간이 되길 원하지 않았다. 고양이의 눈, 박쥐처럼 나는 날개, 노새의 힘, 뱀의 교활함을 원했다. 한마디로, 그들은 짐승의 특성을 갈망했고, 수도원장은 그들을 불쌍히 여겨 그 광기 어린 소망에 굴복했다.</p>
+
+<h4>바실리 폰 홀츠의 등장(Enter Vasili von Holtz)</h4>
+<p>수도원장의 초기 실험은 피험자들에게 치명적이었으나, 벨뷰 가문은 계속 시도하라고 고집했다. 어느 날, 바실리 폰 홀츠(Vasili von Holtz)라는 바로비아 영주가 수도원을 방문했다. 수도원장은 그 남자가 사악하다는 것을 즉시 알았으나, 폰 홀츠는 오직 돕고 싶을 뿐이라고 강조했다. 그는 호박 사원(Amber Temple, 제13장)에서 빼낸 금지된 학식을 수도원장에게 제공한 뒤, 벨뷰 가문을 혼종인간(mongrelfolk) - 짐승의 기형과 특성을 가진 광적인 인간 - 으로 변형시키는 것을 도왔다. 벨뷰 가문은 비록 광기에 빠졌으나 행복했다. 그때서야 폰 홀츠는 자신이 스트라드 폰 자로비치(Strahd von Zarovich)임을 드러냈다. 어찌된 일인지 데바는 스트라드를 죽이려는 어떤 시도도 헛될 것임을 깨달았다 - 이 땅에 걸린 고대의 저주는 흡혈귀가 진정으로 죽을 수 없음을 의미했으며, 적어도 바로비아에서는 그러했다.</p>
+
+<h4>스트라드의 신부(Bride of Strahd)</h4>
+<p>스트라드는 수도원장에게 속내를 털어놓으며 자신의 저주를 한탄하고, 바로비아를 탈출하는 것만이 유일한 소원이라고 데바에게 말했다. 그의 연기는 데바의 동정을 얻어냈고, 수도원장은 스트라드의 계략에 놀아나 스트라드의 "병"에 대한 치료법을 찾겠다는 목표를 세웠다. 수도원장은 이제 스트라드를 잃어버린 사랑과 재회시키는 것이 치료법이며, 그렇게 함으로써 바로비아의 저주를 끝낼 수 있다고 확신하고 있다. 수도원장은 최근 죽은 여성들의 신체 부위로 만든 살점 골렘(flesh golem) 신부를 완성했다. 벨뷰 가문이 수도원의 광인 수용소에서 시들어가는 동안, 수도원장은 자신의 창조물에게 예절과 숙녀다운 품행을 가르치고 있다. "그녀"가 공식적으로 스트라드에게 소개되어 그의 사랑을 얻을 수 있도록 하기 위해서이다.</p>
+
+<p>스트라드는 살점 골렘 신부에 관심이 없으나, 한때 천사였던 이 존재를 타락시키고 수도원장이 더한 타락의 행위를 저지르도록 몰아가는 것을 즐긴다.</p>
+
+<h4>능력치(Statistics)</h4>
+<p><em>몬스터 편람(Monster Manual)</em>의 데바 능력치 블록을 사용하되, 수도원장의 성향을 질서 악(lawful evil)으로 변경한다.</p>
+
+<div class="trait-block">
+<h4>수도원장의 특성(The Abbot's Traits)</h4>
+<p><strong>이상.</strong> "나는 바로비아의 병을 없애고자 한다. 악마에게 그의 마음의 소원을 줌으로써, 나는 그와 그의 땅에 구원을 가져온다."</p>
+<p><strong>유대.</strong> "나는 내가 만든 피조물들을 사랑한다. 나의 아름다운 골렘과 혼종인간을 포함하여."</p>
+<p><strong>결점.</strong> "나는 타락할 수 없다. 내 마음은 순수하고, 내 의도는 고결하며 선하다."</p>
+</div>
+</section>
+
+<!-- 마법으로 움직이는 물체 -->
+<section id="animated-objects">
+<h3>마법으로 움직이는 물체(Animated Objects)</h3>
+
+<p>마법으로 움직이는 물체(animated objects)는 강력한 마법으로 제작되어 창조자의 명령을 따른다. 명령받지 않을 때는 마지막으로 받은 명령을 최선을 다해 수행하며, 단순한 지시를 이행하기 위해 독자적으로 행동할 수 있다. 일부는 유창하게 대화하거나 인격을 가질 수 있으나, 대부분은 단순한 자동인형이다.</p>
+
+<p><strong>구조적 본질(Constructed Nature).</strong> 마법으로 움직이는 물체는 공기, 음식, 물, 수면을 필요로 하지 않는다.</p>
+
+<p>물체에 생명을 부여하는 마법은 구조체의 생명점이 0으로 떨어지면 해제된다. 생명점이 0이 된 마법 물체는 움직이지 않게 되며, 너무 손상되어 누구에게도 쓸모나 가치가 없게 된다.</p>
+</section>
+
+<!-- 바바 리사가의 기어다니는 오두막 -->
+<section id="baba-lysaga-creeping-hut">
+<h3>바바 리사가의 기어다니는 오두막(Baba Lysaga's Creeping Hut)</h3>
+
+<p>바바 리사가(Baba Lysaga)는 오래전에 베어진 거대한 나무의 썩은 그루터기 위에 오두막을 지었다. 그녀가 마법 보석을 오두막에 박아 넣은 뒤에야 비로소 오두막 전체에 생명의 기운이 깃들었다. 그녀가 원하면, 오두막은 거대한 뿌리를 땅에서 뽑아 거미 같은 거수처럼 어슬렁거리며 걸어 다니고, 발을 디딜 때마다 땅이 흔들린다. 오두막은 뿌리를 휘두르고 짓밟으며 공격한다. 뿌리로 큰 바위를 던질 수도 있다.</p>
+
+<h4>오두막 내부(Hut Interior)</h4>
+<p>오두막은 가로세로 15피트(약 4.5m)의 허름한 목조 건물로, 완만한 경사의 초가지붕이 있다. 오두막이 걸을 때 좌우로 심하게 흔들리므로, 가구는 바닥에 볼트로 고정되어 있다.</p>
+
+<h4>오두막의 심장(Heart of the Hut)</h4>
+<p>바바 리사가의 오두막에 생명을 부여한 보석은 원래 포도주 마법사 포도원(Wizard of Wines vineyard)에 묻혀 있었다. 이 보석은 포도원의 포도나무를 더 건강하게 만들어 최고급 와인을 보장하는 생명 부여 마법이 깃든 세 개의 보석 중 하나였다. 바바 리사가는 보석 하나를 훔쳐 마법을 왜곡하여, 대신 자신의 나무 오두막에 생명을 불어넣는 데 사용했다.</p>
+
+<p>오두막에서 보석을 제거하면 오두막은 무력화(incapacitated)된다. 그러나 그 일은 말처럼 쉽지 않다. 빛나는 초록색 보석은 그루터기 내부의 빈 공간에 담겨 있으며, 오두막의 썩은 마룻바닥 아래에 있다. 마룻바닥은 DC 14 근력 판정에 성공하면 뜯어낼 수 있고, 10점의 피해를 가하면 부술 수 있다. 마룻바닥을 치우면, 크리처는 빈 공간에 손을 넣어 보석을 낚아챌 수 있다. 그러나 오두막이 살아 있는 상태에서 이를 시도하면, 빈 공간에서 나무 이빨이 솟아나 보석을 꺼내려는 모든 것을 물어뜯는 입이 된다. 보석을 꺼내려는 크리처는 DC 20 민첩 내성 굴림을 해야 한다. 성공하면 물리지 않고 보석을 가져간다. 실패하면 10(3d6)점의 관통 피해를 입으며 보석을 얻지 못한다.</p>
+
+<!-- 기어다니는 오두막 스탯 블록 -->
+<div class="stat-block">
+  <div class="stat-name">바바 리사가의 기어다니는 오두막(BABA LYSAGA'S CREEPING HUT)</div>
+  <div class="stat-type">거대형 구조체(Gargantuan construct), 무성향(unaligned)</div>
+  <hr>
+  <p class="stat-line"><strong>갑옷 등급(AC)</strong> 16 (자연 갑옷)</p>
+  <p class="stat-line"><strong>생명점(HP)</strong> 263 (17d20 + 85)</p>
+  <p class="stat-line"><strong>이동속도</strong> 30 ft.</p>
+  <hr>
+  <div class="ability-scores">
+    <div><div class="label">근력(STR)</div><div class="value">26 (+8)</div></div>
+    <div><div class="label">민첩(DEX)</div><div class="value">7 (-2)</div></div>
+    <div><div class="label">건강(CON)</div><div class="value">20 (+5)</div></div>
+    <div><div class="label">지능(INT)</div><div class="value">1 (-5)</div></div>
+    <div><div class="label">지혜(WIS)</div><div class="value">3 (-4)</div></div>
+    <div><div class="label">매력(CHA)</div><div class="value">3 (-4)</div></div>
+  </div>
+  <hr>
+  <p class="stat-line"><strong>내성 굴림</strong> 건강 +9, 지혜 +0, 매력 +0</p>
+  <p class="stat-line"><strong>피해 면역</strong> 독, 정신</p>
+  <p class="stat-line"><strong>상태 면역</strong> 실명, 매혹, 청각 상실, 탈진, 공포, 마비, 석화, 엎드림</p>
+  <p class="stat-line"><strong>감각</strong> 맹목시야 120 ft. (이 반경 너머로는 시각이 없음), 수동 감지 6</p>
+  <p class="stat-line"><strong>언어</strong> &mdash;</p>
+  <p class="stat-line"><strong>도전 지수</strong> 11 (7,200 XP)</p>
+  <hr>
+  <p class="stat-line"><span class="trait-name">반마법 감수성(Antimagic Susceptibility).</span> 오두막은 생명을 부여하는 마법 보석이 반마법장(antimagic field) 범위 안에 있는 동안 무력화된다. 마법 해제(dispel magic)의 대상이 되면, 오두막은 시전자의 주문 내성 DC에 대한 건강 내성 굴림에 성공해야 하며, 실패하면 1분 동안 의식을 잃는다.</p>
+  <p class="stat-line"><span class="trait-name">공성 괴물(Siege Monster).</span> 오두막은 물체와 구조물에 두 배의 피해를 준다.</p>
+
+  <div class="section-title">행동(Actions)</div>
+  <p class="stat-line"><span class="trait-name">다중공격(Multiattack).</span> 오두막은 뿌리로 세 번 공격한다. 이 공격 중 하나를 바위 공격으로 대체할 수 있다.</p>
+  <p class="stat-line"><span class="trait-name">뿌리(Root).</span> <em>근접 무기 공격:</em> 명중 +12, 간격 60 ft., 대상 하나. <em>적중:</em> 30 (4d10 + 8) 타격 피해.</p>
+  <p class="stat-line"><span class="trait-name">바위(Rock).</span> <em>원거리 무기 공격:</em> 명중 +12, 사거리 120 ft., 대상 하나. <em>적중:</em> 21 (3d8 + 8) 타격 피해.</p>
+</div>
+</section>
+
+<!-- 공격하는 마법 빗자루 -->
+<section id="broom-of-animated-attack">
+<h3>공격하는 마법 빗자루(Broom of Animated Attack)</h3>
+
+<p>공격하는 마법 빗자루(broom of animated attack)는 비행 빗자루(broom of flying)로 쉽게 착각할 수 있다. 이것은 자신을 잡거나 타려고 하는 모든 크리처를 공격한다.</p>
+
+<h4>비행 빗자루(Flying Broom)</h4>
+<p>일부 공격하는 마법 빗자루는 창조자가 탈 수 있도록 허용하며, 이 경우 일반적인 비행 빗자루처럼 행동한다. 그러나 공격하는 마법 빗자루는 비행 빗자루가 운반할 수 있는 무게의 절반만 운반할 수 있다(<em>던전 마스터 안내서(Dungeon Master's Guide)</em> 제7장 "보물" 참조).</p>
+
+<!-- 공격하는 마법 빗자루 스탯 블록 -->
+<div class="stat-block">
+  <div class="stat-name">공격하는 마법 빗자루(BROOM OF ANIMATED ATTACK)</div>
+  <div class="stat-type">소형 구조체(Small construct), 무성향(unaligned)</div>
+  <hr>
+  <p class="stat-line"><strong>갑옷 등급(AC)</strong> 15 (자연 갑옷)</p>
+  <p class="stat-line"><strong>생명점(HP)</strong> 17 (5d6)</p>
+  <p class="stat-line"><strong>이동속도</strong> 0 ft., 비행 50 ft. (정지비행)</p>
+  <hr>
+  <div class="ability-scores">
+    <div><div class="label">근력(STR)</div><div class="value">10 (+0)</div></div>
+    <div><div class="label">민첩(DEX)</div><div class="value">17 (+3)</div></div>
+    <div><div class="label">건강(CON)</div><div class="value">10 (+0)</div></div>
+    <div><div class="label">지능(INT)</div><div class="value">1 (-5)</div></div>
+    <div><div class="label">지혜(WIS)</div><div class="value">5 (-3)</div></div>
+    <div><div class="label">매력(CHA)</div><div class="value">1 (-5)</div></div>
+  </div>
+  <hr>
+  <p class="stat-line"><strong>피해 면역</strong> 독, 정신</p>
+  <p class="stat-line"><strong>상태 면역</strong> 실명, 매혹, 청각 상실, 탈진, 공포, 마비, 석화, 중독, 엎드림</p>
+  <p class="stat-line"><strong>감각</strong> 맹목시야 30 ft. (이 반경 너머로는 시각이 없음), 수동 감지 7</p>
+  <p class="stat-line"><strong>언어</strong> &mdash;</p>
+  <p class="stat-line"><strong>도전 지수</strong> 1/4 (50 XP)</p>
+  <hr>
+  <p class="stat-line"><span class="trait-name">반마법 감수성(Antimagic Susceptibility).</span> 빗자루는 반마법장 범위 안에 있는 동안 무력화된다. 마법 해제의 대상이 되면, 빗자루는 시전자의 주문 내성 DC에 대한 건강 내성 굴림에 성공해야 하며, 실패하면 1분 동안 의식을 잃는다.</p>
+  <p class="stat-line"><span class="trait-name">위장(False Appearance).</span> 빗자루가 움직이지 않고 날지 않는 동안, 일반 빗자루와 구별할 수 없다.</p>
+
+  <div class="section-title">행동(Actions)</div>
+  <p class="stat-line"><span class="trait-name">다중공격(Multiattack).</span> 빗자루는 두 번의 근접 공격을 한다.</p>
+  <p class="stat-line"><span class="trait-name">빗자루대(Broomstick).</span> <em>근접 무기 공격:</em> 명중 +5, 간격 5 ft., 대상 하나. <em>적중:</em> 5 (1d4 + 3) 타격 피해.</p>
+
+  <div class="section-title">반응(Reactions)</div>
+  <p class="stat-line"><span class="trait-name">움직이는 공격(Animated Attack).</span> 빗자루가 정지 상태이고 크리처가 빗자루를 잡으면, 빗자루는 해당 크리처의 근력 판정에 대항하여 민첩 판정을 한다. 빗자루가 대결에서 이기면, 크리처의 손에서 날아올라 공격 굴림에 이점을 가지고 근접 공격을 한다.</p>
+</div>
+</section>
+
+<!-- 수호 초상화 -->
+<section id="guardian-portrait">
+<h3>수호 초상화(Guardian Portrait)</h3>
+
+<p>수호 초상화(guardian portrait)는 정교하게 그려지고 아름다운 액자에 넣어진 예술 작품처럼 보이며, 보통 중요한 인물을 사실적으로 묘사한다. 그림과 액자는 강력한 마법으로 결합되어 분리할 수 없다.</p>
+
+<h4>살아 있는 그림(Living Image)</h4>
+<p>그림 속 인물의 눈에는 암시(darkvision)가 깃들어 있으며, 앞을 지나가는 크리처를 따라가는 것처럼 보인다.</p>
+
+<h4>내재 주문(Innate Spells)</h4>
+<p>수호 초상화가 공격할 때, 그림 속 인물이 살아 있는 것처럼 움직인다 (비록 2차원에서이긴 하지만). 수호 초상화는 효과적인 근접 공격이 없으나, 시전할 수 있는 내재 주문 목록을 가지고 있다. 주문을 시전할 때, 캔버스에 그려진 인물은 해당 주문에 적합한 모든 체성 동작과 언어 주문문을 수행한다.</p>
+
+<!-- 수호 초상화 스탯 블록 -->
+<div class="stat-block">
+  <div class="stat-name">수호 초상화(GUARDIAN PORTRAIT)</div>
+  <div class="stat-type">중형 구조체(Medium construct), 무성향(unaligned)</div>
+  <hr>
+  <p class="stat-line"><strong>갑옷 등급(AC)</strong> 5 (자연 갑옷)</p>
+  <p class="stat-line"><strong>생명점(HP)</strong> 22 (5d8)</p>
+  <p class="stat-line"><strong>이동속도</strong> 0 ft.</p>
+  <hr>
+  <div class="ability-scores">
+    <div><div class="label">근력(STR)</div><div class="value">1 (-5)</div></div>
+    <div><div class="label">민첩(DEX)</div><div class="value">1 (-5)</div></div>
+    <div><div class="label">건강(CON)</div><div class="value">10 (+0)</div></div>
+    <div><div class="label">지능(INT)</div><div class="value">14 (+2)</div></div>
+    <div><div class="label">지혜(WIS)</div><div class="value">10 (+0)</div></div>
+    <div><div class="label">매력(CHA)</div><div class="value">10 (+0)</div></div>
+  </div>
+  <hr>
+  <p class="stat-line"><strong>피해 면역</strong> 독</p>
+  <p class="stat-line"><strong>상태 면역</strong> 매혹, 탈진, 공포, 잡기, 마비, 석화, 중독, 엎드림, 속박</p>
+  <p class="stat-line"><strong>감각</strong> 암시 60 ft., 수동 감지 10</p>
+  <p class="stat-line"><strong>언어</strong> 공용어 및 기타 언어 최대 2개</p>
+  <p class="stat-line"><strong>도전 지수</strong> 1 (200 XP)</p>
+  <hr>
+  <p class="stat-line"><span class="trait-name">반마법 감수성(Antimagic Susceptibility).</span> 초상화는 반마법장 범위 안에 있는 동안 무력화된다. 마법 해제의 대상이 되면, 초상화는 시전자의 주문 내성 DC에 대한 건강 내성 굴림에 성공해야 하며, 실패하면 1분 동안 의식을 잃는다.</p>
+  <p class="stat-line"><span class="trait-name">내재 주문시전(Innate Spellcasting).</span> 초상화의 내재 주문시전 능력치는 지능이다 (주문 내성 DC 12). 초상화는 물질 구성요소 없이 다음 주문을 내재적으로 시전할 수 있다:</p>
+  <div class="spell-list">
+    <p>각 3/일: 반주문(counterspell), 광기의 왕관(crown of madness), 최면 무늬(hypnotic pattern), 염동력(telekinesis)</p>
+  </div>
+  <p class="stat-line"><span class="trait-name">위장(False Appearance).</span> 초상화 속 인물이 움직이지 않는 동안, 초상화는 일반 그림과 구별할 수 없다.</p>
+</div>
+</section>
+
+<!-- 스트라드의 마법 갑옷 -->
+<section id="strahd-animated-armor">
+<h3>스트라드의 마법 갑옷(Strahd's Animated Armor)</h3>
+
+<p>스트라드가 살아 있을 때 전투에서 입었던 갑옷은 오늘날 머리 없는 마법 판금 갑옷으로 살아 있다. 갑옷은 진홍색으로 칠해져 있으며 금빛 천사 무늬로 장식되어 있다.</p>
+
+<h4>악의 산물(Thing of Evil)</h4>
+<p>스트라드는 자신의 자동인형에 존재의 파편을 불어넣어, 대부분의 마법 물체에서 볼 수 없는 악의를 갑옷에 부여했다. 또한 갑옷을 강화하고 여러 영구 주문 효과를 걸어 성의 더 나은 수비자로 만들었다.</p>
+
+<p>갑옷은 공용어를 이해하지만 주인의 명령에만 복종한다.</p>
+
+<!-- 스트라드의 마법 갑옷 스탯 블록 -->
+<div class="stat-block">
+  <div class="stat-name">스트라드의 마법 갑옷(STRAHD'S ANIMATED ARMOR)</div>
+  <div class="stat-type">중형 구조체(Medium construct), 질서 악(lawful evil)</div>
+  <hr>
+  <p class="stat-line"><strong>갑옷 등급(AC)</strong> 21 (자연 갑옷)</p>
+  <p class="stat-line"><strong>생명점(HP)</strong> 112 (15d8 + 45)</p>
+  <p class="stat-line"><strong>이동속도</strong> 30 ft.</p>
+  <hr>
+  <div class="ability-scores">
+    <div><div class="label">근력(STR)</div><div class="value">17 (+3)</div></div>
+    <div><div class="label">민첩(DEX)</div><div class="value">13 (+1)</div></div>
+    <div><div class="label">건강(CON)</div><div class="value">16 (+3)</div></div>
+    <div><div class="label">지능(INT)</div><div class="value">9 (-1)</div></div>
+    <div><div class="label">지혜(WIS)</div><div class="value">10 (+0)</div></div>
+    <div><div class="label">매력(CHA)</div><div class="value">9 (-1)</div></div>
+  </div>
+  <hr>
+  <p class="stat-line"><strong>기술</strong> 감지 +3</p>
+  <p class="stat-line"><strong>피해 저항</strong> 냉기, 화염</p>
+  <p class="stat-line"><strong>피해 면역</strong> 번개, 독</p>
+  <p class="stat-line"><strong>상태 면역</strong> 실명, 매혹, 청각 상실, 탈진, 공포, 마비, 석화, 중독</p>
+  <p class="stat-line"><strong>감각</strong> 맹목시야 60 ft. (이 반경 너머로는 시각이 없음), 수동 감지 13</p>
+  <p class="stat-line"><strong>언어</strong> 공용어를 이해하지만 말하지 못함</p>
+  <p class="stat-line"><strong>도전 지수</strong> 6 (2,300 XP)</p>
+  <hr>
+  <p class="stat-line"><span class="trait-name">반마법 감수성(Antimagic Susceptibility).</span> 갑옷은 반마법장 범위 안에 있는 동안 무력화된다. 마법 해제의 대상이 되면, 갑옷은 시전자의 주문 내성 DC에 대한 건강 내성 굴림에 성공해야 하며, 실패하면 1분 동안 의식을 잃는다.</p>
+  <p class="stat-line"><span class="trait-name">위장(False Appearance).</span> 갑옷이 움직이지 않는 동안, 일반 갑옷과 구별할 수 없다.</p>
+
+  <div class="section-title">행동(Actions)</div>
+  <p class="stat-line"><span class="trait-name">다중공격(Multiattack).</span> 갑옷은 두 번의 근접 공격을 하거나, 충격 화살을 두 번 사용한다.</p>
+  <p class="stat-line"><span class="trait-name">대검(Greatsword).</span> <em>근접 무기 공격:</em> 명중 +6, 간격 5 ft., 대상 하나. <em>적중:</em> 10 (2d6 + 3) 참격 피해 + 3 (1d6) 번개 피해.</p>
+  <p class="stat-line"><span class="trait-name">충격 화살(Shocking Bolt).</span> <em>원거리 주문 공격:</em> 명중 +4 (대상이 금속 갑옷을 착용한 경우 공격 굴림에 이점), 사거리 60 ft., 대상 하나. <em>적중:</em> 10 (3d6) 번개 피해.</p>
+</div>
+</section>
+
+<div class="section-divider">* * *</div>
+
+<!-- 바바 리사가 -->
+<section id="baba-lysaga">
+<h3>바바 리사가(Baba Lysaga)</h3>
+
+<p>두 여인이 스트라드 폰 자로비치(Strahd von Zarovich)에게 생명을 주었다. 첫 번째는 스트라드의 생모인 레이븐오비아 반 로이엔 여왕(Queen Ravenovia van Roeyen)이었다. 두 번째는 여왕의 산파로, 어머니 밤(Mother Night)의 독실한 추종자인 바바 리사가(Baba Lysaga)였다. 스트라드를 양육하고 아버지의 발자취를 따르도록 한 것은 전자였으나, 다른 어떤 필멸자도 능가하는 위대함과 어둠의 잠재력을 스트라드에게서 감지한 것은 후자였다. 리사가는 그때도 그리고 지금도, 자신이 스트라드의 진정한 어머니라고 믿고 있다.</p>
+
+<h4>또 다른 어머니(Other Mother)</h4>
+<p>스트라드가 아직 요람에 누운 아기였을 때, 바바 리사가는 그에게 보호 주문을 걸었고, 폭풍이 치는 밤이면 아기 방에 몰래 들어가 마법의 자장가를 불러 주었다. 또한 그에게 "마법의 불꽃"을 심어, 장차 주문시전자가 되도록 보장했다.</p>
+
+<p>아기 스트라드에 대한 바바 리사가의 불건전한 집착은 눈에 띄지 않을 수 없었다. 여러 차례의 불안한 보고를 받은 후, 레이븐오비아 여왕은 산파를 왕국에서 추방할 수밖에 없었다. 리사가는 다시는 스트라드를 보지 못했으나, 그녀의 사랑하는 아이의 승리를 목격하기 위해 살아남는 데 성공했다. 그녀의 마음속에서 그 아이는 영원히 축복받은 존재이다. 스트라드가 저지른 공포에도 불구하고, 리사가는 여전히 그를 자신이 세상에 내놓은 완벽한 아이로 그리고 있다. 스트라드만이 그녀의 삶에서 중요한 유일한 존재이다.</p>
+
+<h4>가장 가까운 어머니(Mother Nearest)</h4>
+<p>추방 기간 동안, 바바 리사가는 어머니 밤에게 셀 수 없이 많은 제물을 바치며, 여신에게 레이븐오비아 여왕에게 병을 내리고 죽음을 보내달라고 간청했다. 리사가는 결국 소원을 이루었고, 스트라드가 바로비아 계곡에 정착한 후 리사가는 감히 할 수 있는 한 그에게 가까이 이사했다.</p>
+
+<p>더러움으로 가득한 마음 깊은 곳에서, 리사가는 스트라드가 결코 자신을 진정한 어머니로 받아들이지 않으리라는 것을 알고 있으며, 그의 거부를 견딜 수도 없다. 그 결과, 그녀는 결코 그와 대면하지 않았다. 그녀는 차라리 영원한 부정 속에 존재하며, 사악한 마법을 연마하고 자신의 "아들"을 도울 방법을 찾으며 세월을 보내겠다는 것이다.</p>
+
+<h4>까마귀 사냥꾼(Raven Bane)</h4>
+<p>바바 리사가는 레이븐로프트 성(Castle Ravenloft)에 동맹이 있다 - 마녀 집회(coven of witches)이다. 이 마녀들의 도움을 통해 리사가는 최근 스트라드에 대한 잠재적 위협을 발견했다: 깃털의 수호자(Keepers of the Feather)라 불리는 까마귀인간(wereravens)의 비밀 결사로, 일반 까마귀를 첩자로 사용하는 집단이다.</p>
+
+<p>스트라드는 까마귀인간을 심각한 위협으로 여기지 않으나, 리사가는 그들을 자신의 존재 이유로 삼기로 했다. 오랜 수색과 점술 끝에, 그녀는 포도주 마법사 양조장(Wizard of Wines winery, 제12장)에서 까마귀인간의 은신처를 발견했고, 이에 대한 전쟁을 시작했다. 또한 예스터 힐(Yester Hill, 제14장)에 출몰하는 미친 드루이드들과 동맹을 맺었는데, 드루이드들이 신으로 여기는 스트라드를 자신이 낳았다고 설득한 것이다. 드루이드들을 편으로 삼은 그녀는 바로비아에서 까마귀인간의 위협을 제거할 것을 기대하고 있다.</p>
+
+<h4>어머니 밤의 선물(Gifts of Mother Night)</h4>
+<p>어머니 밤 여신은 스트라드에 대한 끊임없는 헌신에 대한 보상으로 바바 리사가에게 마법의 선물을 내렸다. 그녀의 피부는 돌의 강인함을 가지고, 해로운 마법에 저항하며, 점술 마법으로부터 보호받는다. 어머니 밤은 또한 리사가에게 장수의 비밀을 전수했는데, 이를 위해서는 초승달(새로운 달)이 뜨는 밤에 짐승의 피로 목욕해야 한다. 이를 게을리하면 리사가는 급속히 노화하여, 불과 몇 초 만에 먼지와 뼈만 남게 된다.</p>
+
+<div class="trait-block">
+<h4>바바 리사가의 특성(Baba Lysaga's Traits)</h4>
+<p><strong>이상.</strong> "어머니의 아들에 대한 사랑보다 위대한 사랑은 없다."</p>
+<p><strong>유대.</strong> "나는 스트라드의 어머니이다. 이 사실에 이의를 제기하는 자는 썩어 문드러질 것이다."</p>
+<p><strong>결점.</strong> "내 아들의 적이 마지막 한 명까지 파괴될 때까지 쉬지 않겠다."</p>
+</div>
+
+<!-- 바바 리사가 스탯 블록 -->
+<div class="stat-block">
+  <div class="stat-name">바바 리사가(BABA LYSAGA)</div>
+  <div class="stat-type">중형 인간형(인간, 변신자)(Medium humanoid [human, shapechanger]), 혼돈 악(chaotic evil)</div>
+  <hr>
+  <p class="stat-line"><strong>갑옷 등급(AC)</strong> 15 (자연 갑옷)</p>
+  <p class="stat-line"><strong>생명점(HP)</strong> 120 (16d8 + 48)</p>
+  <p class="stat-line"><strong>이동속도</strong> 30 ft.</p>
+  <hr>
+  <div class="ability-scores">
+    <div><div class="label">근력(STR)</div><div class="value">18 (+4)</div></div>
+    <div><div class="label">민첩(DEX)</div><div class="value">10 (+0)</div></div>
+    <div><div class="label">건강(CON)</div><div class="value">16 (+3)</div></div>
+    <div><div class="label">지능(INT)</div><div class="value">20 (+5)</div></div>
+    <div><div class="label">지혜(WIS)</div><div class="value">17 (+3)</div></div>
+    <div><div class="label">매력(CHA)</div><div class="value">13 (+1)</div></div>
+  </div>
+  <hr>
+  <p class="stat-line"><strong>내성 굴림</strong> 지혜 +7</p>
+  <p class="stat-line"><strong>기술</strong> 비전학 +13, 종교 +13</p>
+  <p class="stat-line"><strong>감각</strong> 수동 감지 13</p>
+  <p class="stat-line"><strong>언어</strong> 심연어, 공용어, 용언어, 드워프어, 거인어</p>
+  <p class="stat-line"><strong>도전 지수</strong> 11 (7,200 XP)</p>
+  <hr>
+  <p class="stat-line"><span class="trait-name">변신자(Shapechanger).</span> 바바 리사가는 행동을 사용하여 곤충 떼(파리)로 변신하거나, 본래 모습으로 돌아올 수 있다. 떼 형태에서는 보행 속도 5피트, 비행 속도 30피트를 가진다. 착용 중인 것은 함께 변하지만, 소지품은 변하지 않는다.</p>
+  <p class="stat-line"><span class="trait-name">어머니 밤의 축복(Blessing of Mother Night).</span> 바바 리사가는 비탐지(nondetection) 주문으로 보호되는 것처럼 점술 마법으로부터 차폐되어 있다.</p>
+  <p class="stat-line"><span class="trait-name">주문시전(Spellcasting).</span> 바바 리사가는 16레벨 주문시전자이다. 주문시전 능력치는 지능이다 (주문 내성 DC 17, 주문 공격 명중 +9). 바바 리사가는 다음 마법사 주문을 준비하고 있다:</p>
+  <div class="spell-list">
+    <p><strong>소법(무제한):</strong> 산성 폭발(acid splash), 화염 화살(fire bolt), 빛(light), 마법의 손(mage hand), 요술(prestidigitation)</p>
+    <p><strong>1레벨 (4슬롯):</strong> 마법 탐지(detect magic), 마법 화살(magic missile), 수면(sleep), 마녀 화살(witch bolt)</p>
+    <p><strong>2레벨 (3슬롯):</strong> 광기의 왕관(crown of madness), 축소/확대(enlarge/reduce), 안개 걸음(misty step)</p>
+    <p><strong>3레벨 (3슬롯):</strong> 마법 해제(dispel magic), 화구(fireball), 번개(lightning bolt)</p>
+    <p><strong>4레벨 (3슬롯):</strong> 시들음(blight), 에바드의 검은 촉수(Evard's black tentacles), 변이(polymorph)</p>
+    <p><strong>5레벨 (2슬롯):</strong> 독구름(cloudkill), 강제 명령(geas), 점술(scrying)</p>
+    <p><strong>6레벨 (1슬롯):</strong> 프로그램된 환영(programmed illusion), 진실의 시야(true seeing)</p>
+    <p><strong>7레벨 (1슬롯):</strong> 죽음의 손가락(finger of death), 신기루 비전(mirage arcane)</p>
+    <p><strong>8레벨 (1슬롯):</strong> 기절의 강언(power word stun)</p>
+  </div>
+
+  <div class="section-title">행동(Actions)</div>
+  <p class="stat-line"><span class="trait-name">다중공격(Multiattack).</span> 바바 리사가는 지팡이로 세 번 공격한다.</p>
+  <p class="stat-line"><span class="trait-name">지팡이(Quarterstaff).</span> <em>근접 무기 공격:</em> 명중 +8, 간격 5 ft., 대상 하나. <em>적중:</em> 7 (1d6 + 4) 타격 피해, 또는 양손으로 사용할 경우 8 (1d8 + 4) 타격 피해.</p>
+  <p class="stat-line"><span class="trait-name">곤충 떼 소환(Summon Swarms of Insects, 짧은 휴식 또는 긴 휴식 후 재충전).</span> 바바 리사가는 1d4 곤충 떼를 소환한다. 소환된 떼는 바바 리사가로부터 60피트 이내의 빈 공간에 나타나 그녀의 동맹으로 행동한다. 떼는 죽거나 바바 리사가가 행동으로 해산시킬 때까지 유지된다.</p>
+</div>
+</section>
+
+<div class="section-divider">* * *</div>
+
+<!-- 바로비아 마녀 -->
+<section id="barovian-witch">
+<h3>바로비아 마녀(Barovian Witch)</h3>
+
+<p>바로비아 마녀(Barovian witch)로 알려진 미친 여성과 남성들은 마법과 장수를 대가로 스트라드 및 레이븐로프트의 어둠의 힘(Dark Powers)과 계약을 맺는다. 그들은 그림자 속에 사는 것을 선호하며 어둠 속에서 볼 수 있다. 밖을 돌아다닐 때는 자기 변형(alter self) 주문을 사용하여 눈에 띄지 않는 모습으로 변한다. 또한 이 주문을 사용하여 공격할 수 있는 길고 날카로운 발톱을 키운다.</p>
+
+<h4>스트라드의 형제자매(Brothers and Sisters of Strahd)</h4>
+<p>바로비아 마녀에게는 양심이 없다. 힘을 대가로 누구와도 거래할 것이다. 같은 이유로 누구든 배신할 것이다. 그들이 두려워하는 유일한 존재는 스트라드이며, 그의 소원이 곧 그들의 명령이다. 바로비아 마녀들은 때때로 자신들을 스트라드의 형제자매라 칭하지만, 결코 스트라드 면전에서는 그렇게 하지 않는다.</p>
+
+<h4>고양이를 데리고 다니는 수집광(Pack Rats with Cats)</h4>
+<p>바로비아 마녀들은 집착적인 수집가로, 발견한 거의 모든 것 - 부러진 뼈 조각, 죽은 쥐, 한 줌의 먼지, 또는 기타 가치 없는 물건이나 물질 - 이 주문 재료, 의식 도구, 또는 물약 재료로 가치 있거나 유용할 수 있다고 믿는다.</p>
+
+<p>바로비아 마녀들은 사역 생물 찾기(find familiar) 주문을 사용하여 사역 생물을 불러낸다. 특히 고양이를 좋아하지만, 뱀과 두꺼비도 흔하다. 이 동물들은 마녀들의 은신처에 널린 잡동사니 사이에 숨어 있으며, 사악한 주인으로부터 좀처럼 멀리 떠나지 않는다.</p>
+
+<!-- 바로비아 마녀 스탯 블록 -->
+<div class="stat-block">
+  <div class="stat-name">바로비아 마녀(BAROVIAN WITCH)</div>
+  <div class="stat-type">중형 인간형(인간)(Medium humanoid [human]), 혼돈 악(chaotic evil)</div>
+  <hr>
+  <p class="stat-line"><strong>갑옷 등급(AC)</strong> 10</p>
+  <p class="stat-line"><strong>생명점(HP)</strong> 16 (3d8 + 3)</p>
+  <p class="stat-line"><strong>이동속도</strong> 30 ft.</p>
+  <hr>
+  <div class="ability-scores">
+    <div><div class="label">근력(STR)</div><div class="value">7 (-2)</div></div>
+    <div><div class="label">민첩(DEX)</div><div class="value">11 (+0)</div></div>
+    <div><div class="label">건강(CON)</div><div class="value">13 (+1)</div></div>
+    <div><div class="label">지능(INT)</div><div class="value">14 (+2)</div></div>
+    <div><div class="label">지혜(WIS)</div><div class="value">11 (+0)</div></div>
+    <div><div class="label">매력(CHA)</div><div class="value">12 (+1)</div></div>
+  </div>
+  <hr>
+  <p class="stat-line"><strong>기술</strong> 비전학 +4, 감지 +2</p>
+  <p class="stat-line"><strong>감각</strong> 암시 60 ft., 수동 감지 12</p>
+  <p class="stat-line"><strong>언어</strong> 공용어</p>
+  <p class="stat-line"><strong>도전 지수</strong> 1/2 (100 XP)</p>
+  <hr>
+  <p class="stat-line"><span class="trait-name">주문시전(Spellcasting).</span> 마녀는 3레벨 주문시전자이다. 주문시전 능력치는 지능이다 (주문 내성 DC 12, 주문 공격 명중 +4). 마녀는 다음 마법사 주문을 준비하고 있다:</p>
+  <div class="spell-list">
+    <p><strong>소법(무제한):</strong> 마법의 손(mage hand), 요술(prestidigitation), 냉기 광선(ray of frost)</p>
+    <p><strong>1레벨 (4슬롯):</strong> 질병 광선(ray of sickness), 수면(sleep), 타샤의 흉측한 웃음(Tasha's hideous laughter)</p>
+    <p><strong>2레벨 (2슬롯):</strong> 자기 변형(alter self), 투명화(invisibility)</p>
+  </div>
+
+  <div class="section-title">행동(Actions)</div>
+  <p class="stat-line"><span class="trait-name">발톱(Claws, 자기 변형 필요).</span> <em>근접 무기 공격:</em> 명중 +3, 간격 5 ft., 대상 하나. <em>적중:</em> 4 (1d6 + 1) 참격 피해. 이 공격은 마법이다.</p>
+  <p class="stat-line"><span class="trait-name">단검(Dagger).</span> <em>근접 또는 원거리 무기 공격:</em> 명중 +2, 간격 5 ft. 또는 사거리 20/60 ft., 대상 하나. <em>적중:</em> 2 (1d4) 관통 피해.</p>
+</div>
+</section>
+
+<div class="section-divider">* * *</div>
+
+<!-- 나무 역병 -->
+<section id="tree-blight">
+<h3>역병, 나무(Blight, Tree)</h3>
+
+<p>역병(blight, <em>몬스터 편람</em>에 기술됨)은 사악하고 스스로 이동하는 식물 크리처이며, 나무 역병(tree blight)은 특히 거대한 종류이다. 죽은 나무나 트리엔트(treant)처럼 보이며, 높이가 30피트에 달하고, 스폰지 같은 목질, 가시 달린 가지, 뒤에 끌리는 고무 같은 뿌리를 가지고 있다. 수액 대신 피가 흐르며, 피에 너무 흠뻑 젖어 있어 쉽게 불이 붙지 않는다.</p>
+
+<h4>사악한 육식자(Vicious Carnivore)</h4>
+<p>나무 역병은 온혈 먹이를 먹으며 대학살을 일으키는 것에 비뚤어진 즐거움을 느낀다. 무거운 가지로 내리치고 뿌리로 먹이를 짓눌러 죽인다. 뿌리에 잡힌 크리처를 이빨이 가득한 벌어진 입으로 물 수 있다. 나무 역병의 뿌리는 잘라낼 수 있지만, 잘라도 역병에는 해가 되지 않는다.</p>
+
+<h4>역병의 적대심(Blight Animosity)</h4>
+<p>나무 역병은 종종 다른 종류의 역병과 함께 싸우지만, 다른 나무 역병을 미워하며 기회가 주어지면 공격한다. 나무 역병은 또한 트리엔트를 미워하며, 이 감정은 상호적이다.</p>
+
+<!-- 나무 역병 스탯 블록 -->
+<div class="stat-block">
+  <div class="stat-name">나무 역병(TREE BLIGHT)</div>
+  <div class="stat-type">대형 식물(Huge Plant), 주로 중립 악(Typically Neutral Evil)</div>
+  <hr>
+  <p class="stat-line"><strong>갑옷 등급(AC)</strong> 15 (자연 갑옷)</p>
+  <p class="stat-line"><strong>생명점(HP)</strong> 92 (8d12 + 40)</p>
+  <p class="stat-line"><strong>이동속도</strong> 30 ft.</p>
+  <hr>
+  <div class="ability-scores">
+    <div><div class="label">근력(STR)</div><div class="value">23 (+6)</div></div>
+    <div><div class="label">민첩(DEX)</div><div class="value">10 (+0)</div></div>
+    <div><div class="label">건강(CON)</div><div class="value">20 (+5)</div></div>
+    <div><div class="label">지능(INT)</div><div class="value">6 (-2)</div></div>
+    <div><div class="label">지혜(WIS)</div><div class="value">10 (+0)</div></div>
+    <div><div class="label">매력(CHA)</div><div class="value">3 (-4)</div></div>
+  </div>
+  <hr>
+  <p class="stat-line"><strong>상태 면역</strong> 실명, 청각 상실</p>
+  <p class="stat-line"><strong>감각</strong> 맹목시야 60 ft. (이 반경 너머로는 시각이 없음), 수동 감지 10</p>
+  <p class="stat-line"><strong>언어</strong> 공용어와 드루이드어를 이해하지만 말하지 못함</p>
+  <p class="stat-line"><strong>도전 지수</strong> 7 (2,900 XP) &nbsp; 숙련 보너스 +3</p>
+  <hr>
+  <p class="stat-line"><span class="trait-name">위장(False Appearance).</span> 전투 시작 시 역병이 움직이지 않고 있었다면, 주도권 굴림에 이점을 받는다. 또한, 역병이 움직이거나 행동하는 것을 관찰하지 못한 크리처는 DC 18 지능(조사) 판정에 성공해야 역병이 살아 있음을 간파할 수 있다.</p>
+  <p class="stat-line"><span class="trait-name">공성 괴물(Siege Monster).</span> 역병은 물체와 구조물에 두 배의 피해를 준다.</p>
+
+  <div class="section-title">행동(Actions)</div>
+  <p class="stat-line"><span class="trait-name">다중공격(Multiattack).</span> 역병은 가지 공격 한 번과 움켜쥐는 뿌리 공격 한 번을 한다.</p>
+  <p class="stat-line"><span class="trait-name">가지(Branch).</span> <em>근접 무기 공격:</em> 명중 +9, 간격 15 ft., 대상 하나. <em>적중:</em> 16 (3d6 + 6) 타격 피해.</p>
+  <p class="stat-line"><span class="trait-name">움켜쥐는 뿌리(Grasping Root).</span> <em>근접 무기 공격:</em> 명중 +9, 간격 15 ft., 역병에게 잡히지 않은 크리처 하나. <em>적중:</em> 대상은 잡기 상태가 된다 (탈출 DC 15). 잡기가 끝날 때까지, 대상은 자신의 턴 시작 시 9 (1d6 + 6) 타격 피해를 받는다. 뿌리의 AC는 15이며, 한 번의 공격으로 6점 이상의 참격 피해를 가하면 절단할 수 있다. 뿌리를 자르면 역병에는 해가 되지 않지만 잡기는 끝난다.</p>
+
+  <div class="section-title">추가 행동(Bonus Actions)</div>
+  <p class="stat-line"><span class="trait-name">물기(Bite).</span> <em>근접 무기 공격:</em> 명중 +9, 간격 5 ft., 역병에게 잡힌 크리처 하나. <em>적중:</em> 19 (3d8 + 6) 관통 피해.</p>
+</div>
+</section>
+
+<div class="section-divider">* * *</div>
+
+<p style="text-align: center; color: var(--accent2); font-style: italic;">크리처 (I-Z)는 2부에서 계속됩니다.</p>
+
+
+<h3 class="area-title" id="npc-ezmerelda">에즈메렐다 다브니르(Ezmerelda d'Avenir)</h3>
+
+<p>에즈메렐다 다브니르(Ezmerelda d'Avenir)는 비스타니(Vistani)로, 루돌프 반 리히텐(Rudolph van Richten)의 제자다. 그녀가 뱀파이어 사냥꾼과 처음 만났을 때의 경험이 전혀 유쾌하지 않았음에도 불구하고 말이다.</p>
+
+<p><strong>비극의 목격자.</strong> 에즈메렐다가 어린 소녀였을 때, 그녀의 가족은 반 리히텐의 십대 아들 에라스무스(Erasmus)를 납치해 뱀파이어의 손아귀에 넘겼다. 오늘날까지도, 수년이 지났음에도 그녀는 여전히 에라스무스의 자비를 구하는 간청이 귓가에 들린다. 그 사건은 그녀의 어린 시절을 괴롭혔다.</p>
+
+<p>반 리히텐은 납치 직후 에즈메렐다의 가족을 추적했지만, 비스타니가 소년을 팔아넘긴 뒤였다. 반 리히텐은 그들에게 해를 가할 수도 있었지만, 대신 에즈메렐다의 부모를 심문하여 실종된 아들의 행방을 알아냈다. 그들의 대답에 만족한 그는 그들이 준 정보를 가지고 떠나기 전에 목숨을 살려주었다. 에즈메렐다는 반 리히텐의 자비로운 행동을 목격하고 깊은 감동을 받았다.</p>
+
+<p><strong>반 리히텐의 비극적 이야기.</strong> 열다섯 살에, 자기 가족이 반 리히텐에게 저지른 일에 여전히 괴로워하던 에즈메렐다는 집을 떠났다. 수많은 위험한 모험 끝에, 2년 후 반 리히텐을 찾아냈다. 그녀를 비스타니 암살자로 여긴 반 리히텐은 그녀의 목에 검을 들이대며 피를 보겠다고 위협했다. 에즈메렐다는 진심으로 그의 실종된 아들을 찾는 것을 돕고 싶다고 설득했고, 그러자 반 리히텐은 가장 슬픈 이야기를 들려주었다. 그는 아들을 찾았지만, 아들은 이미 뱀파이어 스폰으로 변해 있었다. 에라스무스가 아버지에게 구원을 간청하자, 반 리히텐은 그의 존재를 끝냄으로써 그 요청을 들어주었다.</p>
+
+<p><strong>작별.</strong> 에즈메렐다는 2년간 반 리히텐 곁에 머물며 수많은 밤의 피조물들을 추적하고 처치하는 것을 도왔다. 하지만 반 리히텐은 비스타니를 온전히 신뢰할 수 없었기에 그녀에게 비밀을 숨겼다. 두 뱀파이어 사냥꾼은 서로의 신경을 건드렸고, 다툼은 점점 잦아졌다. 마침내 에즈메렐다는 우정의 조각이라도 남아 있을 때 헤어지자고 제안했고, 반 리히텐도 동의했다.</p>
+
+<p><strong>에즈메렐다의 의족.</strong> 반 리히텐에게 작별을 고한 이래, 에즈메렐다는 상당한 개인 재산을 모았으며, 그중 일부로 뱀파이어 사냥 장비를 운반할 마차를 구입했다. 덜 성공적이었던 모험 중 하나에서 늑대인간(werewolf)이 그녀의 오른쪽 무릎 아래 다리를 물어뜯었고, 수인증(lycanthropy)에 감염되는 것은 피했지만 에즈메렐다는 수개월간 행동이 불가능했다. 그녀는 장인에게 의뢰하여 의족 하퇴부와 발을 제작하게 했다. 여러 차례 시행착오 끝에, 그는 그녀의 이동 능력을 되찾아 주는 의족을 완성했다. 이후 그녀는 의족에 잘 적응했다.</p>
+
+<p><strong>위대한 뱀파이어 사냥.</strong> 비스타니 대상과 함께하던 중, 에즈메렐다는 루돌프 반 리히텐이 가장 강력한 뱀파이어를 처치하기 위해 바로비아(Barovia)로 갔다는 소문을 들었다. 그에게 도움이 필요할 수 있다고 판단한 그녀는 수개월에 걸쳐 스트라드(Strahd)의 영지에 도달했다. 마차를 몰고 발라키(Vallaki)에 도착한 그녀는 반 리히텐이 거점으로 삼을 법한 오래된 탑에 대해 알게 되었다. 그곳에 도착했을 때, 반 리히텐의 소지품 일부를 발견했지만 뱀파이어 사냥꾼의 흔적은 없었다. 그녀는 스승의 행방을 알고 싶어 안달하면서도, 그의 신뢰와 존경을 얻고자 한다. 그 목표를 위해, 그녀는 반 리히텐의 연구 자료를 파고들며 스트라드와 레이븐로프트 성(Castle Ravenloft)에 대해 공부하고 있으며, 직접 뱀파이어를 처치할 작정이다.</p>
+
+<p><strong>타로카 덱.</strong> 에즈메렐다는 마차(제11장, 구역 V1)에 타로카(tarokka) 카드 덱을 보관하고 있다. 카드 자체에 마법은 없지만, 에즈메렐다는 이것을 사용하여 마담 에바(Madam Eva)가 할 수 있는 것과 같은 카드 점(제1장 참조)을 캐릭터들에게 수행할 수 있다.</p>
+
+<div class="sidebar">
+<h3>에즈메렐다 다브니르의 특성</h3>
+<p><strong>이상.</strong> "무고한 자를 먹이로 삼는 악은 모든 악 중 최악이며, 반드시 파괴해야 한다."</p>
+<p><strong>유대.</strong> "나의 스승이자 선생님인 루돌프 반 리히텐 박사는 내게 아버지와 같은 분이다."</p>
+<p><strong>결점.</strong> "나는 천사도 두려워하는 곳에 발을 들인다."</p>
+</div>
+
+<div class="stat-block">
+<h4>에즈메렐다 다브니르(EZMERELDA D'AVENIR)</h4>
+<p><em>중형 인간형 (인간), 혼돈 선</em></p>
+<hr>
+<p><strong>방어도</strong> 17 (+1 박힌 가죽 갑옷)</p>
+<p><strong>히트 포인트</strong> 82 (11d8 + 33)</p>
+<p><strong>이동 속도</strong> 30 ft.</p>
+<hr>
+<table>
+<thead><tr><th>근력</th><th>민첩</th><th>건강</th><th>지능</th><th>지혜</th><th>매력</th></tr></thead>
+<tbody><tr><td>14 (+2)</td><td>19 (+4)</td><td>16 (+3)</td><td>16 (+3)</td><td>11 (+0)</td><td>17 (+3)</td></tr></tbody>
+</table>
+<hr>
+<p><strong>내성 굴림</strong> 지혜 +3</p>
+<p><strong>기술</strong> 곡예 +7, 비전학 +6, 기만 +9, 통찰 +3, 의학 +3, 감지 +6, 공연 +6, 손재주 +7, 은신 +7, 생존 +6</p>
+<p><strong>감각</strong> 수동 감지 16</p>
+<p><strong>언어</strong> 공용어, 엘프어</p>
+<p><strong>도전 지수</strong> 8 (3,900 XP)</p>
+<hr>
+<p><strong>특수 장비.</strong> 마법 갑옷과 무기 외에도, 에즈메렐다는 상급 치유 물약 2개, 성수 6병, 나무 말뚝 3개를 가지고 있다.</p>
+
+<p><strong>주문시전.</strong> 에즈메렐다는 7레벨 주문시전자다. 그녀의 주문시전 능력치는 지능이다 (주문 내성 DC 14, 주문 공격 +6). 에즈메렐다는 다음 마법사 주문을 준비하고 있다:</p>
+
+<div class="stat-block">
+<p><strong>소마법 (무제한):</strong> <em>화염 화살(Fire Bolt), 빛(Light), 마법의 손(Mage Hand), 요술(Prestidigitation)</em></p>
+<p><strong>1레벨 (4슬롯):</strong> <em>악과 선으로부터의 보호(Protection from Evil and Good), 마법 화살(Magic Missile), 방패(Shield)</em></p>
+<p><strong>2레벨 (3슬롯):</strong> <em>어둠시야(Darkvision), 개방(Knock), 분신(Mirror Image)</em></p>
+<p><strong>3레벨 (3슬롯):</strong> <em>투시(Clairvoyance), 번개 화살(Lightning Bolt), 마법진(Magic Circle)</em></p>
+<p><strong>4레벨 (1슬롯):</strong> <em>상급 투명화(Greater Invisibility)</em></p>
+</div>
+
+<h4>행동</h4>
+<p><strong>다중공격.</strong> 에즈메렐다는 세 번 공격한다: +1 레이피어로 두 번, +1 손도끼 또는 은도금 쇼트소드로 한 번.</p>
+<p><strong>+1 레이피어.</strong> <em>근접 무기 공격:</em> 명중 +8, 간격 5 ft., 대상 하나. <em>적중:</em> 9 (1d8 + 5) 관통 피해.</p>
+<p><strong>+1 손도끼.</strong> <em>근접 또는 원거리 무기 공격:</em> 명중 +6, 간격 5 ft. 또는 사거리 20/60 ft., 대상 하나. <em>적중:</em> 6 (1d6 + 3) 참격 피해.</p>
+<p><strong>은도금 쇼트소드.</strong> <em>근접 무기 공격:</em> 명중 +7, 간격 5 ft., 대상 하나. <em>적중:</em> 7 (1d6 + 4) 관통 피해.</p>
+<p><strong>저주 (긴 휴식 후 재충전).</strong> 에즈메렐다는 30피트 이내에서 볼 수 있는 생물 하나를 대상으로 한다. 대상은 DC 14 지혜 내성 굴림에 성공해야 하며, 실패하면 저주에 걸린다. 저주에 걸린 동안, 대상은 에즈메렐다가 선택한 한 가지 유형의 피해에 취약해진다. 저주는 상급 회복(Greater Restoration) 주문, 저주 해제(Remove Curse) 주문, 또는 유사한 마법으로 해제될 때까지 지속된다. 저주가 끝나면, 에즈메렐다는 3d6 정신 피해를 받는다.</p>
+<p><strong>사안(Evil Eye) (짧은 휴식 또는 긴 휴식 후 재충전).</strong> 에즈메렐다는 10피트 이내에서 볼 수 있는 생물 하나를 대상으로 하여 다음 주문 중 하나를 시전한다 (내성 DC 14). 이때 동작 요소나 물질 요소가 필요하지 않다: 동물 친화(Animal Friendship), 인물 매혹(Charm Person), 또는 인물 속박(Hold Person). 대상이 최초 내성 굴림에 성공하면, 에즈메렐다는 자신의 다음 턴이 끝날 때까지 실명 상태가 된다. 대상이 이 효과에 대한 내성 굴림에 한 번 성공하면, 24시간 동안 모든 비스타니의 사안 능력에 면역이 된다.</p>
+</div>
+
+<!-- 구분선 -->
+<div class="section-divider">* * *</div>
+
+<h2 id="creatures-iq">크리처 (I-Q)</h2>
+
+<h3 class="area-title" id="npc-izek">이젝 스트라즈니(Izek Strazni)</h3>
+
+<p>이젝(Izek)과 그의 여동생은 발라키에서 태어났다. 어느 날 아침, 아버지와 삼촌이 그들을 데리고 자로비치 호수(Lake Zarovich)로 낚시를 갔다. 마을로 돌아오는 길에 다이어울프(dire wolf)가 이젝을 공격하여 오른팔을 물어뜯었다. 아버지가 이젝을 안고 마을로 돌아갔고, 삼촌이 짐승의 주의를 끌었다. 여동생은 숲속으로 도망쳐 숨었고, 다시는 보이지 않았다.</p>
+
+<p>여동생과 달리, 이젝은 영혼 없이 태어났다. 시간이 흐르면서 그는 잃어버린 여동생을 잊었고, 자신의 장애에 적응하는 법을 배웠다.</p>
+
+<p><strong>고아가 된 살인자.</strong> 이젝의 부모는 슬픔에 잠식되어 세상을 떠났고, 그는 고아가 되었다. 그는 반사회적 인간이 되었다. 다른 아이들이 죽은 가족과 잃어버린 팔을 가지고 무자비하게 놀렸지만, 그는 덩치가 큰 소년이었고 그들을 죽이고 시체를 처리하는 데 어려움이 없었다. 결국 현장에서 들켜 촌장에게 끌려갔다. 바론 발라코비치(Baron Vallakovich)는 소년의 범죄를 벌하는 대신 이젝을 사면하고 자기 집으로 데려갔다. 그 이래로 이젝은 촌장에게 충성해왔으며, 자신의 지위가 주는 권력과 주인 저택의 안락함을 즐기고 있다. 촌장의 뜻을 집행하지 않을 때면, 이젝은 엄청난 양의 포도주를 마신다.</p>
+
+<p><strong>악마의 선물.</strong> 바론 발라코비치의 더러운 일을 수년간 한 뒤, 이젝은 어느 날 아침 술에 취한 혼미 상태에서 깨어나 잃었던 팔 자리에 새 팔이 자라나 있음을 발견했다.</p>
+
+<p>새 부속은 가시 돋친 돌기, 길쭉한 손가락, 긴 손톱을 가지고 있다. 그는 악마의 손가락을 튕기는 것만으로 불을 만들어낼 수 있으며, 그 불꽃으로 모든 발라키 주민에게 악마의 공포를 심어주었다.</p>
+
+<p><strong>인형 수집가.</strong> 악마의 팔과 살인적 본성보다 더 불안한 것은 이젝의 인형 수집이다. 그는 촌장 저택의 자기 방에 인형들을 보관한다. 이젝은 자주 아름다운 젊은 여인의 꿈을 꾸며, 수년간 현지 장난감 제작자 가도프 블린스키(Gadof Blinsky)에게 그녀의 모습을 본뜬 인형을 만들도록 강요해왔다. 그 여인은 이레나 콜리아나(Ireena Kolyana)이지만, 이젝은 그녀의 이름을 모른다.</p>
+
+<p><strong>가족은 영원히.</strong> 이젝은 이레나의 꿈을 꾼다. 그녀를 발견하면 강제로 촌장 저택으로 데려가려 한다. 성공하면, 자신의 방(제5장, 구역 N3j)에 그녀를 가둔다. 이젝과 이레나 모두 모르는 사실이지만, 둘은 남매다. 이젝이 다이어울프에게 공격당한 후 이레나는 도망쳐 숲속에서 길을 잃었다. 그녀는 충격 상태로 며칠을 헤매다가 바로비아 마을의 콜리안 인디로비치(Kolyan Indirovich)에 의해 발견되어 입양되었다. 이젝은 비정상적인 방식으로 그녀를 갈망하며, 누구도, 무엇도 둘 사이를 가로막도록 허락하지 않을 것이다.</p>
+
+<div class="sidebar">
+<h3>이젝 스트라즈니의 특성</h3>
+<p><strong>이상.</strong> "공포는 강력한 무기다. 나는 원하는 것을 얻기 위해 이것을 사용한다."</p>
+<p><strong>유대.</strong> "나는 주인인 바론 발라코비치에게 충성한다. 그가 나를 자기 집에 받아주었기 때문이다. 내 목숨을 그에게 빚지고 있지만, 그는 가족은 아니다."</p>
+<p><strong>결점.</strong> "여동생을 찾기 위해서라면 무엇이든 하겠고, 누구든 죽이겠다."</p>
+</div>
+
+<div class="stat-block">
+<h4>이젝 스트라즈니(IZEK STRAZNI)</h4>
+<p><em>중형 인간형 (인간), 중립 악</em></p>
+<hr>
+<p><strong>방어도</strong> 14 (박힌 가죽 갑옷)</p>
+<p><strong>히트 포인트</strong> 112 (15d8 + 45)</p>
+<p><strong>이동 속도</strong> 30 ft.</p>
+<hr>
+<table>
+<thead><tr><th>근력</th><th>민첩</th><th>건강</th><th>지능</th><th>지혜</th><th>매력</th></tr></thead>
+<tbody><tr><td>18 (+4)</td><td>15 (+2)</td><td>16 (+3)</td><td>10 (+0)</td><td>9 (-1)</td><td>15 (+2)</td></tr></tbody>
+</table>
+<hr>
+<p><strong>기술</strong> 위협 +8, 감지 +2</p>
+<p><strong>감각</strong> 수동 감지 12</p>
+<p><strong>언어</strong> 공용어</p>
+<p><strong>도전 지수</strong> 5 (1,800 XP)</p>
+<hr>
+<p><strong>강타.</strong> 이젝이 근접 무기로 적중시키면, 무기의 피해 주사위가 하나 추가된다 (공격에 포함).</p>
+
+<h4>행동</h4>
+<p><strong>다중공격.</strong> 이젝은 전투도끼로 두 번 공격한다.</p>
+<p><strong>전투도끼.</strong> <em>근접 무기 공격:</em> 명중 +7, 간격 5 ft., 대상 하나. <em>적중:</em> 13 (2d8 + 4) 참격 피해, 또는 양손 사용 시 15 (2d10 + 4).</p>
+<p><strong>화염 투척.</strong> <em>원거리 주문 공격:</em> 명중 +5, 사거리 60 ft., 대상 하나. <em>적중:</em> 10 (3d6) 화염 피해. 대상이 착용하거나 운반하지 않는 가연성 물체인 경우, 불이 붙는다.</p>
+</div>
+
+<!-- 구분선 -->
+<div class="section-divider">* * *</div>
+
+<h3 class="area-title" id="npc-kasimir">카시미르 벨리코프(Kasimir Velikov)</h3>
+
+<p>카시미르(Kasimir)는 절단을 당하고 슬픔에 잠긴 황혼 엘프(dusk elf)로, 수세기 동안 바로비아에 갇혀 있다. 그의 부족은 스트라드의 군대에 의해 전멸 직전에 항복했다. 스트라드는 살아남은 소수를 비스타니의 자비에 맡겼고, 비스타니는 그들을 바로비아 계곡으로 데려갔으며 그 이후로 그곳에서 살아왔다.</p>
+
+<p><strong>오래된 벗.</strong> 카시미르의 비스타니에 대한 충성은 매우 강해서, 자신을 씨족에 환영해 준 비스타나 남자 벨리코프(Velikov)의 이름을 성으로 삼았다. 벨리코프는 한 세기 전에 세상을 떠났지만, 카시미르는 계속 벨리코프의 후손들 사이에서 살고 있다. 불행히도, 그가 보기에 현대의 비스타니는 선조들만큼 고결하거나 계몽되어 있지 않다. 논쟁하는 성격이 아닌 카시미르는 현 지도부보다 오래 살아남아 옛 방식의 복귀를 보기를 희망한다.</p>
+
+<p><strong>저주받은 자의 꿈.</strong> 카시미르의 여동생 파트리나 벨리코브나(Patrina Velikovna)는 레이븐로프트 성 아래 지하 묘소에 봉인되어 있다. 그녀가 악마 스트라드의 첩이라고 확신한 카시미르와 동료 황혼 엘프들은 파트리나를 돌로 쳐 죽였다. 신부를 빼앗긴 벌로, 스트라드는 황혼 엘프 부족의 모든 여성을 도살했고, 카시미르의 귀는 돌 던지기를 선동한 벌로 잘렸다. 그는 두건으로 절단된 부위를 가린다.</p>
+
+<p>카시미르의 상실감에는 끓어오르는 분노가 깃들어 있다. 파트리나는 이제 꿈속에서 오빠에게 말하며, 수년간의 죄책감과 회한이 그녀의 마음에서 모든 악한 생각을 몰아내고 고통받는 영혼을 정화했다고 말한다. 하지만 카시미르는 그녀의 주장을 믿지 않는다. 스트라드가 파트리나를 타락시켜 악과 기만의 길로 이끌었다는 것을 알기 때문이다. 그런 이유로 카시미르는 뱀파이어가 파괴되어 여동생이 영원한 저주에서 구원받기를 원한다.</p>
+
+<p><strong>호박 사원의 비밀.</strong> 파트리나는 카시미르에게 호박 사원(Amber Temple)이라는 바로비아 산맥에 숨겨진 고대 금고가 스트라드가 악의 세력과 계약을 맺고 뱀파이어가 되는 방법을 발견한 곳이라고 말했다. 카시미르는 수년간 사원을 정찰해왔지만, 그 위험을 견디려면 모험가들의 도움이 필요하다. 그는 스트라드의 계약을 깨고 바로비아를 저주에서 해방하는 비밀이 그곳에 숨겨져 있을지 모른다고 생각하지만, 더 중요한 것은 호박 사원에 고대의 죽은 자를 되살리는 비밀이 있다고 믿는 것이다.</p>
+
+<p>캐릭터들의 도움으로, 카시미르는 파트리나를 살과 피로 되돌리는 방법을 알아낸 뒤 레이븐로프트 성으로 가서 여동생의 고통을 끝낼 수 있으리라 생각한다. 카시미르는 파트리나가 정확히 그 목적을 위해 자신을 이용하고 있으며, 그녀의 궁극적 목표가 스트라드만큼 강력한 뱀파이어가 되는 것임을 전혀 모른다.</p>
+
+<p><strong>능력치.</strong> <em>몬스터 매뉴얼</em>의 마법사(mage) 능력치를 사용하되, 다음 사항을 변경한다:</p>
+<ul>
+  <li>카시미르의 성향은 중립이다.</li>
+  <li>카시미르는 60피트 범위의 어둠시야를 가진다.</li>
+  <li>카시미르는 요정 혈통(Fey Ancestry) 특성을 가지며, 이에 따라 매혹 상태에 대한 내성 굴림에 이점을 얻고 마법에 의해 잠들지 않는다.</li>
+  <li>카시미르는 온기의 반지(Ring of Warmth)를 착용하고 있으며, 주문서를 소지하고 있다 (준비된 주문 외에 주문서에 포함된 주문 목록은 제5장, 구역 N9a를 참조).</li>
+</ul>
+
+<div class="sidebar">
+<h3>카시미르 벨리코프의 특성</h3>
+<p><strong>이상.</strong> "나는 내 백성과 여동생을 저버렸고, 이제 속죄하지 않으면 저주받을 것이다."</p>
+<p><strong>유대.</strong> "나는 오래전 죽은 여동생 파트리나를 되살리고자 한다. 내 목숨을 대가로 치르더라도."</p>
+<p><strong>결점.</strong> "나는 여동생이 구원받을 수 있다고 믿는다."</p>
+</div>
+
+<!-- 구분선 -->
+<div class="section-divider">* * *</div>
+
+<h3 class="area-title" id="npc-madam-eva">마담 에바(Madam Eva)</h3>
+
+<p>점술사 마담 에바는 비스타니 사이에서 살지만, 진정한 비스타니는 아니다. 겉으로는 칠십대로 보이지만, 실제로는 훨씬 더 나이가 많다.</p>
+
+<p><strong>왕족의 피.</strong> 마담 에바는 스트라드의 이복 여동생이지만, 스트라드는 이 사실을 모른다. 그녀의 진짜 이름은 카타리나(Katarina)이며, 스트라드의 아버지 바로프 왕(King Barov)이 여러 원정 중 하나에서 동침한 비스타니 여인의 딸이다. 마담 에바는 자신이 스트라드의 이복 여동생임을 알고 있지만, 자신의 혈관에 흐르는 왕족의 피에 대해 아무에게도 말하지 않았다.</p>
+
+<p><strong>밤의 어머니.</strong> 400년 전, 카타리나는 바로비아에 와서 스트라드의 궁정에 침투하여 레이븐로프트 성에서 하녀로 일했다. 그녀는 성을 손등처럼 익혔으며, 세르게이(Sergei)와 타티아나(Tatyana)의 결혼식에도 참석했다. 스트라드가 미쳐 형제를 살해한 후, 그녀는 성을 탈출하여 비스타니에게 피신했다. 이후 그녀는 밤의 어머니(Mother Night) 여신과 계약을 맺어, 젊음을 대가로 스트라드가 행한 악을 되돌릴 힘을 얻었다. 밤의 어머니는 카타리나를 마법적 예지력을 부여받은 늙지 않는 노파로 변모시켰다. 마담 에바라는 가면 아래, 그녀는 이 능력을 사용하여 스트라드를 돕는다. 그녀는 비스타니를 마차에 태워 다른 세계로 보내 모험가들을 스트라드의 영지로 데려올 수 있으며, 그들이 뱀파이어를 파괴하거나 스트라드를 해방시킬 방법을 찾기를 희망한다.</p>
+
+<p><strong>스트라드를 향한 사랑.</strong> 래블로프트(Ravenloft)의 어둠의 세력은 마담 에바를 래블로프트의 지배자로서 스트라드를 대체할 합당한 인물로 여기겠지만, 그녀는 원하는 만큼의 힘을 이미 가지고 있으며 그를 대신하려 하지 않는다. 그녀는 스트라드가 자신을 이을 다른 누군가를 찾도록 돕고 싶지만, 그러한 인물을 찾을 수 있을지에 대해 심각한 의구심을 품고 있다.</p>
+
+<p>마담 에바의 비스타니 친족 중 누구도 그녀의 진정한 정체나 목적을 알지 못한다. 그들은 그녀가 바로비아에 남고 싶어 하는 이유를 의아하게 여긴다.</p>
+
+<div class="sidebar">
+<h3>마담 에바의 특성</h3>
+<p><strong>이상.</strong> "나는 스트라드가 저주에서 벗어나기를 바란다."</p>
+<p><strong>유대.</strong> "비스타니는 이제 나의 백성이다."</p>
+<p><strong>결점.</strong> "내가 운명을 점치는 사람들은 중요하지 않다. 그들은 목적을 위한 수단일 뿐이다."</p>
+</div>
+
+<div class="stat-block">
+<h4>마담 에바(MADAM EVA)</h4>
+<p><em>중형 인간형 (인간), 혼돈 중립</em></p>
+<hr>
+<p><strong>방어도</strong> 10</p>
+<p><strong>히트 포인트</strong> 88 (16d8 + 16)</p>
+<p><strong>이동 속도</strong> 20 ft.</p>
+<hr>
+<table>
+<thead><tr><th>근력</th><th>민첩</th><th>건강</th><th>지능</th><th>지혜</th><th>매력</th></tr></thead>
+<tbody><tr><td>8 (-1)</td><td>11 (+0)</td><td>12 (+1)</td><td>17 (+3)</td><td>20 (+5)</td><td>18 (+4)</td></tr></tbody>
+</table>
+<hr>
+<p><strong>내성 굴림</strong> 건강 +5</p>
+<p><strong>기술</strong> 비전학 +7, 기만 +8, 통찰 +13, 위협 +8, 감지 +9, 종교 +7</p>
+<p><strong>감각</strong> 수동 감지 19</p>
+<p><strong>언어</strong> 심연어, 공용어, 엘프어, 지옥어</p>
+<p><strong>도전 지수</strong> 10 (5,900 XP)</p>
+<hr>
+<p><strong>주문시전.</strong> 마담 에바는 16레벨 주문시전자다. 그녀의 주문시전 능력치는 지혜다 (주문 내성 DC 17, 주문 공격 +9). 마담 에바는 다음 클레릭 주문을 준비하고 있다:</p>
+
+<div class="stat-block">
+<p><strong>소마법 (무제한):</strong> <em>빛(Light), 수선(Mending), 성스러운 불꽃(Sacred Flame), 기적의 징표(Thaumaturgy)</em></p>
+<p><strong>1레벨 (4슬롯):</strong> <em>파멸(Bane), 명령(Command), 악과 선 감지(Detect Evil and Good), 악과 선으로부터의 보호(Protection from Evil and Good)</em></p>
+<p><strong>2레벨 (3슬롯):</strong> <em>하급 회복(Lesser Restoration), 독 방지(Protection from Poison), 영적 무기(Spiritual Weapon)</em></p>
+<p><strong>3레벨 (3슬롯):</strong> <em>음식과 물 생성(Create Food and Water), 사자와 대화(Speak with Dead), 영혼 수호자(Spirit Guardians)</em></p>
+<p><strong>4레벨 (3슬롯):</strong> <em>신탁(Divination), 자유 이동(Freedom of Movement), 신앙의 수호자(Guardian of Faith)</em></p>
+<p><strong>5레벨 (2슬롯):</strong> <em>상급 회복(Greater Restoration), 죽은 자 되살리기(Raise Dead)</em></p>
+<p><strong>6레벨 (1슬롯):</strong> <em>경로 탐색(Find the Path), 해악(Harm), 진실한 시야(True Seeing)</em></p>
+<p><strong>7레벨 (1슬롯):</strong> <em>불의 폭풍(Fire Storm), 재생(Regenerate)</em></p>
+<p><strong>8레벨 (1슬롯):</strong> <em>지진(Earthquake)</em></p>
+</div>
+
+<h4>행동</h4>
+<p><strong>단검.</strong> <em>근접 무기 공격:</em> 명중 +4, 간격 5 ft., 대상 하나. <em>적중:</em> 2 (1d4) 관통 피해.</p>
+<p><strong>저주 (긴 휴식 후 재충전).</strong> 마담 에바는 30피트 이내에서 볼 수 있는 생물 하나를 대상으로 한다. 대상은 DC 17 지혜 내성 굴림에 성공해야 하며, 실패하면 저주에 걸린다. 저주에 걸린 동안, 대상은 실명 및 청각 상실 상태가 된다. 저주는 상급 회복(Greater Restoration) 주문, 저주 해제(Remove Curse) 주문, 또는 유사한 마법으로 해제될 때까지 지속된다. 저주가 끝나면, 마담 에바는 5d6 정신 피해를 받는다.</p>
+<p><strong>사안(Evil Eye) (짧은 휴식 또는 긴 휴식 후 재충전).</strong> 마담 에바는 10피트 이내에서 볼 수 있는 생물 하나를 대상으로 하여 다음 주문 중 하나를 시전한다 (내성 DC 17). 이때 동작 요소나 물질 요소가 필요하지 않다: 동물 친화(Animal Friendship), 인물 매혹(Charm Person), 또는 인물 속박(Hold Person). 대상이 최초 내성 굴림에 성공하면, 마담 에바는 자신의 다음 턴이 끝날 때까지 실명 상태가 된다. 대상이 이 효과에 대한 내성 굴림에 한 번 성공하면, 24시간 동안 모든 비스타니의 사안 능력에 면역이 된다.</p>
+</div>
+
+<!-- 구분선 -->
+<div class="section-divider">* * *</div>
+
+<h3 class="area-title" id="creature-mongrelfolk">혼종인간(Mongrelfolk)</h3>
+
+<p>혼종인간(Mongrelfolk)은 끔찍한 마법 변형을 겪었거나 그러한 변형을 겪은 조상의 후손인 인간형 생물로, 원래 존재의 극히 일부만 남아 있다. 그들의 인간형 몸에는 다양한 짐승의 특징이 결합되어 있다. 예를 들어, 한 혼종인간은 드워프의 기본 체형에 고양이와 도마뱀의 특징이 결합된 머리, 게의 집게발로 끝나는 한쪽 팔, 갈라진 발굽으로 끝나는 한쪽 다리를 가질 수 있다. 다른 혼종인간은 소의 피부와 뿔, 거미의 눈, 개구리의 다리, 비늘 달린 도마뱀 꼬리를 가질 수 있다. 각 혼종인간의 인간형과 동물 형태의 미친 듯한 조합은 느리고 어색한 보행으로 이어진다.</p>
+
+<p><strong>소리 흉내.</strong> 혼종인간은 기형적인 입과 성대를 가지고 있다. 그들은 다양한 동물 울음소리와 의미 없는 소리가 섞인 불완전한 공용어를 구사한다. 그들은 들어본 적 있는 짐승과 인간형의 소리를 효과적으로 흉내낼 수 있다. 혼종인간은 이 소리를 은밀한 의사소통 수단으로 사용할 만큼 정교하지는 않지만, 적을 함정으로 유인하거나 주의를 분산시키는 데 활용할 수 있다.</p>
+
+<p><strong>추방자.</strong> 혼종인간은 다른 인간형 사회에서 거의 환영받지 못하며, 학대당하거나, 노예가 되거나, 기피 대상이 된다. 그들은 보통 문명의 변두리에서 폐허, 버려진 건물, 또는 다른 인간형 종족이 한때 살거나 건설했던 장소에 산다. 자기 거처 밖에서는 소심하고 겁이 많지만, 소굴 안에서는 맹렬하게 영역을 지킨다.</p>
+
+<p><strong>위장 전문가.</strong> 혼종인간은 종종 망토와 두건 아래 기형을 숨긴다. 이런 식으로 때때로 건장한 인간이나 마른 드워프로 위장할 수 있다. 그들은 위장술을 좋아하여, 망토에 나뭇잎과 나뭇가지를 붙이고, 갈색 물감으로 피부를 칠하고, 그 아래 숨을 수 있는 풀 그물을 엮는다. 야생에서 사냥하거나 소굴 밖에서 경비를 설 때 이러한 위장을 사용한다. 발견되기 전까지, 위장한 혼종인간은 숨기 위해 수행하는 은신 판정에 이점을 가진다.</p>
+
+<p><strong>끔찍한 후손.</strong> 상급 회복(Greater Restoration) 주문을 사용하여 혼종인간을 원래 형태로 되돌리는 것이 가능하지만, 혼종인간의 자손에게는 같은 말을 할 수 없다. 마법으로 만들어진 혼종인간만이 원래 형태로 되돌릴 수 있다. 태어난 혼종인간은 진정한 혼종인간이며, 되돌릴 수 있는 주문이나 효과의 대상이 아니다.</p>
+
+<p>혼종인간은 다른 인간형과 번식할 수 있지만, 그런 부모에게서 태어나는 자녀의 거의 전부가 혼종인간이다. (약 백 명 중 한 명꼴로 혼종인간이 아닌 부모를 닮은 아이가 태어난다.)</p>
+
+<div class="stat-block">
+<h4>혼종인간(MONGRELFOLK)</h4>
+<p><em>중형 인간형 (혼종인간), 모든 성향</em></p>
+<hr>
+<p><strong>방어도</strong> 11 (자연 갑옷)</p>
+<p><strong>히트 포인트</strong> 26 (4d8 + 8)</p>
+<p><strong>이동 속도</strong> 20 ft.</p>
+<hr>
+<table>
+<thead><tr><th>근력</th><th>민첩</th><th>건강</th><th>지능</th><th>지혜</th><th>매력</th></tr></thead>
+<tbody><tr><td>12 (+1)</td><td>9 (-1)</td><td>15 (+2)</td><td>9 (-1)</td><td>10 (+0)</td><td>6 (-2)</td></tr></tbody>
+</table>
+<hr>
+<p><strong>기술</strong> 기만 +2, 감지 +2, 은신 +3</p>
+<p><strong>감각</strong> 수동 감지 12</p>
+<p><strong>언어</strong> 공용어</p>
+<p><strong>도전 지수</strong> 1/4 (50 XP)</p>
+<hr>
+<p><strong>비범한 특징.</strong> 혼종인간은 다음 비범한 특징 중 하나를 가진다. d20을 굴려 무작위로 결정하거나 DM이 선택한다:</p>
+<ul>
+  <li><strong>1-3: 양서류.</strong> 혼종인간은 공기와 물 모두에서 호흡할 수 있다.</li>
+  <li><strong>4-9: 어둠시야.</strong> 혼종인간은 60피트 범위의 어둠시야를 가진다.</li>
+  <li><strong>10: 비행.</strong> 혼종인간은 가죽질의 날개와 40피트의 비행 속도를 가진다.</li>
+  <li><strong>11-15: 예민한 청각과 후각.</strong> 혼종인간은 청각이나 후각에 의존하는 지혜(감지) 판정에 이점을 가진다.</li>
+  <li><strong>16-17: 거미 등반.</strong> 혼종인간은 천장의 아랫면을 포함한 어려운 표면을 능력 판정 없이 등반할 수 있다.</li>
+  <li><strong>18-19: 서서 뛰기.</strong> 혼종인간의 멀리뛰기는 최대 20피트, 높이뛰기는 최대 10피트이며, 도움닫기 유무와 관계없다.</li>
+  <li><strong>20: 머리 둘.</strong> 혼종인간은 지혜(감지) 판정과 실명, 매혹, 청각 상실, 공포, 기절, 또는 의식불명 상태에 대한 내성 굴림에 이점을 가진다.</li>
+</ul>
+
+<p><strong>흉내.</strong> 혼종인간은 목소리를 포함하여 들어본 모든 소리를 흉내낼 수 있다. 소리를 듣는 생물은 DC 12 지혜(통찰) 판정에 성공하면 모방임을 알아챌 수 있다.</p>
+
+<h4>행동</h4>
+<p><strong>다중공격.</strong> 혼종인간은 두 번 공격한다: 물기로 한 번, 발톱 또는 단검으로 한 번.</p>
+<p><strong>물기.</strong> <em>근접 무기 공격:</em> 명중 +3, 간격 5 ft., 대상 하나. <em>적중:</em> 3 (1d4 + 1) 관통 피해.</p>
+<p><strong>발톱.</strong> <em>근접 무기 공격:</em> 명중 +3, 간격 5 ft., 대상 하나. <em>적중:</em> 3 (1d4 + 1) 참격 피해.</p>
+<p><strong>단검.</strong> <em>근접 또는 원거리 무기 공격:</em> 명중 +3, 간격 5 ft. 또는 사거리 20/60 ft., 대상 하나. <em>적중:</em> 3 (1d4 + 1) 관통 피해.</p>
+</div>
+
+<h3 class="area-title" id="monster-phantom">유령 전사(Phantom Warrior)</h3>
+
+<p>유령 전사(Phantom Warrior)는 전장에서 쓰러지거나 맡은 임무를 수행하다 죽은 의지 강한 병사나 기사의 영적 잔재다. 살아있을 때의 자신과 동일한 모습이지만 반투명하게 나타난다.</p>
+
+<p><strong>임무에 의한 구속(Task Driven).</strong> 유령 전사는 종종 유령(ghost)으로 오인되지만, 미완의 목표를 달성하려는 갈망에 묶여 있는 것이 아니다. 스스로 언제든 언데드 존재를 끝낼 수 있다. 유령 전사의 영혼은 자발적으로 머무르며, 이전 주인에 대한 충성심이나 명예심, 또는 의무감을 충족시켜야 한다는 믿음 때문이다. 예를 들어, 성벽을 지키다 죽은 경비병이 유령 전사로 돌아와 계속 성벽을 지키다가, 새로운 경비병이 배치되거나 성벽이 파괴되면 영원히 사라질 수 있다. 죽음과 유령 전사로 되살아남 사이의 기간은 보통 24시간이다.</p>
+
+<p><strong>희미해진 기억(Faded Memories).</strong> 유령 전사는 죽기 전의 성향과 성격을 유지하며, 어떻게 죽었는지를 기억한다. 죽기 직전의 기억은 흐릿하며, 더 오래된 기억은 잊혀진다. 유령 전사는 보통 자신의 삶에서 마지막 1d10 + 10일을 기억할 수 있으며, 그 이전의 모든 것은 꿰뚫을 수 없는 안개 속에 묻혀 있다.</p>
+
+<p><strong>강력한 존재감(Forceful Presence).</strong> 비실체적이지만, 유령 전사는 주변의 에너지를 활용하여 공격을 막고 강력한 힘으로 타격할 수 있다. 보이지 않는 에너지의 외피가 유령 전사의 유령 갑옷, 방패, 무기를 감싸며, 이들은 강철만큼 단단해지지만 벽이나 다른 고체를 통과하는 능력은 방해하지 않는다.</p>
+
+<p><strong>언데드 본성(Undead Nature).</strong> 유령 전사는 공기, 음식, 음료, 수면이 필요하지 않다.</p>
+
+<div class="sidebar">
+<h3>유령 전사(Phantom Warrior)</h3>
+<p><em>중형 언데드, 임의의 성향</em></p>
+<hr>
+<p><strong>방어도</strong> 16</p>
+<p><strong>히트 포인트</strong> 45 (6d8 + 18)</p>
+<p><strong>이동 속도</strong> 30피트</p>
+<hr>
+<table>
+<thead><tr><th>근력</th><th>민첩</th><th>건강</th><th>지능</th><th>지혜</th><th>매력</th></tr></thead>
+<tbody><tr><td>16 (+3)</td><td>11 (+0)</td><td>16 (+3)</td><td>8 (−1)</td><td>10 (+0)</td><td>15 (+2)</td></tr></tbody>
+</table>
+<p><strong>기술</strong> 인식 +2, 은신 +4</p>
+<p><strong>피해 저항</strong> 비마법 공격의 타격, 관통, 베기</p>
+<p><strong>피해 면역</strong> 냉기, 사령, 독</p>
+<p><strong>상태 면역</strong> 매혹, 탈진, 공포, 잡기, 마비, 석화, 중독, 엎드림, 속박</p>
+<p><strong>감각</strong> 어둠시야 60피트, 수동 인식 12</p>
+<p><strong>언어</strong> 생전에 알던 모든 언어</p>
+<p><strong>도전 지수</strong> 3 (700 XP)</p>
+<hr>
+<p><strong>에테르 시야(Ethereal Sight).</strong> 유령 전사는 물질계에 있을 때 에테르계(Ethereal Plane)를 60피트까지 볼 수 있으며, 그 반대도 가능하다.</p>
+
+<p><strong>비실체 이동(Incorporeal Movement).</strong> 유령 전사는 다른 생물과 물체를 어려운 지형인 것처럼 통과할 수 있다. 물체 안에서 턴을 끝내면 5 (1d10) 힘 피해를 받는다.</p>
+
+<p><strong>영체 갑옷과 방패(Spectral Armor and Shield).</strong> 유령 전사의 방어도에는 영체 갑옷과 방패가 반영되어 있다.</p>
+
+<h4>행동</h4>
+
+<p><strong>다중공격(Multiattack).</strong> 유령 전사는 영체 장검으로 두 번 공격한다.</p>
+
+<p><strong>영체 장검(Spectral Longsword).</strong> <em>근접 무기 공격:</em> 명중 +5, 간격 5피트, 대상 하나. <em>명중:</em> 7 (1d8 + 3) 힘 피해.</p>
+
+<p><strong>에테르화(Etherealness).</strong> 유령 전사는 물질계에서 에테르계로 들어가거나, 그 반대로 이동한다. 경계 에테르(Border Ethereal)에 있는 동안 물질계에서 보이며, 그 반대도 가능하지만, 다른 계의 존재에게 영향을 미치거나 받을 수 없다.</p>
+</div>
+
+<!-- ==================== -->
+
+<h3 class="area-title" id="npc-pidlwick">피들위크 2세(Pidlwick II)</h3>
+
+<p>남편이 전투에서 죽은 후, 도르프니야 딜리스냐 여공작(Duchess Dorfniya Dilisnya)은 스트라드 폰 자로비치 백작(Count Strahd von Zarovich)의 신부가 되겠다는 목표를 세웠지만, 그의 사랑을 얻는 데는 실패했다. 그럼에도 그녀의 성 방문은 잦았으며, 그녀는 자신의 어릿광대 피들위크(Pidlwick)를 동반하지 않고는 여행하지 않았다. 이 작은 남자는 레이븐로프트 성(Castle Ravenloft)에 한 줄기 햇살과 같았으며, 스트라드를 즐겁게 하지는 못했으나 타티아나(Tatyana)와 세르게이(Sergei)를 농담과 재주로 즐겁게 했다. 그래서 스트라드는 피들위크와 여공작이 방문할 때마다 반대하지 않았다.</p>
+
+<p>환영하고 호의에 보답하고 싶었던 여공작은 전설적인 장난감 제작자 프리츠 폰 비르크(Fritz von Weerg)에게 스트라드의 가문을 위한 선물로 피들위크의 태엽 인형을 만들도록 의뢰했다. 여공작의 마음은 좋은 곳에 있었지만, 인형은 피들위크의 능력을 갖추지 못했고 누구도 즐겁게 하지 못했다. 피들위크 자신이 몇 달간 훈련시켰음에도 인형은 말을 할 수 없었고, 움직임은 재미있기보다 어색했다.</p>
+
+<p>혹독한 겨울이 여공작과 그녀의 어릿광대, 어릿광대의 인형을 레이븐로프트 성에 몇 달간 가두었다. 여공작은 이후 병으로 사망했고, 타티아나는 피들위크에게 레이븐로프트 성에 남아달라고 부탁했다.</p>
+
+<p><strong>하나가 너무 많은 피들위크(One Pidlwick Too Many).</strong> 폰 비르크는 평범한 장난감 제작자가 아니었으며, 모든 창작물에 자신의 일부를 담았다. 즉 그의 작품에는 창작자의 광기가 약간 깃들어 있었다. 피들위크 2세(Pidlwick II)는 피들위크가 레이븐로프트 성에 있는 한 자신의 존재 이유가 없다는 것을 알았기에, 피들위크를 긴 계단 아래로 밀어 죽였다. 다른 모든 이들은 사고라고 생각했다. 이후 며칠간 피들위크 2세는 자신의 이름을 딴 원조의 빈자리를 채우려 최선을 다했지만, 인형의 존재 자체가 타티아나를 불안하게 했고, 공연을 요청받은 적이 없었다. 결국 버려진 장난감처럼 치워져 버렸다.</p>
+
+<p><strong>사악한 장난감(Evil Toy).</strong> 피들위크 2세는 객실 옆 작은 벽장에 보관되었다. 드물게 누군가 그곳에 묵을 때면, 피들위크는 한밤중에 벽장에서 몰래 나와 베개로 손님을 질식시킨 후 벽장으로 돌아가곤 했다. 성의 직원들은 인형이 원인일 것이라고는 생각하지 않았고, 손님들이 잠자는 중 죽었다고 추정했다.</p>
+
+<p>하지만 스트라드는 속지 않았다. 그는 꽤 빨리 태엽 인형이 살인적 본성을 드러내기 시작했음을 깨달았다. 피들위크 2세를 파괴하는 대신, 스트라드는 가끔 성가신 손님을 처리하기 위해 어릿광대를 곁에 두었다.</p>
+
+<p>세르게이와 타티아나가 죽은 후, 성은 사실상 폐허가 되었고, 피들위크 2세가 "즐겁게 해줄" 손님도 더 이상 없었다. 태엽 인형은 벽장에서 나와 새로운 은신처를 찾았다. 스트라드를 두려워하며, 자신에게 관심을 주는 누구든 열성적으로 따라다닌다.</p>
+
+<p>피들위크 2세는 기본적으로 대형 장난감이다. 4피트 높이의 기계 장치로, 톱니바퀴, 스프링 및 기타 부품이 정밀하게 맞춰져 생명의 외양을 부여한다. 피부는 관절이 있는 나무 뼈대 위에 팽팽하게 당긴 가죽을 꿰매 만들었다. 피들위크 2세는 눈과 입 주위에 검댕을 문질러 잭오랜턴의 삼각형 눈과 들쭉날쭉한 웃음을 만들어 놓았다.</p>
+
+<div class="sidebar" style="background:#f5f0e0; border-left:3px solid var(--accent2); margin:16px 0; padding:12px 16px;">
+<p><strong>피들위크 2세의 특성(Pidlwick II's Traits)</strong></p>
+<p><strong>이상.</strong> "사람들을 행복하게 만들 수 있으면 좋겠다."</p>
+<p><strong>유대.</strong> "나를 무서워하지 않고 내 곁을 즐거워하는 사람을 찾고 싶다—누구라도."</p>
+<p><strong>결점.</strong> "화가 나면 나쁜 짓을 한다."</p>
+</div>
+
+<div class="sidebar">
+<h3>피들위크 2세(Pidlwick II)</h3>
+<p><em>소형 구조물, 중립 악</em></p>
+<hr>
+<p><strong>방어도</strong> 14 (자연 갑옷)</p>
+<p><strong>히트 포인트</strong> 10 (3d6)</p>
+<p><strong>이동 속도</strong> 30피트</p>
+<hr>
+<table>
+<thead><tr><th>근력</th><th>민첩</th><th>건강</th><th>지능</th><th>지혜</th><th>매력</th></tr></thead>
+<tbody><tr><td>10 (+0)</td><td>14 (+2)</td><td>11 (+0)</td><td>8 (−1)</td><td>13 (+1)</td><td>10 (+0)</td></tr></tbody>
+</table>
+<p><strong>기술</strong> 공연 +2</p>
+<p><strong>피해 면역</strong> 독</p>
+<p><strong>상태 면역</strong> 마비, 석화, 중독</p>
+<p><strong>감각</strong> 수동 인식 11</p>
+<p><strong>언어</strong> 공용어를 이해하지만 말할 수 없고 읽거나 쓸 수도 없다</p>
+<p><strong>도전 지수</strong> 1/4 (50 XP)</p>
+<hr>
+<p><strong>매복꾼(Ambusher).</strong> 전투 첫 라운드에서 피들위크 2세는 아직 턴을 가지지 않은 생물에 대한 공격 굴림에 이점을 갖는다.</p>
+
+<h4>행동</h4>
+
+<p><strong>곤봉(Club).</strong> <em>근접 무기 공격:</em> 명중 +2, 간격 5피트, 대상 하나. <em>명중:</em> 2 (1d4) 타격 피해.</p>
+
+<p><strong>다트(Dart).</strong> <em>원거리 무기 공격:</em> 명중 +4, 사거리 20/60피트, 대상 하나. <em>명중:</em> 4 (1d4 + 2) 관통 피해.</p>
+</div>
+
+<!-- ==================== -->
+
+<h2>크리처 (R-Z)</h2>
+
+<h3 class="area-title" id="npc-rahadin">라하딘(Rahadin)</h3>
+
+<p>라하딘(Rahadin)은 레이븐로프트 성의 황혼 엘프(dusk elf) 집사로, 거의 500년 동안 스트라드의 가문에 충실히 봉사해 왔다. 그는 스트라드의 영원한 하인이자, 오랜 전우이며, 평생 수천 명을 죽인 무자비한 전사다.</p>
+
+<p><strong>추방(Exile).</strong> 라하딘은 약하고 부패했다고 여긴 황혼 엘프 왕자에게 복종하기를 거부하여 추방되었다. 황혼 엘프들이 나중에 바로프 왕(King Barov)에게 충성을 거부하자, 라하딘은 바로프가 그들을 정복하는 것을 도왔다. 엘프 왕국의 왕족 혈통은 말살되었고, 황혼 엘프들은 토끼처럼 사냥당했다. 살아남은 소수는 복종하거나 비스타니(Vistani) 사이에서 살도록 강요받았다. 바로프는 라하딘에게 매우 흡족하여 황혼 엘프를 자신의 가문의 명예 일원으로 삼았다.</p>
+
+<p><strong>집사(Chamberlain).</strong> 바로프가 죽은 후에도, 라하딘은 스트라드의 장군 중 한 명으로 계속 싸웠다. 전쟁이 끝나고 스트라드가 레이븐로프트 성 건설에 관심을 돌리자, 라하딘은 마법사와 장인들이 바로비아(Barovia)로 오도록 주선했다. 수년 후, 스트라드는 라하딘을 성의 집사로 임명했다. 라하딘은 스트라드가 요청하는 것은 무엇이든 기꺼이 수행했으며, 자신의 엄격한 기준에 미치지 못하는 직원들을 일상적으로 채찍질하여 성의 직원들에게 공포를 심었다.</p>
+
+<p>파트리나 벨리코브나(Patrina Velikovna)라는 이름의 황혼 엘프가 스트라드의 문을 두드렸을 때, 라하딘은 그녀가 스트라드의 흥미를 끌었음을 알 수 있었지만 그녀의 동기를 의심했다. 파트리나는 불멸이라는 전망으로 스트라드를 유혹하려 했다—스트라드가 무엇보다 원하던 것이었다. 그녀는 호박 사원(Amber Temple)이라 불리는 금단의 지식 금고에 불멸을 얻는 비밀이 숨겨져 있다고 말했다. 스트라드가 사원을 탐험하러 간 사이, 라하딘은 주인의 모든 업무를 처리하며 스트라드를 파트리나로부터 떼어놓을 여인을 찾기 시작했다. 이 임무에서 그는 실패했다. 그러나 스트라드의 동생 세르게이(Sergei)가 타티아나(Tatyana)를 찾으면서 그의 목표는 달성되었다.</p>
+
+<p>타티아나는 스트라드의 취향에 맞는 여인이었다—절묘한 아름다움과 온화한 기질의 여성. 스트라드가 레이븐로프트에 돌아왔을 때, 젊은 여인은 즉시 그의 눈에 띄었고, 라하딘은 파트리나에게 성에서의 그녀의 존재가 더 이상 필요하지 않다고 알리는 기쁨을 누렸다.</p>
+
+<p>타티아나가 죽고 스트라드가 뱀파이어가 된 후에도 라하딘의 충성은 흔들리지 않았다. 라하딘은 계속 주인의 명을 수행했다. 타티아나를 잊고 싶었던 스트라드는 더 많은 여인들을 성으로 유인했고, 그 중 여럿을 신부로 삼은 후 생명을 빼앗고 뱀파이어 스폰(vampire spawn)으로 만들었다. 라하딘은 이 여인들에게 보석과 고급 의복을 풍성하게 제공하고, 레이븐로프트에서의 체류 동안 편안하게 지내도록 보살폈다.</p>
+
+<p><strong>처형자(Executioner).</strong> 파트리나 벨리코브나와 그녀의 사람들은 타티아나의 죽음과 스트라드의 저주 소식을 들었을 때 비스타니 사이에서 살고 있었다. 시간을 초월한 파트리나는 스트라드의 사랑을 얻겠다는 희망으로 레이븐로프트에 돌아왔다. 이번에는 파트리나가 스트라드의 힘을 탐한다는 것이 명백했고, 스트라드가 결코 그녀를 사랑하지 않을 것이라는 점도 분명했다. 라하딘은 파트리나가 이전의 여인들과 같은 운명을 맞이할 것이라고 생각했다. 파트리나의 동족이 스트라드가 그녀를 아내로 삼는 것을 막기 위해 그녀를 돌로 쳐 죽였을 때, 그는 틀렸음이 증명되었다.</p>
+
+<p>스트라드는 황혼 엘프들이 파트리나를 빼앗은 것에 화가 났다. 그녀의 시신을 확보하고 레이븐로프트의 지하묘지에 안장한 후, 스트라드는 황혼 엘프들을 벌하도록 라하딘을 보냈다. 라하딘은 수컷들이 번식할 수 없도록 암컷 엘프들을 학살했다. 그는 또한 석형을 주도한 파트리나의 오빠 카시미르(Kasimir)의 귀를 잘랐다.</p>
+
+<p><strong>죽은 자의 비명(Screams of the Dead).</strong> 라하딘은 너무나 두려운 존재여서, 그로부터 10피트 이내에 서 있는 자는 그가 평생 죽인 무수한 남녀의 울부짖는 비명을 들을 수 있다. 라하딘은 그 비명을 들을 수 없으며, 들을 수 있다 해도 괴로워하지 않을 것이다. 그가 신경 쓰는 유일한 것은 스트라드 폰 자로비치이며, 그를 위해 기꺼이 목숨을 바칠 것이다.</p>
+
+<div class="sidebar" style="background:#f5f0e0; border-left:3px solid var(--accent2); margin:16px 0; padding:12px 16px;">
+<p><strong>라하딘의 특성(Rahadin's Traits)</strong></p>
+<p><strong>이상.</strong> "충성이 전부다."</p>
+<p><strong>유대.</strong> "나는 바로프 폰 자로비치 왕의 아들이며, 그의 아들—나의 형제이자 주군—을 영원히 섬기겠다."</p>
+<p><strong>결점.</strong> "나는 수천 명을 죽였다. 폰 자로비치의 유산을 지키기 위해 수천 명을 더 학살할 것이다."</p>
+</div>
+
+<div class="sidebar">
+<h3>라하딘(Rahadin)</h3>
+<p><em>중형 인간형 (엘프), 질서 악</em></p>
+<hr>
+<p><strong>방어도</strong> 18 (박힌 가죽 갑옷)</p>
+<p><strong>히트 포인트</strong> 135 (18d8 + 54)</p>
+<p><strong>이동 속도</strong> 35피트</p>
+<hr>
+<table>
+<thead><tr><th>근력</th><th>민첩</th><th>건강</th><th>지능</th><th>지혜</th><th>매력</th></tr></thead>
+<tbody><tr><td>14 (+2)</td><td>22 (+6)</td><td>17 (+3)</td><td>15 (+2)</td><td>16 (+3)</td><td>18 (+4)</td></tr></tbody>
+</table>
+<p><strong>내성 굴림</strong> 건강 +7, 지혜 +7</p>
+<p><strong>기술</strong> 기만 +8, 통찰 +7, 위협 +12, 인식 +11, 은신 +14</p>
+<p><strong>감각</strong> 어둠시야 60피트, 수동 인식 21</p>
+<p><strong>언어</strong> 공용어, 엘프어</p>
+<p><strong>도전 지수</strong> 10 (5,900 XP)</p>
+<hr>
+<p><strong>죽음의 합창(Deathly Choir).</strong> 라하딘으로부터 10피트 이내의 모든 생물은 <em>마인드 블랭크(mind blank)</em> 주문으로 보호받지 않는 한, 마음속에서 라하딘이 죽인 수천 명의 비명을 듣는다. 보너스 행동으로, 라하딘은 비명을 들을 수 있는 모든 생물에게 DC 16 지혜 내성 굴림을 강제할 수 있다. 실패 시 16 (3d10) 정신 피해를 입으며, 성공 시 절반의 피해를 입는다.</p>
+
+<p><strong>요정 혈통(Fey Ancestry).</strong> 라하딘은 매혹에 대한 내성 굴림에 이점을 가지며, 마법으로 잠들지 않는다.</p>
+
+<p><strong>선천적 주문시전(Innate Spellcasting).</strong> 라하딘의 선천적 주문시전 능력치는 지능이다. 구성요소 없이 다음 주문을 선천적으로 시전할 수 있다:</p>
+<p>3/일: <em>미스티 스텝(misty step)</em>, <em>팬텀 스티드(phantom steed)</em></p>
+<p>1/일: <em>매직 웨폰(magic weapon)</em>, <em>논디텍션(nondetection)</em></p>
+
+<p><strong>야생의 가면(Mask of the Wild).</strong> 라하딘은 나뭇잎, 폭우, 눈, 안개 및 기타 자연 현상에 의해 약간만 가려져 있어도 은신을 시도할 수 있다.</p>
+
+<h4>행동</h4>
+
+<p><strong>다중공격(Multiattack).</strong> 라하딘은 시미터로 세 번 공격하거나, 독 다트로 두 번 공격한다.</p>
+
+<p><strong>시미터(Scimitar).</strong> <em>근접 무기 공격:</em> 명중 +10, 간격 5피트, 대상 하나. <em>명중:</em> 9 (1d6 + 6) 베기 피해.</p>
+
+<p><strong>독 다트(Poisoned Dart).</strong> <em>원거리 무기 공격:</em> 명중 +10, 사거리 20/60피트, 대상 하나. <em>명중:</em> 8 (1d4 + 6) 관통 피해 + 5 (2d4) 독 피해.</p>
+</div>
+
+<!-- ==================== -->
+
+<h3 class="area-title" id="npc-rictavio">릭타비오(Rictavio)</h3>
+
+<p>몇 달 전, 화려하게 차려입은 하프엘프 음유시인이 카니발 마차를 타고 어깨에 애완 원숭이를 올린 채 바로비아에 왔다. 그는 바라톡 호수(Lake Baratok)의 버려진 탑을 차지한 후, 몇 달 뒤 발라키(Vallaki) 마을로 굴러들어 왔다. 새로운 배우를 찾는 카니발 단장이라 주장하며, 그는 현지인들에게 먼 땅의 이야기를 들려주기 시작했다.</p>
+
+<p><strong>몬스터 사냥꾼(Monster Hunter).</strong> 하프엘프 단장은 사실 루돌프 반 리히텐(Rudolph van Richten)이라는 전설적인 인간 뱀파이어 사냥꾼이다. 반 리히텐의 이야기는 슬프다. 다르콘(Darkon)이라는 땅 출신의 학자이자 의사인 그는 소꿉친구 잉그리드(Ingrid)와 결혼했고, 둘 사이에 에라스무스(Erasmus)라는 아들이 있었다. 에라스무스가 열네 살일 때 비스타니에게 납치되어 메투스 남작(Baron Metus)이라는 뱀파이어에게 동반자로 팔렸다. 반 리히텐이 아들을 찾았을 때는 이미 늦었다. 남작이 이미 에라스무스를 뱀파이어 스폰으로 변환시킨 것이다. 에라스무스는 아버지에게 고통을 끝내달라고 간청했고, 반 리히텐은 아들의 가슴에 나무 말뚝을 박아 그렇게 했다. 메투스 남작은 반 리히텐의 아내를 죽여 그 일에 복수했고, 반 리히텐은 그 이후로 가족의 파멸이라는 공포 속에 살아왔다. 메투스 남작을 차례로 파괴한 후, 반 리히텐은 비스타니에 대한 복수를 추구하며 악한 괴물을 사냥하는 삶을 시작했다.</p>
+
+<p><strong>기다림의 게임(The Waiting Game).</strong> 반 리히텐은 더 이상 젊은 사람이 아니다. 자신의 길이 끝나고 있음을 알지만, 그의 일은 끝나지 않았다. 그는 역사상 가장 위대한 뱀파이어인 스트라드 폰 자로비치를 죽이기 위해 바로비아에 왔다. 반 리히텐은 수년간 스트라드를 연구했으며, 정면 대결로 뱀파이어를 이길 수 없다는 것을 안다. 적절한 때를 기다려야 한다. 그는 스트라드가 영역이 조용할 때 때때로 관에서 수년간 동면한다는 좋은 증거를 가지고 있다. 시간을 벌면서, 반 리히텐은 <em>변장의 모자(hat of disguise)</em>의 도움으로 눈에 잘 띄는 곳에 숨어 있으며, 그의 생각은 <em>정신 차폐 반지(ring of mind shielding)</em>로 보호된다. 그는 스트라드에 반대하는 늑대까마귀 결사—깃털의 수호자들(Keepers of the Feather)—에 대해 더 알아보면서, 비밀 결사를 상호 적에게 노출시키지 않으려 노력하고 있다. 때가 오면 늑대까마귀들이 도움이 될 수 있다고 생각한다. 반 리히텐은 또한 스트라드의 첩자를 가능한 한 많이 제거하고 싶어하며, 사악한 비스타니부터 시작하고 있다.</p>
+
+<p><strong>계획이 있는 사나이(Man with a Plan).</strong> 반 리히텐은 자신의 전 제자인 에즈메랄다 다브니르(Ezmerelda d'Avenir)라는 선한 비스타나가 그를 찾아 바로비아에 왔다는 것을 모른다. 그는 그녀에게 많은 몬스터 사냥 기술을 가르쳤지만, 그녀는 그의 모든 수법과 변장을 알지 못한다. 지금까지 그들의 길은 교차하지 않았다. 반 리히텐이 에즈메랄다의 존재를 알게 되면, 자신의 계획을 위험에 빠뜨리지 않으면서 그녀를 보호하기 위해 최선을 다한다. 모험가 일행을 조종하여 그녀를 지켜보게 할 수 있다면 그렇게 할 것이다.</p>
+
+<p>반 리히텐은 혼자 일한다. 오래전 비스타니 예언자가 그에게 건 저주로 인해 그와 친구가 되는 자에게 파멸이 닥친다. 게다가 위험이 너무 크기에 정체가 드러나는 것을 감수할 수 없다고 믿는다. 따라서 정체가 드러날 위험이 있다고 판단하면, 자신의 탑(제11장 참조)이나 스트라드 영지의 다른 조용한 곳으로 피신한다.</p>
+
+<div class="sidebar" style="background:#f5f0e0; border-left:3px solid var(--accent2); margin:16px 0; padding:12px 16px;">
+<p><strong>릭타비오의 특성(Rictavio's Traits)</strong></p>
+<p><strong>이상.</strong> "악은 도전받지 않고 넘어가서는 안 된다."</p>
+<p><strong>유대.</strong> "사랑하는 이들을 보호하기 위해, 그들을 적으로부터 멀리, 숨겨 두어야 한다."</p>
+<p><strong>결점.</strong> "나는 저주받았다. 따라서 결코 평화를 얻지 못할 것이다."</p>
+</div>
+
+<div class="sidebar">
+<h3>릭타비오(Rictavio)</h3>
+<p><em>중형 인간형 (인간), 질서 선</em></p>
+<hr>
+<p><strong>방어도</strong> 12 (가죽 갑옷)</p>
+<p><strong>히트 포인트</strong> 77 (14d8 + 14)</p>
+<p><strong>이동 속도</strong> 30피트</p>
+<hr>
+<table>
+<thead><tr><th>근력</th><th>민첩</th><th>건강</th><th>지능</th><th>지혜</th><th>매력</th></tr></thead>
+<tbody><tr><td>9 (−1)</td><td>12 (+1)</td><td>13 (+1)</td><td>16 (+3)</td><td>18 (+4)</td><td>16 (+3)</td></tr></tbody>
+</table>
+<p><strong>내성 굴림</strong> 건강 +4, 지혜 +7</p>
+<p><strong>기술</strong> 신비학 +9, 통찰 +7, 의학 +7, 인식 +7, 종교 +6, 손재주 +4</p>
+<p><strong>감각</strong> 수동 인식 17</p>
+<p><strong>언어</strong> 심연어, 공용어, 엘프어, 지옥어</p>
+<p><strong>도전 지수</strong> 5 (1,800 XP)</p>
+<hr>
+<p><strong>특수 장비(Special Equipment).</strong> 검 지팡이 외에, 릭타비오는 <em>변장의 모자(hat of disguise)</em>와 <em>정신 차폐 반지(ring of mind shielding)</em>를 착용하고, <em>부활 주문서(spell scroll of raise dead)</em>를 소지하고 있다.</p>
+
+<p><strong>주문시전(Spellcasting).</strong> 릭타비오는 9레벨 주문시전자다. 주문시전 능력치는 지혜이다(주문 내성 DC 15, 주문 공격 명중 +7). 릭타비오는 다음의 성직자 주문을 준비하고 있다:</p>
+<p>소법 (무제한): <em>가이던스(guidance)</em>, <em>라이트(light)</em>, <em>멘딩(mending)</em>, <em>토마터지(thaumaturgy)</em></p>
+<p>1레벨 (4슬롯): <em>큐어 운즈(cure wounds)</em>, <em>선악 탐지(detect evil and good)</em>, <em>선악 차단(protection from evil and good)</em>, <em>생추어리(sanctuary)</em></p>
+<p>2레벨 (3슬롯): <em>오거리(augury)</em>, <em>약한 복원(lesser restoration)</em>, <em>독 차단(protection from poison)</em></p>
+<p>3레벨 (3슬롯): <em>매직 서클(magic circle)</em>, <em>저주 해제(remove curse)</em>, <em>사자와의 대화(speak with dead)</em></p>
+<p>4레벨 (3슬롯): <em>데스 워드(death ward)</em>, <em>행동의 자유(freedom of movement)</em></p>
+<p>5레벨 (1슬롯): <em>디스펠 이블 앤 굿(dispel evil and good)</em></p>
+
+<p><strong>언데드 학살자(Undead Slayer).</strong> 릭타비오가 무기 공격으로 언데드에 명중하면, 언데드는 해당 무기 유형의 추가 10 (3d6) 피해를 받는다.</p>
+
+<h4>행동</h4>
+
+<p><strong>다중공격(Multiattack).</strong> 릭타비오는 검 지팡이로 두 번 공격한다.</p>
+
+<p><strong>검 지팡이(Sword Cane).</strong> <em>근접 무기 공격:</em> 명중 +4, 간격 5피트, 대상 하나. <em>명중:</em> 4 (1d6 + 1) 타격 피해 (나무 지팡이) 또는 관통 피해 (은도금 검).</p>
+</div>
+
+<!-- ==================== -->
+
+<h3 class="area-title" id="npc-strahd">스트라드 폰 자로비치(Strahd von Zarovich)</h3>
+
+<p>날카로운 정신과 어두운 마음을 가진 스트라드 폰 자로비치(Strahd von Zarovich)는 무시무시한 적이다. 헤아릴 수 없는 용기와 생명이 그에게 희생되었다. 그의 성격과 목표를 이해하려면 제1장 "안개 속으로"를 다시 읽어라.</p>
+
+<p>스트라드는 자신의 영지 거의 어디서든 마주칠 수 있지만, 뱀파이어는 항상 제1장의 카드 리딩이 가리키는 장소에서 조우한다. 단, 레이븐로프트 성 지하묘지의 자신의 무덤으로 쫓겨난 경우는 예외다.</p>
+
+<h4>스트라드의 전술(Strahd's Tactics)</h4>
+
+<p>모험 전체가 스트라드를 중심으로 돌아가므로, 그를 지능적으로 플레이하고 플레이어 캐릭터들에게 공포스럽고 교활한 적이 되도록 모든 것을 해야 한다.</p>
+
+<p>스트라드와의 조우를 운영할 때 다음 사실들을 명심하라:</p>
+
+<ul>
+<li>스트라드는 가장 유리한 시점에, 가장 유리한 위치에서 공격한다.</li>
+<li>스트라드는 자신이 불리할 때를 안다. 재생할 수 있는 것보다 더 많은 피해를 받기 시작하면, 근접 전투원과 주문시전자의 사거리 밖으로 이동하거나, 날아서 도망친다(소환한 늑대나 박쥐 또는 쥐 떼가 퇴각을 호위한다).</li>
+<li>스트라드는 캐릭터들을 관찰하여 누가 가장 쉽게 흔들리는지 파악한 후, 지혜 점수가 낮은 캐릭터를 매혹하여 종복으로 삼으려 한다. 최소한 매혹된 캐릭터에게 모험 일행의 다른 구성원으로부터 자신을 호위하라고 명령할 수 있다.</li>
+</ul>
+
+<h4>뱀파이어의 부하(The Vampire's Minions)</h4>
+
+<p>스트라드가 자신의 무덤이나 카드 리딩이 가리키는 장소가 아닌 곳에 나타날 때마다, d20을 굴려 스트라드의 부하 표를 참조하여 어떤 크리처를 데려오는지(있다면) 결정한다.</p>
+
+<div class="sidebar">
+<h3>스트라드의 부하(Strahd's Minions)</h3>
+<table>
+<thead><tr><th>d20</th><th>크리처</th></tr></thead>
+<tbody>
+<tr><td>1–3</td><td>1d4 + 2 다이어 울프(dire wolf)</td></tr>
+<tr><td>4–6</td><td>1d6 + 3 구울(ghoul)</td></tr>
+<tr><td>7–9</td><td>1d4 + 2 스트라드 좀비(이 부록 참조)</td></tr>
+<tr><td>10–12</td><td>2d4 박쥐 떼(swarm of bats)</td></tr>
+<tr><td>13–15</td><td>1d4 + 1 뱀파이어 스폰(vampire spawn)</td></tr>
+<tr><td>16–18</td><td>3d6 늑대(wolf)</td></tr>
+<tr><td>19–20</td><td>없음</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>캐릭터들이 거주지에 있다면, 스트라드의 크리처들은 문과 창문을 부수고 들어오거나, 땅에서 기어 올라오거나, 굴뚝으로 내려온다. 뱀파이어 스폰(스트라드가 오래전 격파한 모험가 일행의 잔해)은 초대받지 않으면 캐릭터들의 위치에 들어갈 수 없다.</p>
+
+<h4>슬픔의 심장(Heart of Sorrow)</h4>
+
+<p>스트라드는 레이븐로프트 성 안에 숨겨진 거대한 수정 심장이라는 추가 보호를 가지고 있어 대담한 전술을 펼 수 있다.</p>
+
+<p>스트라드가 받는 모든 피해는 슬픔의 심장(제4장, K20 구역 참조)으로 전이된다. 심장이 피해를 흡수하여 히트 포인트가 0이 되면 파괴되며, 스트라드가 남은 피해를 받는다. 슬픔의 심장은 50 히트 포인트를 가지며, 히트 포인트가 1 이상 남아 있는 한 매 새벽마다 해당 수치로 회복된다. 스트라드는 자신의 턴에 보너스 행동으로 슬픔의 심장과의 연결을 끊어 더 이상 피해를 흡수하지 않게 할 수 있다. 스트라드는 레이븐로프트 성에 있을 때만 자신의 턴에 보너스 행동으로 슬픔의 심장과의 연결을 재수립할 수 있다.</p>
+
+<p>슬픔의 심장이 제공하는 보호 효과는 섬뜩할 수 있다. 스트라드에게 가한 피해가 빠르게 되돌려지기 때문이다. 예를 들어, 치명타가 스트라드의 턱을 탈골시킬 수 있지만, 순간에 불과하다. 뱀파이어의 턱이 빠르게 제자리로 돌아간다.</p>
+
+<p>슬픔의 심장이나 스트라드가 반마법장(antimagic field) 안에 완전히 들어가면, 슬픔의 심장의 피해 흡수 능력은 억제된다.</p>
+
+<h4>소굴 행동(Lair Actions)</h4>
+
+<p>스트라드가 레이븐로프트 성에 있는 동안, 무력화 상태가 아닌 한 소굴 행동을 취할 수 있다.</p>
+
+<p>주도권 20에서(동점 시 패배), 스트라드는 다음 소굴 행동 중 하나를 선택하거나, 해당 라운드에 아무것도 사용하지 않을 수 있다:</p>
+
+<ul>
+<li>다음 라운드의 주도권 20까지, 스트라드는 단단한 벽, 문, 천장, 바닥이 없는 것처럼 통과할 수 있다.</li>
+<li>스트라드는 자신이 볼 수 있는 원하는 수의 문과 창문을 대상으로 하여, 각각 열리거나 닫히도록 한다. 닫힌 문은 마법적으로 잠길 수 있으며(열려면 DC 20 근력 판정 성공 필요), 스트라드가 효과를 끝내거나 이 소굴 행동을 다시 사용할 때까지 유지된다.</li>
+<li>스트라드는 성에서 죽은 자의 분노한 영혼을 소환한다. 유령(apparition)은 스트라드가 볼 수 있는 적대적인 생물 옆에 나타나, 해당 생물을 공격한 후 사라진다. 유령은 스펙터(specter)의 능력치를 가진다.</li>
+<li>스트라드는 그림자를 드리우는 중형 이하 크리처 하나를 대상으로 한다. 대상의 그림자는 스트라드에게 보이고 30피트 이내여야 한다. 대상이 DC 17 매력 내성 굴림에 실패하면, 그림자가 분리되어 스트라드의 명령에 복종하는 섀도우(shadow)가 되며, 주도권 20에 행동한다. <em>상위 복원(greater restoration)</em> 주문이나 <em>저주 해제(remove curse)</em> 주문을 대상에게 시전하면 자연 그림자가 복원되지만, 언데드 그림자가 파괴된 경우에만 가능하다.</li>
+</ul>
+
+<div class="sidebar">
+<h3>스트라드 폰 자로비치(Strahd von Zarovich)</h3>
+<p><em>중형 언데드 (변신자), 질서 악</em></p>
+<hr>
+<p><strong>방어도</strong> 16 (자연 갑옷)</p>
+<p><strong>히트 포인트</strong> 144 (17d8 + 68)</p>
+<p><strong>이동 속도</strong> 30피트</p>
+<hr>
+<table>
+<thead><tr><th>근력</th><th>민첩</th><th>건강</th><th>지능</th><th>지혜</th><th>매력</th></tr></thead>
+<tbody><tr><td>18 (+4)</td><td>18 (+4)</td><td>18 (+4)</td><td>20 (+5)</td><td>15 (+2)</td><td>18 (+4)</td></tr></tbody>
+</table>
+<p><strong>내성 굴림</strong> 민첩 +9, 지혜 +7, 매력 +9</p>
+<p><strong>기술</strong> 신비학 +15, 인식 +12, 종교 +10, 은신 +14</p>
+<p><strong>피해 저항</strong> 사령; 비마법 공격의 타격, 관통, 베기</p>
+<p><strong>감각</strong> 어둠시야 120피트, 수동 인식 22</p>
+<p><strong>언어</strong> 심연어, 공용어, 용어, 엘프어, 거인어, 지옥어</p>
+<p><strong>도전 지수</strong> 15 (13,000 XP)</p>
+<hr>
+<p><strong>변신자(Shapechanger).</strong> 스트라드가 흐르는 물이나 햇빛 속에 있지 않다면, 행동을 사용하여 초소형 박쥐, 중형 늑대, 중형 안개 구름으로 변신하거나 본래 모습으로 돌아갈 수 있다.</p>
+<p>박쥐나 늑대 형태에서 스트라드는 말할 수 없다. 박쥐 형태에서 보행 속도는 5피트이고 비행 속도는 30피트다. 늑대 형태에서 보행 속도는 40피트다. 크기와 속도를 제외한 다른 능력치는 변하지 않는다. 착용 중인 것은 함께 변신하지만 소지품은 그렇지 않다. 죽으면 본래 모습으로 돌아간다.</p>
+<p>안개 형태에서 스트라드는 행동을 취하거나 말하거나 물체를 조작할 수 없다. 무게가 없으며 비행 속도 20피트를 가지고 공중에 떠 있을 수 있으며, 적대적인 생물의 공간에 들어가 거기 머무를 수 있다. 또한, 공기가 통과할 수 있는 공간이라면 안개도 좁은 틈 없이 통과할 수 있으며, 물은 통과할 수 없다. 근력, 민첩, 건강 내성 굴림에 이점을 가지며, 햇빛으로 받는 피해를 제외한 모든 비마법 피해에 면역이다.</p>
+
+<p><strong>전설적 저항(Legendary Resistance, 3/일).</strong> 스트라드가 내성 굴림에 실패하면, 대신 성공하는 것을 선택할 수 있다.</p>
+
+<p><strong>안개의 탈출(Misty Escape).</strong> 스트라드가 관 밖에서 히트 포인트가 0이 되면, 의식을 잃는 대신 안개 구름으로 변신한다(변신자 특성 참조). 단, 흐르는 물이나 햇빛 속에 있지 않아야 한다. 변신할 수 없으면 파괴된다.</p>
+<p>안개 형태로 히트 포인트가 0인 동안, 뱀파이어 형태로 되돌아갈 수 없으며, 2시간 이내에 자신의 관에 도달하지 못하면 파괴된다. 관에 도달하면 뱀파이어 형태로 돌아간다. 그 후 히트 포인트를 1 이상 회복할 때까지 마비 상태가 된다. 히트 포인트 0인 상태로 관에서 1시간이 지나면 히트 포인트 1을 회복한다.</p>
+
+<p><strong>재생(Regeneration).</strong> 스트라드는 히트 포인트가 1 이상이고 흐르는 물이나 햇빛 속에 있지 않다면, 턴 시작 시 20 히트 포인트를 회복한다. 빛 피해나 성수로 인한 피해를 받으면, 다음 턴 시작 시 이 특성이 작동하지 않는다.</p>
+
+<p><strong>주문시전(Spellcasting).</strong> 스트라드는 9레벨 주문시전자다. 주문시전 능력치는 지능이다(주문 내성 DC 18, 주문 공격 명중 +10). 다음의 마법사 주문을 준비하고 있다:</p>
+<p>소법 (무제한): <em>메이지 핸드(mage hand)</em>, <em>프레스티디지테이션(prestidigitation)</em>, <em>레이 오브 프로스트(ray of frost)</em></p>
+<p>1레벨 (4슬롯): <em>언어 이해(comprehend languages)</em>, <em>안개 구름(fog cloud)</em>, <em>수면(sleep)</em></p>
+<p>2레벨 (3슬롯): <em>사고 탐지(detect thoughts)</em>, <em>돌풍(gust of wind)</em>, <em>미러 이미지(mirror image)</em></p>
+<p>3레벨 (3슬롯): <em>사자 소환(animate dead)</em>, <em>파이어볼(fireball)</em>, <em>논디텍션(nondetection)</em></p>
+<p>4레벨 (3슬롯): <em>블라이트(blight)</em>, <em>상위 투명화(greater invisibility)</em>, <em>폴리모프(polymorph)</em></p>
+<p>5레벨 (1슬롯): <em>물체 활성화(animate objects)</em>, <em>스크라잉(scrying)</em></p>
+
+<p><strong>거미 등반(Spider Climb).</strong> 스트라드는 천장의 아래쪽을 포함한 어려운 표면을 능력 판정 없이 오를 수 있다.</p>
+
+<p><strong>뱀파이어의 약점(Vampire Weaknesses).</strong> 스트라드는 다음과 같은 결함을 가진다:</p>
+<p><em>진입 금지(Forbiddance).</em> 거주자의 초대 없이는 거주지에 들어갈 수 없다.</p>
+<p><em>흐르는 물에 의한 피해(Harmed by Running Water).</em> 흐르는 물에서 턴을 끝내면 20 산성 피해를 받는다.</p>
+<p><em>심장의 말뚝(Stake to the Heart).</em> 관에서 무력화된 상태일 때 나무로 만든 관통 무기가 심장에 박히면, 말뚝이 제거될 때까지 마비된다.</p>
+<p><em>햇빛 과민증(Sunlight Hypersensitivity).</em> 햇빛에서 턴 시작 시 20 빛 피해를 받으며, 공격 굴림과 능력 판정에 불이점을 받는다.</p>
+
+<h4>행동</h4>
+
+<p><strong>다중공격(Multiattack, 뱀파이어 형태만).</strong> 스트라드는 두 번 공격하며, 그중 하나만 물기 공격일 수 있다.</p>
+
+<p><strong>비무장 타격(Unarmed Strike, 뱀파이어 또는 늑대 형태만).</strong> <em>근접 무기 공격:</em> 명중 +9, 간격 5피트, 대상 하나. <em>명중:</em> 8 (1d8 + 4) 베기 피해 + 14 (4d6) 사령 피해. 대상이 생물이면, 스트라드는 베기 피해 대신 대상을 잡기 상태로 만들 수 있다(탈출 DC 18).</p>
+
+<p><strong>물기(Bite).</strong> <em>근접 무기 공격:</em> 명중 +9, 간격 5피트, 자발적 생물 또는 스트라드에게 잡기·무력화·속박된 생물 하나. <em>명중:</em> 7 (1d6 + 4) 관통 피해 + 10 (3d6) 사령 피해. 대상의 최대 히트 포인트가 받은 사령 피해만큼 감소하며, 스트라드는 같은 양의 히트 포인트를 회복한다. 감소는 대상이 긴 휴식을 마칠 때까지 지속된다. 최대 히트 포인트가 0이 되면 대상은 죽는다. 이 방법으로 죽은 인간형은 땅에 묻힌 후 다음 밤 스트라드의 지배를 받는 뱀파이어 스폰으로 되살아난다.</p>
+
+<p><strong>매혹(Charm).</strong> 스트라드는 30피트 이내에서 볼 수 있는 인간형 하나를 대상으로 한다. 대상이 스트라드를 볼 수 있다면, DC 17 지혜 내성 굴림에 성공해야 하며, 실패 시 매혹된다. 매혹된 대상은 스트라드를 신뢰할 수 있는 친구로 여기고 보호하려 한다. 대상은 스트라드의 지배 하에 있는 것은 아니지만, 스트라드의 요청과 행동을 가장 호의적으로 받아들이고 스트라드가 물도록 허용한다.</p>
+<p>스트라드나 그의 동료가 대상에게 해로운 행동을 할 때마다, 대상은 내성 굴림을 반복할 수 있으며 성공 시 효과가 끝난다. 그렇지 않으면 효과는 24시간 동안, 스트라드가 파괴되거나, 대상과 다른 차원에 있거나, 보너스 행동으로 효과를 끝낼 때까지 지속된다.</p>
+
+<p><strong>밤의 자녀(Children of the Night, 1/일).</strong> 스트라드는 해가 떠 있지 않은 동안 마법적으로 2d4 박쥐 떼나 쥐 떼를 부른다. 야외에서는 대신 3d6 늑대를 부를 수 있다. 부른 크리처는 1d4 라운드 안에 도착하여 스트라드의 동맹으로 행동하고 음성 명령에 복종한다. 야수들은 1시간 동안, 스트라드가 죽을 때까지, 또는 보너스 행동으로 해산시킬 때까지 남아 있다.</p>
+
+<h4>전설적 행동(Legendary Actions)</h4>
+
+<p>스트라드는 아래 선택지 중에서 3회의 전설적 행동을 취할 수 있다. 한 번에 하나의 전설적 행동만 사용할 수 있으며, 다른 생물의 턴 끝에서만 사용할 수 있다. 스트라드는 자신의 턴 시작 시 사용한 전설적 행동을 회복한다.</p>
+
+<p><strong>이동(Move).</strong> 스트라드는 기회 공격을 유발하지 않고 이동 속도만큼 이동한다.</p>
+
+<p><strong>비무장 타격(Unarmed Strike).</strong> 스트라드는 비무장 타격을 한 번 한다.</p>
+
+<p><strong>물기(Bite, 행동 2회 소모).</strong> 스트라드는 물기 공격을 한 번 한다.</p>
+</div>
+
+<!-- ==================== -->
+
+<h3 class="area-title" id="monster-strahd-zombie">스트라드 좀비(Strahd Zombie)</h3>
+
+<p>스트라드 좀비(Strahd Zombie)는 뱀파이어 스트라드 폰 자로비치를 섬기는 언데드다. 레이븐로프트 성의 오래전 죽은 경비병들로부터 만들어졌으며, 스트라드 자신이 어둠의 마법으로 불러낸 것이다.</p>
+
+<p><strong>혐오스러운 사지(Loathsome Limbs).</strong> 스트라드 좀비의 회록색 살은 부드러워 보이고, 뼈는 부서지기 쉬워 보인다. 타격이나 베기 무기의 좋은 명중은 좀비의 신체 일부를 절단한다. 스트라드 좀비에게는 끔찍한 사령 마법이 스며들어 있어 절단된 신체 부위가 계속 공격할 수 있다. 스트라드 좀비의 모든 부위는 하나의 동일한 크리처로 간주되므로, 어떤 부위에 대한 피해든 전체 크리처에게 피해를 준다.</p>
+
+<p><strong>언데드 본성(Undead Nature).</strong> 스트라드 좀비는 공기나 수면이 필요하지 않다.</p>
+
+<div class="sidebar">
+<h3>스트라드 좀비(Strahd Zombie)</h3>
+<p><em>중형 언데드, 무성향</em></p>
+<hr>
+<p><strong>방어도</strong> 8</p>
+<p><strong>히트 포인트</strong> 30 (4d8 + 12)</p>
+<p><strong>이동 속도</strong> 20피트</p>
+<hr>
+<table>
+<thead><tr><th>근력</th><th>민첩</th><th>건강</th><th>지능</th><th>지혜</th><th>매력</th></tr></thead>
+<tbody><tr><td>13 (+1)</td><td>6 (−2)</td><td>16 (+3)</td><td>3 (−4)</td><td>6 (−2)</td><td>5 (−3)</td></tr></tbody>
+</table>
+<p><strong>내성 굴림</strong> 지혜 +0</p>
+<p><strong>피해 면역</strong> 독</p>
+<p><strong>상태 면역</strong> 중독</p>
+<p><strong>감각</strong> 어둠시야 60피트, 수동 인식 8</p>
+<p><strong>언어</strong> 생전에 알던 언어를 이해하지만 말할 수 없다</p>
+<p><strong>도전 지수</strong> 1 (200 XP)</p>
+<hr>
+<p><strong>혐오스러운 사지(Loathsome Limbs).</strong> 좀비가 한 번에 5 이상의 타격 또는 베기 피해를 받을 때마다, d20을 굴려 추가로 무슨 일이 일어나는지 결정한다:</p>
+<p><em>1–8:</em> 다리가 남아 있다면, 좀비에게서 다리 하나가 절단된다.</p>
+<p><em>9–16:</em> 팔이 남아 있다면, 좀비에게서 팔 하나가 절단된다.</p>
+<p><em>17–20:</em> 좀비의 목이 잘린다.</p>
+<p>좀비의 히트 포인트가 0이 되면 모든 부위가 죽는다. 그때까지, 절단된 부위는 좀비의 주도권에 행동하며 자체 행동과 이동을 갖는다. 절단된 부위의 방어도는 8이다. 부위가 받는 피해는 좀비의 히트 포인트에서 차감된다.</p>
+<p>절단된 다리는 공격할 수 없으며 속도 5피트를 갖는다.</p>
+<p>절단된 팔은 속도 5피트를 가지며, 자신의 턴에 불이점으로 할퀴기 공격을 한 번 할 수 있다. 좀비가 팔을 잃을 때마다 할퀴기 공격 횟수가 하나 줄어든다.</p>
+<p>머리가 잘리면, 좀비는 물기 공격을 잃고, 머리가 몸을 볼 수 없는 한 몸은 시각을 잃는다. 절단된 머리의 속도는 0피트다. 물기 공격을 할 수 있지만 자신의 공간에 있는 대상에게만 가능하다.</p>
+<p>다리가 하나 없으면 좀비의 속도는 절반이 된다. 두 다리를 모두 잃으면 엎드린다. 두 팔이 있으면 기어갈 수 있다. 팔이 하나면 여전히 기어갈 수 있지만 속도가 절반이 된다. 팔과 다리가 없으면 속도가 0피트이며 속도 보너스를 받을 수 없다.</p>
+
+<h4>행동</h4>
+
+<p><strong>다중공격(Multiattack).</strong> 좀비는 세 번 공격한다: 물기 한 번과 할퀴기 두 번.</p>
+
+<p><strong>물기(Bite).</strong> <em>근접 무기 공격:</em> 명중 +3, 간격 5피트, 대상 하나. <em>명중:</em> 3 (1d4 + 1) 관통 피해.</p>
+
+<p><strong>할퀴기(Claw).</strong> <em>근접 무기 공격:</em> 명중 +3, 간격 5피트, 대상 하나. <em>명중:</em> 4 (1d6 + 1) 베기 피해.</p>
+</div>
+
+<!-- ==================== -->
+
+<h3 class="area-title" id="npc-vladimir">블라디미르 혼가드(Vladimir Horngaard)</h3>
+
+<p>블라디미르 혼가드(Vladimir Horngaard)는 어린 나이에 은룡 기사단(Order of the Silver Dragon)에 입단했으며, 기사단의 창설자인 은룡 아르긴보스트(Argynvost)의 우정을 빠르게 얻었다. 기사단의 기사가 된 후, 그는 먼 땅으로 여행하여 악의 세력에 맞서 전쟁을 벌였다. 용은 고향에 머물며 아르긴보스트 경(Lord Argynvost)이라는 인간 귀족으로 변장하여 새로운 입단자를 모집했다.</p>
+
+<p><strong>스트라드의 적(Enemies of Strahd).</strong> 블라디미르는 스트라드의 군대가 대지를 휩쓸 때마다 반복적으로 싸워야 했다. 스트라드를 막을 수 없다는 것이 분명해지자, 기사단의 기사들은 수백 명의 피난민을 아르긴보스트의 계곡으로 이끌었지만, 스트라드는 그들을 피난처까지 추적하여 압도적인 병력으로 제압했다. 아르긴보스트가 야전 사령관으로 임명한 블라디미르는 악의 물결을 막을 수 없었고, 스트라드 자신이 블라디미르의 연인인 기사 고드프리 귈림 경(Sir Godfrey Gwilym)을 죽이는 것을 목격한 비통함 속에서야 죽었다. 전투에 승리한 후, 스트라드는 아르긴보스트홀트를 포위했다. 소굴에 숨기보다, 아르긴보스트는 나서서 스트라드의 군대와 최후까지 싸웠다.</p>
+
+<p><strong>치명적인 복수(Deadly Vengeance).</strong> 실패를 받아들이지 못한 블라디미르는 레버넌트(revenant)로 돌아왔다. 스트라드에 대한 증오와 복수에 대한 갈망이 너무나 강렬하여, 그 감정이 고드프리를 포함한 많은 동료 기사들의 영혼에도 불을 붙여 레버넌트로 돌아오게 했다. 블라디미르는 스트라드가 계곡에 대한 지배력을 강화하는 와중에도 희망 없는 전쟁을 계속했다.</p>
+
+<p>스트라드가 뱀파이어가 되었을 때, 블라디미르와 그의 레버넌트들은 영원한 안식에 들어갔어야 했다. 그러나 스트라드의 행위가 너무나 흉악하여 바로비아와 기사들의 영혼이 안개의 장막 뒤에 갇히고 말았다.</p>
+
+<p><strong>증오에 눈이 먼(Blinded by Hatred).</strong> 블라디미르는 스트라드를 증오하지만 뱀파이어가 최후의 안식을 얻는 것을 원하지 않는다. 블라디미르는 고드프리와 아르긴보스트의 죽음, 기사단의 파멸, 뱀파이어가 저지른 다른 모든 죄에 대해 스트라드가 영원히 고통받기를 원한다. 블라디미르는 바로비아 전체가 지옥으로 빨려들어갔다고 믿으며, 스트라드가 거기에 영원히 갇혀 있도록 하고 싶어 한다. 그와 동료 기사들도 갇혀 있다는 것이 블라디미르를 화나게 하지만, 블라디미르의 생각으로는 그것이 뱀파이어를 가두어 두는 대가다. 고드프리에 대한 사랑마저 이제는 증오에 가려진 희미한 기억에 불과하다.</p>
+
+<p>블라디미르가 증오를 놓아버린다면, 그의 영혼은 평화를 찾고 사랑의 온기를 기억할 수 있을 것이다. 스트라드가 일시적으로라도 패배한다면, 바로비아를 둘러싼 안개가 걷혀 블라디미르와 기사들의 영혼이 사후 세계로 갈 수 있을 것이다. 그럼에도 블라디미르는 타락한 기사단에 평화를 가져오거나 바로비아 땅에 평화를 가져오기보다 스트라드의 고통을 음미하는 것을 택할 것이다. 명예와 용맹의 시대는 지나갔다.</p>
+
+<p><strong>능력치(Statistics).</strong> 블라디미르 혼가드는 다음과 같이 수정된 레버넌트(revenant)의 능력치를 사용한다:</p>
+<ul>
+<li>블라디미르의 성향은 질서 악이다.</li>
+<li>방어도는 17 (하프 플레이트)이다.</li>
+<li>히트 포인트는 192이다.</li>
+<li>공용어와 용어를 구사한다.</li>
+<li>블라디미르는 자루가 은룡 날개 모양으로, 주먹 장식이 은룡의 머리가 이빨 사이에 블랙 오팔(black opal)을 물고 있는 형태로 조각된 <em>대검 +2(greatsword, +2)</em>를 사용한다. 행동으로 검으로 두 번 공격할 수 있다(명중 +9). 명중 시 20 (4d6 + 6) 베기 피해를 가한다. 스트라드에 대해서는 추가 14 (4d6) 베기 피해를 가한다.</li>
+<li>블라디미르의 도전 지수는 7 (2,900 XP)이다.</li>
+</ul>
+
+<div class="sidebar" style="background:#f5f0e0; border-left:3px solid var(--accent2); margin:16px 0; padding:12px 16px;">
+<p><strong>블라디미르 혼가드의 특성(Vladimir Horngaard's Traits)</strong></p>
+<p><strong>이상.</strong> "복수가 내게 남은 전부다."</p>
+<p><strong>유대.</strong> "나는 은룡 기사단에 충성을 맹세했다. 기사단이 무너졌을지라도, 나의 충성은 결코 죽지 않는다."</p>
+<p><strong>결점.</strong> "스트라드를 파괴하면 뱀파이어의 고통이 끝나버린다. 그것만은 절대 허용하지 않을 것이다."</p>
+</div>
+
+<!-- ==================== -->
+
+<h3 class="area-title" id="monster-wereraven">늑대까마귀(Wereraven)</h3>
+
+<p>늑대까마귀(Wereraven)는 은밀하고 극도로 조심스러운 수인으로, 서로를 신뢰하지만 그 외 거의 모든 이에 대해 경계한다. 사회에 녹아드는 데 능숙하지만 대부분 자기들끼리만 지내며, 현지 법을 존중하고, 가능할 때마다 선행을 하려 노력한다.</p>
+
+<p>인간 형태와 혼합 형태에서 늑대까마귀는 가벼운 무기를 선호한다. 까마귀 형태에서는 자신의 저주를 받을 자격이 없거나 남용할 자에게 옮길까 두려워 물기 공격을 꺼린다.</p>
+
+<p><strong>늑대까마귀의 무리(A Kindness of Wereravens).</strong> 늑대까마귀는 자신들의 긴밀한 집단을 '무리(kindness)'라 부른다. 늑대까마귀 무리는 보통 7명에서 12명 사이다. 놀랍지 않게도, 늑대까마귀는 까마귀와 잘 어울리며 종종 그들 사이에 섞여 평범하게 숨는다.</p>
+
+<p><strong>자선적인 수집가(Charitable Collectors).</strong> 늑대까마귀는 빛나는 장신구와 귀중한 보물을 수집하는 것을 좋아한다. 필요한 이들과 재산을 나누는 것을 즐기며, 인간형 형태에서는 겸손하게 자선단체에 돈을 기부한다. 마법 아이템이 악한 손에 들어가지 않도록 비밀 은닉처에 숨기는 조치를 취한다.</p>
+
+<p><strong>늑대까마귀 캐릭터(Characters as Wereravens).</strong> 몬스터 매뉴얼에는 수인병에 걸린 캐릭터에 대한 규칙이 있다. 다음 내용은 특히 늑대까마귀 캐릭터에게 적용된다.</p>
+
+<p>늑대까마귀 수인병에 걸린 캐릭터는 기존 점수가 더 높지 않은 한 민첩 15를 얻는다. 늑대까마귀 물기의 공격 및 피해 굴림은 캐릭터의 근력과 민첩 중 높은 쪽을 기반으로 한다. 까마귀 형태에서 늑대까마귀의 물기는 1 관통 피해를 가하며(이 피해에 능력 수정치가 적용되지 않음), 수인병 저주를 전달한다. 자세한 내용은 몬스터 매뉴얼의 수인 항목에 있는 "수인 플레이어 캐릭터" 사이드바를 참조하라.</p>
+
+<div class="sidebar">
+<h3>늑대까마귀(Wereraven)</h3>
+<p><em>중형 인간형 (인간, 변신자)</em></p>
+<hr>
+<p><strong>방어도</strong> 12</p>
+<p><strong>히트 포인트</strong> 31 (7d8)</p>
+<p><strong>이동 속도</strong> 인간형 형태 30피트; 까마귀 형태 10피트, 비행 50피트; 혼합 형태 30피트, 비행 50피트</p>
+<hr>
+<table>
+<thead><tr><th>근력</th><th>민첩</th><th>건강</th><th>지능</th><th>지혜</th><th>매력</th></tr></thead>
+<tbody><tr><td>10 (+0)</td><td>15 (+2)</td><td>11 (+0)</td><td>13 (+1)</td><td>15 (+2)</td><td>14 (+2)</td></tr></tbody>
+</table>
+<p><strong>기술</strong> 통찰 +4, 인식 +6</p>
+<p><strong>감각</strong> 수동 인식 16</p>
+<p><strong>언어</strong> 공용어 (까마귀 형태에서는 말할 수 없음)</p>
+<p><strong>도전 지수</strong> 2 (450 XP) &nbsp; 숙련 보너스 +2</p>
+<hr>
+<p><strong>모방(Mimicry).</strong> 늑대까마귀는 들어본 단순한 소리를 모방할 수 있다. 예를 들어 사람의 속삭임, 아기 울음, 동물의 재잘거림 등이다. 소리를 듣는 생물은 DC 10 지혜(통찰) 판정에 성공하면 모방임을 알아챌 수 있다.</p>
+
+<p><strong>재생(Regeneration).</strong> 늑대까마귀는 턴 시작 시 10 히트 포인트를 회복한다. 은 무기나 주문으로 피해를 받으면, 다음 턴 시작 시 이 특성이 작동하지 않는다. 늑대까마귀는 턴 시작 시 히트 포인트가 0이고 재생이 작동하지 않을 때만 죽는다.</p>
+
+<h4>행동</h4>
+
+<p><strong>다중공격(Multiattack, 인간형 또는 혼합 형태만).</strong> 늑대까마귀는 두 번의 무기 공격을 하며, 그중 하나는 손 석궁일 수 있다.</p>
+
+<p><strong>부리(Beak, 까마귀 또는 혼합 형태만).</strong> <em>근접 무기 공격:</em> 명중 +4, 간격 5피트, 대상 하나. <em>명중:</em> 까마귀 형태에서 1 관통 피해, 혼합 형태에서 4 (1d4 + 2) 관통 피해. 대상이 인간형이면, DC 10 건강 내성 굴림에 성공하지 못하면 늑대까마귀 수인병에 걸린다.</p>
+
+<p><strong>단검(Shortsword, 인간형 또는 혼합 형태만).</strong> <em>근접 무기 공격:</em> 명중 +4, 간격 5피트, 대상 하나. <em>명중:</em> 5 (1d6 + 2) 관통 피해.</p>
+
+<p><strong>손 석궁(Hand Crossbow, 인간형 또는 혼합 형태만).</strong> <em>원거리 무기 공격:</em> 명중 +4, 사거리 30/120피트, 대상 하나. <em>명중:</em> 5 (1d6 + 2) 관통 피해.</p>
+
+<p><strong>형태 변환(Change Shape).</strong> 늑대까마귀는 까마귀-인간형 혼합체 또는 초소형 까마귀로 변신하거나, 인간형 형태로 돌아간다. 크기와 속도를 제외한 능력치는 각 형태에서 동일하다. 착용하거나 소지한 장비는 변환되지 않는다. 죽으면 인간형 형태로 돌아간다.</p>
+</div>
+
+<!-- ==================== -->
+
+<div class="section-divider">&#9830; &#9830; &#9830;</div>
+<p style="text-align:center; font-size:0.85em; color:#888;">Curse of Strahd — Appendix D<br>한국어 번역본</p>
+
+<div class="sidebar-toc" id="sidebarToc">
+  <button class="toc-close" onclick="toggleSidebar()">✕</button>
+  <h4>목차</h4>
+  <ul id="sidebarTocList"></ul>
+</div>
+<button class="sidebar-toc-toggle" id="sidebarToggle" onclick="toggleSidebar()">목 차</button>
+<script>
+function toggleSidebar() {
+  var toc = document.getElementById('sidebarToc');
+  var btn = document.getElementById('sidebarToggle');
+  toc.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+// Auto-generate TOC from headings
+(function() {
+  var headings = document.querySelectorAll('h2[id], h3[id], h4[id], .area-title[id]');
+  var list = document.getElementById('sidebarTocList');
+  if (!list) return;
+  for (var i = 0; i < headings.length; i++) {
+    var h = headings[i];
+    var li = document.createElement('li');
+    var tag = h.tagName.toLowerCase();
+    if (h.classList.contains('area-title')) tag = 'h3';
+    li.className = 'toc-' + tag;
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent.trim();
+    a.onclick = function() {
+      if (window.innerWidth < 768) toggleSidebar();
+    };
+    li.appendChild(a);
+    list.appendChild(li);
+  }
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제14장: 예스터 힐 — 스트라드의 저주</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #faf6f0;
+    --text: #2c2416;
+    --accent: #8b1a1a;
+    --accent2: #a0522d;
+    --heading: #4a0e0e;
+    --border: #c9b99a;
+    --box-bg: #f0e8d8;
+    --quote-bg: #eee6d4;
+    --table-head: #5c3317;
+    --table-alt: #f5edd9;
+    --shadow: rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Serif KR', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 16px;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 28px 80px;
+  }
+
+  h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 2.4em;
+    color: var(--heading);
+    text-align: center;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    border-bottom: 3px double var(--accent);
+    padding-bottom: 16px;
+  }
+
+  h1 .subtitle {
+    display: block;
+    font-size: 0.45em;
+    font-weight: 400;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: 1.6em;
+    color: var(--accent);
+    margin: 48px 0 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  h3 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--heading);
+    margin: 32px 0 10px;
+  }
+
+  h4 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--accent2);
+    margin: 24px 0 8px;
+  }
+
+  p { margin: 0 0 14px; text-align: justify; }
+
+  .read-aloud {
+    background: var(--quote-bg);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-style: italic;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .read-aloud p:last-child { margin-bottom: 0; }
+
+  .sidebar {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    box-shadow: 2px 2px 8px var(--shadow);
+  }
+
+  .sidebar h3 {
+    margin-top: 0;
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+
+  blockquote {
+    background: var(--quote-bg);
+    border-left: 3px solid var(--accent2);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+  }
+
+  blockquote .attribution {
+    display: block;
+    text-align: right;
+    font-style: normal;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin-top: 8px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+  }
+
+  thead th {
+    background: var(--table-head);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:nth-child(even) { background: var(--table-alt); }
+
+  .area-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.08em;
+    color: var(--accent);
+    margin: 28px 0 8px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-divider {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--border);
+    font-size: 1.4em;
+    letter-spacing: 0.5em;
+  }
+
+  .map-note {
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+  }
+
+  .treasure {
+    background: #fdf5e6;
+    border: 1px solid #d4a937;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .treasure h4 { color: #8b6914; margin-top: 0; }
+
+  .fortunes {
+    background: #f0e0f0;
+    border: 1px solid #9c6b9c;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .fortunes h4 { color: #6b3a6b; margin-top: 0; }
+
+  .development {
+    background: #e8f0e8;
+    border: 1px solid #6b9c6b;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .development h4 { color: #3a6b3a; margin-top: 0; }
+
+  strong { color: var(--heading); }
+
+  .stat-block {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+    background: var(--box-bg);
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 10px 0;
+  }
+
+  .toc {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 24px 0;
+  }
+
+  .toc h3 { margin-top: 0; }
+  .toc ul { list-style: none; padding-left: 0; }
+  .toc li { padding: 3px 0; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    body { padding: 20px 14px 60px; font-size: 15px; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.3em; }
+  }
+
+  /* Tab System */
+  .chapter-nav {
+    display: flex;
+    gap: 0;
+    margin: 0 0 0;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    padding-top: 8px;
+  }
+  .chapter-nav a {
+    padding: 10px 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+    font-weight: 700;
+    color: var(--accent2);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: -2px;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+  }
+  .chapter-nav a:hover { background: var(--box-bg); }
+  .chapter-nav a.active {
+    background: var(--bg);
+    color: var(--accent);
+    border-color: var(--border);
+  }
+
+
+  /* Sidebar TOC */
+  .sidebar-toc-toggle {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    writing-mode: vertical-rl;
+    letter-spacing: 2px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+  }
+  .sidebar-toc-toggle:hover { background: var(--heading); }
+  .sidebar-toc-toggle.open { left: 280px; }
+
+  .sidebar-toc {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg);
+    border-right: 2px solid var(--border);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    z-index: 199;
+    overflow-y: auto;
+    padding: 60px 16px 20px;
+    transition: left 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+  }
+  .sidebar-toc.open { left: 0; }
+  .sidebar-toc h4 {
+    color: var(--accent);
+    margin: 0 0 12px;
+    font-size: 1.1em;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .sidebar-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sidebar-toc li {
+    padding: 3px 0;
+  }
+  .sidebar-toc li.toc-h2 {
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--heading);
+  }
+  .sidebar-toc li.toc-h3 {
+    padding-left: 14px;
+    font-size: 0.92em;
+  }
+  .sidebar-toc li.toc-h4 {
+    padding-left: 28px;
+    font-size: 0.85em;
+    color: var(--accent2);
+  }
+  .sidebar-toc a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  .sidebar-toc a:hover {
+    background: var(--box-bg);
+    color: var(--accent);
+  }
+  .sidebar-toc .toc-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--accent2);
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="chapter-nav">
+  <a href="CoS-foreword.html">머리말</a>
+  <a href="CoS-intro.html">서문</a>
+  <a href="CoS-ch1.html">제1장: 안개 속으로</a>
+  <a href="CoS-ch2.html">제2장: 바로비아의 땅</a>
+  <a href="CoS-ch3.html">제3장: 바로비아 마을</a>
+  <a href="CoS-ch4.html">제4장: 레이븐로프트 성</a>
+  <a href="CoS-ch5.html">제5장: 발라키 마을</a>
+  <a href="CoS-ch6.html">제6장: 늙은 뼈 분쇄기</a>
+  <a href="CoS-ch7.html">제7장: 아르긴보스트홀트</a>
+  <a href="CoS-ch8.html">제8장: 크레즈크 마을</a>
+  <a href="CoS-ch9.html">제9장: 촐렌카 고개</a>
+  <a href="CoS-ch10.html">제10장: 베레즈 폐허</a>
+  <a href="CoS-ch11.html">제11장: 반 리히텐의 탑</a>
+  <a href="CoS-ch12.html">제12장: 포도주 마법사</a>
+  <a href="CoS-ch13.html">제13장: 호박 사원</a>
+  <a href="CoS-ch14.html" class="active">제14장: 예스터 힐</a>
+  <a href="CoS-ch15.html">제15장: 늑대인간 소굴</a>
+  <a href="CoS-epilogue.html">에필로그</a>
+  <a href="CoS-appendixA.html">부록 A</a>
+  <a href="CoS-appendixB.html">부록 B</a>
+  <a href="CoS-appendixC.html">부록 C</a>
+  <a href="CoS-appendixD.html">부록 D</a>
+  <a href="CoS-appendixE.html">부록 E</a>
+  <a href="CoS-appendixF.html">부록 F</a>
+</nav>
+
+<h1>
+  제14장: 예스터 힐(Yester Hill)
+  <span class="subtitle">Chapter 14: Yester Hill</span>
+</h1>
+
+<h2 id="ch14-intro">예스터 힐(Yester Hill)</h2>
+
+<p>스트라드(Strahd)를 대지의 군주이자 날씨의 지배자로 숭배하는 드루이드(druid)들이 이곳, 스트라드 영지의 가장자리에 위치한 예스터 힐(Yester Hill) 꼭대기에서 모임을 갖는다. 이 언덕은 또한 스발리치 숲(Svalich Woods)을 활보하는 사악한 역병체(blight)들이 탄생하는 곳이며, 스트라드가 때때로 자신의 조상 고향을 엿보러 오는 장소이기도 하다.</p>
+
+<blockquote>
+  <p>낮이든 밤이든, 시야가 닿는 한계까지 뻗어 있는 내 영역의 가장자리는 거대한 안개의 벽으로 표시되어 있다. 나는 그것이 탄생하는 순간 그곳에 있었다.</p>
+  <span class="attribution">— 스트라드 폰 자로비치(Strahd von Zarovich),<br>《나, 스트라드: 뱀파이어의 회고록(I, Strahd: The Memoirs of a Vampire)》 中</span>
+</blockquote>
+
+<h2>언덕의 구역(Areas of the Hill)</h2>
+
+<p>아래 장소들은 예스터 힐 지도의 표시에 해당한다.</p>
+
+<div class="map-note">지도 14.1: 예스터 힐 (Y 구역)</div>
+
+<h3 class="area-title" id="y1">Y1. 오솔길(Trail)</h3>
+
+<div class="read-aloud">
+<p>울창한 숲을 지나는 오솔길이 죽은 풀과 검은 돌 돌무덤으로 뒤덮인 언덕으로 이어진다. 어둡고 불길한 구름이 높이 모여들고, 한 줄기 번개가 언덕 꼭대기를 내리친다. 언덕 서쪽으로는 대지와 숲, 하늘이 우뚝 솟은 안개의 벽 뒤로 사라진다.</p>
+</div>
+
+<p>오솔길은 언덕 비탈을 올라가며 갈라져 두 개의 동심원 고리(구역 Y2)를 형성한다. 오솔길은 또한 언덕 꼭대기(구역 Y3 및 Y4)로도 이어진다. 안개의 벽(구역 Y5)은 스트라드 영지의 경계를 표시한다.</p>
+
+<h3 class="area-title" id="y2">Y2. 광전사 돌무덤(Berserker Cairns)</h3>
+
+<div class="read-aloud">
+<p>흙길이 언덕 비탈을 둘러싸는 두 겹의 동심원 돌무덤을 따라 이어진다. 각 돌무덤은 끈적한 검은 바위로 쌓은 10피트 높이의 봉분이다.</p>
+</div>
+
+<p>이 매장 봉분들은 스트라드와 드루이드들이 도착하기 전부터 존재했다. 수백 년간 손대지 않은 채 남아 있다. 바위 아래에는 한때 산에 살았던 고대 광전사(berserker) 부족의 곰팡이 핀 뼈가 묻혀 있다. (아래 "특별 이벤트" 부분의 "카반의 피의 창"을 참조하라.)</p>
+
+<h3 class="area-title" id="y3">Y3. 드루이드의 원(Druids' Circle)</h3>
+
+<div class="read-aloud">
+<p>언덕 꼭대기에는 검은 바위와 작은 돌들로 이루어진 넓은 고리가 있으며, 이것들이 합쳐져 죽은 풀밭을 둘러싸는 임시 벽을 형성한다. 번개가 때때로 고리의 가장자리를 내리치며, 촘촘히 엮은 나뭇가지와 검은 흙으로 채운, 50피트 높이의 섬뜩한 거대 조각상을 비춘다. 조각상은 송곳니를 가진, 망토를 두른 거대한 남자의 형상이다.</p>
+</div>
+
+<p>들판을 둘러싸는 바위 고리는 지름 250피트이며, 높이는 5~10피트에 이른다. 검은 바위를 기어오르는 크리처는 10%의 확률로 번개에 맞아 44(8d10) 번개 피해를 받는다. 캐릭터는 고리를 관통하는 두 오솔길을 따르면 피해를 피할 수 있다.</p>
+
+<h4>나무 조각상(Wooden Statue)</h4>
+
+<p>거대 조각상은 스트라드 폰 자로비치(Strahd von Zarovich)와 섬뜩하게 닮았다. 자세히 살피면 바닥 주변에서 뿌리가 돋아나는 것이 보인다. 이 뿌리는 구역 Y4에 있는 굴시아스 나무(Gulthias tree)의 일부다. 뿌리가 조각상을 감싸 추가적인 지지력과 내구성을 부여한다. 뿌리는 조각상이 쓰러지는 것을 방지할 뿐 아니라, 이 조형물이 나무 역병체(tree blight)를 만드는 의식의 구성 요소로 기능하게 해준다 (아래 "특별 이벤트" 부분의 "드루이드의 의식"을 참조하라). 이 나무 조형물의 "심장"에는 포도주 마법사(Wizard of Wines) 포도원에서 훔쳐 온 마법 보석이 박혀 있다 (제12장).</p>
+
+<p>조각상의 AC는 10이고, 50 히트 포인트를 가지며, 독 및 정신 피해에 면역이다. 기름을 뿌린 뒤 화염 피해를 받으면 불이 붙어 매 라운드 2d6 화염 피해를 받는다. 조각상이 0 히트 포인트로 감소하면 무너지고, 마법 보석이 밝은 초록빛을 내며 들판 위로 굴러떨어진다.</p>
+
+<h4>숨겨진 무덤(Hidden Graves)</h4>
+
+<p>바위 안쪽 들판 곳곳에 6명의 드루이드(CE 남녀 인간)와 6명의 광전사(CE 남녀 인간)가 숨어 있다. 이들은 모두 이 언덕에 묻힌 고대 산악 부족의 후손이며, 머리부터 발끝까지 푸르스름한 회색 진흙으로 덮여 있다. 길고 엉킨 머리카락과 야생적인 눈빛을 가졌다. 이들은 어둠의 "신"을 기리기 위해, 잔디와 죽은 풀로 만든 덮개 아래 숨겨진 흙무덤에서 잠을 잔다. 원 안에 들어오는 캐릭터 중 수동 지혜(감지) 점수가 16 이상인 자는 들판 여기저기에 흩어진 열두 개의 덮인 무덤을 알아차린다. 드루이드와 광전사는 누군가 조각상에 접근하거나 손상을 입히면, 또는 자신들이 발견되어 공격받으면 무덤에서 일어나 공격한다.</p>
+
+<p>드루이드들은 거대한 나무 역병체를 소환하는 의식을 시작하기 위해 대기 중이다. 의식을 완수하는 데는 드루이드 한 명만 있으면 되지만, 스트라드의 축복 없이는 시작하지 않는다. 그래서 그가 나타나기를 기다리고 있다. 조각상이 파괴되거나 마법 보석이 제거되면 의식은 완수할 수 없다.</p>
+
+<p>캐릭터가 마법의 도움으로 보석의 위치를 간파하거나 점술로 알아낸다면, 조각상의 가슴에서 보석을 파낼 수 있다. 조각상을 기어오르는 것은 간단한 일이며 능력 판정이 필요 없다. 가슴 공동에 손이 닿는 캐릭터는 행동을 사용해 안을 파헤칠 수 있다. 해당 캐릭터의 플레이어에게 d20을 굴리게 하라: 13 이상이 나오면 보석을 파내어 행동의 일부로 가져갈 수 있다.</p>
+
+<div class="development">
+<h4>전개(Development)</h4>
+<p>드루이드와 광전사가 전멸하면 스발리치 숲에서 원정을 나갔던 다른 이들이 돌아와 수를 보충한다. 매일 해질녘마다 드루이드 1d4 - 1명과 광전사 1d4 - 1명이 도착하며, 각각 6명이 될 때까지 계속된다.</p>
+</div>
+
+<h3 class="area-title" id="y4">Y4. 굴시아스 나무(Gulthias Tree)</h3>
+
+<div class="read-aloud">
+<p>언덕 꼭대기 남쪽 끝에 병든 작은 숲이 있다. 죽은 나무와 관목 사이로 핵심에 거대하고 기형적인 나무가 자리 잡고 있다. 뒤틀린 몸통에서 피가 수액처럼 스며 나온다. 나무 주위를 바늘로 뒤덮인 6명의 깡마른 인간형 크리처가 어슬렁거린다. 나무에는 반짝이는 전투도끼가 박혀 있고, 그 아래에 인간형의 해골이 놓여 있다.</p>
+</div>
+
+<p>이 나무는 굴시아스 나무(Gulthias tree)이며 (몬스터 편람의 역병체 항목 참조), 뿌리가 언덕 깊숙이 뻗어 있다. 죽은 나무와 관목 사이에 3마리의 덩굴 역병체(vine blight), 6마리의 바늘 역병체(needle blight), 12마리의 잔가지 역병체(twig blight)가 잠복해 있다. 바늘 역병체는 명백히 보이지만, 덩굴 역병체와 잔가지 역병체는 거짓 외형 특성으로 대놓고 숨어 있을 수 있다. 역병체들은 누군가 굴시아스 나무에 해를 가하면 공격한다. 나무 자체에는 행동이나 유효한 공격이 없다.</p>
+
+<p>굴시아스 나무의 AC는 15이고, 250 히트 포인트를 가지며, 타격, 관통, 정신 피해에 면역이다. 0 히트 포인트로 감소하면 파괴된 것처럼 보이지만 실제로는 죽지 않았다. 완전히 회복될 때까지 매달 1 히트 포인트를 회복한다. DC 15 지능(자연) 판정에 성공하면, 나무를 진정으로 죽이려면 그루터기째 뿌리를 뽑아야 한다는 것을 알 수 있다. 굴시아스 나무는 그 구역에 신성화(hallow) 주문이 시전되면 3d10일 안에 시들어 죽는다.</p>
+
+<p>굴시아스 나무는 평범한 식물에서 역병체를 만들어 내며, 바로비아(Barovia)에서 유일한 이런 종류의 나무다. 굴시아스 나무가 죽으면, 스트라드의 영지 내에서 새로운 역병체를 만들 수 없게 된다. 굴시아스 나무를 파괴하면 파티에게 1,500 XP를 수여하라.</p>
+
+<p>굴시아스 나무 밑에 놓인 해골은 나무를 베려다 역병체에 의해 죽은 인간 모험가의 유해다.</p>
+
+<div class="treasure">
+<h4>보물(Treasure)</h4>
+<p>죽은 모험가의 너덜너덜한 가죽 갑옷은 수습할 수 없지만, 나무에 박힌 도끼는 마법 전투도끼다. 손잡이에는 잎사귀와 덩굴이 조각되어 있으며, 무게는 일반 전투도끼의 절반이다. 이 도끼가 식물을 명중시키면 - 평범한 식물이든 식물 크리처든 - 대상은 추가 1d8 참격 피해를 받는다. 선하지 않은 성향의 크리처가 이 도끼를 휘두르면, 공격할 때마다 가시가 돋아 나와 공격 후 휘두른 자에게 1 관통 피해를 주며, 이 피해는 마법으로 간주된다.</p>
+</div>
+
+<div class="fortunes">
+<h4>레이븐로프트의 운명(Fortunes of Ravenloft)</h4>
+<p>카드 점술에서 보물이 이곳에 있다고 나왔다면, 그것은 죽은 모험가의 해골 아래, 굴시아스 나무의 뿌리 사이에 묻혀 있다. 해골 아래 땅을 파면 자동으로 찾게 된다.</p>
+</div>
+
+<h3 class="area-title" id="y5">Y5. 안개의 벽(Wall of Fog)</h3>
+
+<p>예스터 힐이라는 이름은 언덕 꼭대기나 서쪽 비탈에서 안개를 바라보는 자라면 누구나 관찰할 수 있는 이상한 현상에서 유래한다:</p>
+
+<div class="read-aloud">
+<p>서쪽의 안개 장막을 바라보면, 거대한 도시 위 언덕에 하얀 요새가 보인다. 도시는 꽤 먼 곳에 있는 것 같고, 아마 1마일쯤 떨어져 있을 것이다. 안개가 모든 세부 사항을 가리지만, 교회 종소리의 메아리 같은 소리가 들린다.</p>
+</div>
+
+<p>어둠의 힘(Dark Powers)이 안개 속에 스트라드의 조상 고향의 허상을 만들어 놓았으며, 그것은 닿을 수 없는 곳에 있다. 스트라드는 가끔 이 언덕에 올라 그 도시를 응시한다. 비록 그것이 실재할 수 없다는 것을 알면서도. 그 환영은 그를 애타게 한다.</p>
+
+<p>치명적인 안개에 들어가는 모든 크리처는 그 효과를 받는다 (제2장의 "레이븐로프트의 안개(Mists of Ravenloft)" 부분을 참조하라).</p>
+
+<div class="sidebar">
+<h3>속삭이는 벽(Whispering Wall)</h3>
+<p>캐릭터가 NPC 주문시전자에게 이 안개 벽에 대해 물으면, 그 인물은 이에 관한 고대 전설을 들려줄 수 있다. 바로비아의 산악 민족에 따르면, 치명적인 안개가 바로비아 전역을 가두기 이전에도 예스터 힐 근처에는 항상 안개의 벽이 있었다고 한다. 고대인들은 이 안개를 속삭이는 벽(Whispering Wall)이라 불렀는데, 그 안에서 과거와 미래의 목소리의 속삭임을 들을 수 있었기 때문이다. 그들은 고대의 신이 세계를 멸망에서 지키기 위해 자신의 신성을 포기했으며, 신으로서의 마지막 숨결이 이 안개를 만들어 냈다고 믿었다. 그 안에는 세계에 대한 그의 모든 기억과 가능한 미래에 대한 모든 환시가 담겨 있었으며, 적절한 준비를 갖추면 탐구자가 그 안에서 환시의 탐색에 나설 수 있었다고 한다. 일부 비전 학도들은 어둠의 힘이 그 안개의 일부를 가져와 뒤틀어 바로비아의 안개를 만들었다고 주장하며, 아마 스트라드의 영지는 속삭이는 벽 속의 어둡은 기억에 불과할지도 모른다고 말한다.</p>
+</div>
+
+<div class="section-divider">* * *</div>
+
+<h2 id="ch14-events">특별 이벤트(Special Events)</h2>
+
+<p>캐릭터가 예스터 힐을 탐험하는 동안 다음 특별 이벤트 중 하나 또는 둘 다를 사용할 수 있다.</p>
+
+<h3>드루이드의 의식(Druids' Ritual)</h3>
+
+<p>캐릭터가 예스터 힐을 방문했는지 여부와 관계없이 이 이벤트를 전개할 수 있다. 캐릭터가 이 이벤트를 직접 경험하지 않더라도, 그 여파를 다룰 수 있다 (제12장 "특별 이벤트" 부분의 "윈터스플린터의 습격"을 참조하라).</p>
+
+<p>스트라드는 자신의 나이트메어(nightmare) 뷰세팔루스(Beucephalus)를 타고 예스터 힐로 향한다 (캐릭터가 레이븐로프트 성의 지하묘지에서 그것을 죽이지 않았다면). 아니면 박쥐 형태로 온다.</p>
+
+<p>스트라드가 도착하면 구역 Y3의 드루이드들이 "무덤"에서 일어나 의식을 시작한다. 의식이 시작되면 드루이드들은 행동을 사용해 성가를 부르고 춤을 추기 시작한다. 의식을 완수하려면 드루이드들이 10라운드 연속으로 성가를 불러야 하며, 매 라운드마다 최소 한 명의 드루이드가 성가를 불러야 한다. 어떤 라운드에서 드루이드 중 아무도 자기 턴에 성가를 부를 수 없다면, 의식은 파탄되어 처음부터 다시 시작해야 한다. 굴시아스 나무(구역 Y4)가 0 히트 포인트로 감소한 상태라면 의식은 효과가 없다. 나무가 파괴되었음을 깨달은 드루이드는 의식을 시도하지 않을 만큼은 알고 있다.</p>
+
+<p>스트라드는 진행 상황을 관찰하며, 드루이드가 공격받으면 그들을 방어하고, 열세에 몰리면 후퇴한다.</p>
+
+<div class="development">
+<h4>전개(Development)</h4>
+<p>드루이드가 의식을 완수할 때 캐릭터가 현장에 있다면, 다음을 읽어주라:</p>
+
+<div class="read-aloud">
+<p>30피트 높이의 식물 크리처가 조각상에서 터져 나오며, 나뭇가지와 흙을 사방으로 날린다. 그 크리처는 초록빛이 스며 나오는 죽은 트렌트(treant)를 닮았다.</p>
+</div>
+
+<p>나무 조각상에서 분출한 크리처는 드루이드들이 윈터스플린터(Wintersplinter)라 부르는 나무 역병체다 (부록 D 참조). 초록빛은 그 "심장"에 박힌 마법 보석에서 나온다. 보석은 윈터스플린터가 죽어야만 제거할 수 있다.</p>
+
+<p>드루이드들은 윈터스플린터에게 북쪽으로 가서 포도주 마법사(Wizard of Wines) 포도원을 초토화하라고 명령한다 (제12장). 캐릭터는 드루이드들이 무엇을 꾸미고 있는지 이해하지 못할 수 있지만, 나무 역병체를 어디로 보내는지는 의문을 가질 것이다. 윈터스플린터가 북쪽으로 이동하면, 이전에 양조장과 포도원을 방문한 캐릭터에게 그 목적지가 명확해진다. 진격을 저지하려 할지는 그들에게 달려 있다.</p>
+
+<p>나무 역병체가 떠나면, 스트라드는 드루이드와 광전사에게 언덕을 떠나 홀로 있게 해 달라고 명령한다. 그들이 숲으로 도주하면, 스트라드는 서쪽에 보이는 조상 고향의 환영을 그리운 듯 응시한다 (구역 Y5 참조).</p>
+</div>
+
+<h3>카반의 피의 창(Blood Spear of Kavan)</h3>
+
+<p>오래전 죽은 야만인 족장 카반(Kavan)의 영혼이 캐릭터 중 한 명에게, 가급적 야만전사, 드루이드, 또는 레인저에게 접촉한다. 해당 캐릭터의 플레이어에게 다음 글을 읽어주라:</p>
+
+<div class="read-aloud">
+<p>속삭임이 들린다. 바람에 실린 깊은 목소리다. "오래도록 기다렸다," 그것이 말한다. "자격 있는 자를. 내 창이 피에 굶주렸다. 그것을 되찾고, 속삭이는 벽(Whispering Wall)의 초기 시절부터 이어진 위대한 전사들처럼 이 산을 내 대신 다스려라."</p>
+</div>
+
+<p>캐릭터는 언덕 비탈의 돌무덤 중 하나에 끌림을 느낀다 (구역 Y2 참조). 캐릭터가 그 돌무덤으로부터 30피트 이내로 다가가면, 바위 아래에 있는 카반의 마법 창("보물" 참조)의 존재를 감지한다.</p>
+
+<div class="treasure">
+<h4>보물(Treasure)</h4>
+<p>돌무덤의 바위는 무겁지만 굴려서 치울 수 있으며, 카반의 곰팡이 핀 뼈 사이에 놓인 피의 창(blood spear, 부록 C 참조)이 드러난다. 어떤 크리처든 이 창을 휘두를 수 있지만, 카반이 선택한 캐릭터만이 이 마법 무기로 행하는 공격 굴림과 피해 굴림에 +2 보너스를 얻는다.</p>
+</div>
+
+
+<div class="sidebar-toc" id="sidebarToc">
+  <button class="toc-close" onclick="toggleSidebar()">✕</button>
+  <h4>목차</h4>
+  <ul id="sidebarTocList"></ul>
+</div>
+<button class="sidebar-toc-toggle" id="sidebarToggle" onclick="toggleSidebar()">목 차</button>
+<script>
+function toggleSidebar() {
+  var toc = document.getElementById('sidebarToc');
+  var btn = document.getElementById('sidebarToggle');
+  toc.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+// Auto-generate TOC from headings
+(function() {
+  var headings = document.querySelectorAll('h2[id], h3[id], h4[id], .area-title[id]');
+  var list = document.getElementById('sidebarTocList');
+  if (!list) return;
+  for (var i = 0; i < headings.length; i++) {
+    var h = headings[i];
+    var li = document.createElement('li');
+    var tag = h.tagName.toLowerCase();
+    if (h.classList.contains('area-title')) tag = 'h3';
+    li.className = 'toc-' + tag;
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent.trim();
+    a.onclick = function() {
+      if (window.innerWidth < 768) toggleSidebar();
+    };
+    li.appendChild(a);
+    list.appendChild(li);
+  }
+})();
+</script>
+
+</body>
+</html>

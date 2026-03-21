@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제6장: 늙은 뼈 분쇄기 — 스트라드의 저주</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #faf6f0;
+    --text: #2c2416;
+    --accent: #8b1a1a;
+    --accent2: #a0522d;
+    --heading: #4a0e0e;
+    --border: #c9b99a;
+    --box-bg: #f0e8d8;
+    --quote-bg: #eee6d4;
+    --table-head: #5c3317;
+    --table-alt: #f5edd9;
+    --shadow: rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Serif KR', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 16px;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 28px 80px;
+  }
+
+  h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 2.4em;
+    color: var(--heading);
+    text-align: center;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    border-bottom: 3px double var(--accent);
+    padding-bottom: 16px;
+  }
+
+  h1 .subtitle {
+    display: block;
+    font-size: 0.45em;
+    font-weight: 400;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: 1.6em;
+    color: var(--accent);
+    margin: 48px 0 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  h3 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--heading);
+    margin: 32px 0 10px;
+  }
+
+  h4 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--accent2);
+    margin: 24px 0 8px;
+  }
+
+  p { margin: 0 0 14px; text-align: justify; }
+
+  .read-aloud {
+    background: var(--quote-bg);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-style: italic;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .read-aloud p:last-child { margin-bottom: 0; }
+
+  .sidebar {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    box-shadow: 2px 2px 8px var(--shadow);
+  }
+
+  .sidebar h3 {
+    margin-top: 0;
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+
+  blockquote {
+    background: var(--quote-bg);
+    border-left: 3px solid var(--accent2);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+  }
+
+  blockquote .attribution {
+    display: block;
+    text-align: right;
+    font-style: normal;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin-top: 8px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+  }
+
+  thead th {
+    background: var(--table-head);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:nth-child(even) { background: var(--table-alt); }
+
+  .area-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.08em;
+    color: var(--accent);
+    margin: 28px 0 8px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-divider {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--border);
+    font-size: 1.4em;
+    letter-spacing: 0.5em;
+  }
+
+  .map-note {
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+  }
+
+  .treasure {
+    background: #fdf5e6;
+    border: 1px solid #d4a937;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .treasure h4 { color: #8b6914; margin-top: 0; }
+
+  .fortunes {
+    background: #f0e0f0;
+    border: 1px solid #9c6b9c;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .fortunes h4 { color: #6b3a6b; margin-top: 0; }
+
+  .development {
+    background: #e8f0e8;
+    border: 1px solid #6b9c6b;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .development h4 { color: #3a6b3a; margin-top: 0; }
+
+  strong { color: var(--heading); }
+
+  .stat-block {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+    background: var(--box-bg);
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 10px 0;
+  }
+
+  .toc {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 24px 0;
+  }
+
+  .toc h3 { margin-top: 0; }
+  .toc ul { list-style: none; padding-left: 0; }
+  .toc li { padding: 3px 0; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  /* Interactive Map Overlay */
+  .map-container {
+    position: relative;
+    margin: 24px 0;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 2px 2px 12px var(--shadow);
+  }
+
+  .map-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .map-container .map-img-wrap-1 { aspect-ratio: 4800 / 6600; }
+  .map-container .map-img-wrap-2 { aspect-ratio: 2400 / 3300; }
+
+  .map-container .map-title {
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    color: #fff;
+    background: var(--table-head);
+    padding: 8px 12px;
+  }
+
+  .map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .map-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(139,26,26,0.85);
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,0.7);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+    z-index: 2;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .map-label:hover {
+    transform: translate(-50%, -50%) scale(1.35);
+    background: #c0392b;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    z-index: 3;
+  }
+
+  .map-label .map-tooltip {
+    display: none;
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30,20,10,0.92);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    pointer-events: none;
+    font-weight: 400;
+  }
+
+  .map-label:hover .map-tooltip { display: block; }
+
+  .map-floor-label {
+    position: absolute;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent2);
+    background: rgba(250,246,240,0.85);
+    padding: 2px 8px;
+    border-radius: 3px;
+    pointer-events: none;
+  }
+
+  
+  
+  
+  
+
+  @media (max-width: 600px) {
+    body { padding: 20px 14px 60px; font-size: 15px; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.3em; }
+    .map-label { width: 18px; height: 18px; font-size: 7px; }
+    .map-label .map-tooltip { font-size: 10px; }
+  }
+
+  /* Tab System */
+  .chapter-nav {
+    display: flex;
+    gap: 0;
+    margin: 0 0 0;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    padding-top: 8px;
+  }
+  .chapter-nav a {
+    padding: 10px 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+    font-weight: 700;
+    color: var(--accent2);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: -2px;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+  }
+  .chapter-nav a:hover { background: var(--box-bg); }
+  .chapter-nav a.active {
+    background: var(--bg);
+    color: var(--accent);
+    border-color: var(--border);
+  }
+
+  
+  
+
+
+  /* Sidebar TOC */
+  .sidebar-toc-toggle {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    writing-mode: vertical-rl;
+    letter-spacing: 2px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+  }
+  .sidebar-toc-toggle:hover { background: var(--heading); }
+  .sidebar-toc-toggle.open { left: 280px; }
+
+  .sidebar-toc {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg);
+    border-right: 2px solid var(--border);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    z-index: 199;
+    overflow-y: auto;
+    padding: 60px 16px 20px;
+    transition: left 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+  }
+  .sidebar-toc.open { left: 0; }
+  .sidebar-toc h4 {
+    color: var(--accent);
+    margin: 0 0 12px;
+    font-size: 1.1em;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .sidebar-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sidebar-toc li {
+    padding: 3px 0;
+  }
+  .sidebar-toc li.toc-h2 {
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--heading);
+  }
+  .sidebar-toc li.toc-h3 {
+    padding-left: 14px;
+    font-size: 0.92em;
+  }
+  .sidebar-toc li.toc-h4 {
+    padding-left: 28px;
+    font-size: 0.85em;
+    color: var(--accent2);
+  }
+  .sidebar-toc a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  .sidebar-toc a:hover {
+    background: var(--box-bg);
+    color: var(--accent);
+  }
+  .sidebar-toc .toc-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--accent2);
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="chapter-nav">
+  <a href="CoS-foreword.html">머리말</a>
+  <a href="CoS-intro.html">서문</a>
+  <a href="CoS-ch1.html">제1장: 안개 속으로</a>
+  <a href="CoS-ch2.html">제2장: 바로비아의 땅</a>
+  <a href="CoS-ch3.html">제3장: 바로비아 마을</a>
+  <a href="CoS-ch4.html">제4장: 레이븐로프트 성</a>
+  <a href="CoS-ch5.html">제5장: 발라키 마을</a>
+  <a href="CoS-ch6.html" class="active">제6장: 늙은 뼈 분쇄기</a>
+  <a href="CoS-ch7.html">제7장: 아르긴보스트홀트</a>
+  <a href="CoS-ch8.html">제8장: 크레즈크 마을</a>
+  <a href="CoS-ch9.html">제9장: 촐렌카 고개</a>
+  <a href="CoS-ch10.html">제10장: 베레즈 폐허</a>
+  <a href="CoS-ch11.html">제11장: 반 리히텐의 탑</a>
+  <a href="CoS-ch12.html">제12장: 포도주 마법사</a>
+  <a href="CoS-ch13.html">제13장: 호박 사원</a>
+  <a href="CoS-ch14.html">제14장: 예스터 힐</a>
+  <a href="CoS-ch15.html">제15장: 늑대인간 소굴</a>
+  <a href="CoS-epilogue.html">에필로그</a>
+  <a href="CoS-appendixA.html">부록 A</a>
+  <a href="CoS-appendixB.html">부록 B</a>
+  <a href="CoS-appendixC.html">부록 C</a>
+  <a href="CoS-appendixD.html">부록 D</a>
+  <a href="CoS-appendixE.html">부록 E</a>
+  <a href="CoS-appendixF.html">부록 F</a>
+</nav>
+
+<h1>
+  제6장: 늙은 뼈 분쇄기(Old Bonegrinder)
+  <span class="subtitle">Chapter 6: Old Bonegrinder</span>
+</h1>
+
+<h2 id="ch6-intro">늙은 뼈 분쇄기</h2>
+
+<p>한때 발라키(Vallaki)에 곡물을 공급하던 이 비뚤어진 풍차는 이제 세 명의 밤 마녀(Night Hag)의 보금자리이다: 모르간사(Morgantha)와 그녀의 사악한 딸들, 벨라 선베인(Bella Sunbane)과 오팔리아 웜위글(Offalia Wormwiggle). 마녀들은 바로비아(Barovia)에 갇혀 있지만 이곳을 좋아한다. 변신 행동(Change Shape)을 사용하여 바로비아 여인 — 촌스러운 어머니와 못생긴 두 딸 — 의 모습으로 위장한 마녀들은 아이들을 납치하여 잡아먹고, 풍차의 맷돌로 작은 뼈를 분쇄하여 가루로 만든다. 이 가루는 마녀들의 꿈 과자(Dream Pastry)의 핵심 재료이며, 스트라드(Strahd)의 영지에서 벗어나길 절박하게 원하는 바로비아 성인들에게 제공된다.</p>
+
+<p>무고한 자의 뼈로 만든 마녀의 꿈 과자는 바로비아인이 황홀경에 빠지게 하며, 그 안에서 기쁨 가득한 천국 같은 장소로 탈출할 수 있다. 성인들이 더 이상 꿈 과자를 살 여유가 없으면, 마녀들은 과자와 자녀를 교환할 것을 제안한다. 이로써 성인들의 이기심을 먹이 삼으며 동시에 더 많은 과자를 만들 재료를 확보한다. 이것이 마녀들이 스트라드의 영지에 타락을 뿌리는 방식이며, 아이들을 강제로 빼앗지 않는 이유이다. 마녀들은 영혼이 있는 아이에게만 관심이 있다. 각 아이를 바늘로 찌르고, 아이가 울면 그것이 영혼이 있다는 징표이다.</p>
+
+<blockquote>
+  <p>꿈은 산 자를 위한 것이다.</p>
+  <span class="attribution">— 스트라드 폰 자로비치(Strahd von Zarovich)</span>
+</blockquote>
+
+<div class="sidebar">
+  <h3>모르간사의 결사(Morgantha's Coven)</h3>
+  <p>마녀들은 결사(Coven)의 공유 주문시전 능력을 보유한다 (몬스터 매뉴얼(Monster Manual) 마녀 항목의 "마녀 결사" 사이드바 참조). 하나 이상의 마녀가 죽으면 결사가 깨진다. 모르간사는 결사를 완성하는 데 도움이 되기에 딸들을 참는 것뿐이다. 한 명이 죽으면, 모르간사는 인간 아이를 납치하여 잡아먹고 새 딸을 출산한다 (몬스터 매뉴얼에 기술된 바와 같이).</p>
+  <p>모르간사는 결사의 마녀 눈(Hag Eye)을 스트라드의 기형 하인 사이러스 벨뷰(Cyrus Belview, 제4장, 구역 K62 참조)에게 주었다. 이를 통해 레이븐로프트 성(Castle Ravenloft)을 염탐하고 뱀파이어를 감시할 수 있다. 마녀들은 스트라드를 두려워하며 이 땅에 대한 그의 지배를 존중한다. 마녀 눈에 대한 자세한 정보는 몬스터 매뉴얼의 마녀 항목을 참조한다.</p>
+</div>
+
+<div class="sidebar">
+  <h3>꿈 과자(Dream Pastries)</h3>
+  <p>이 과자는 작은 민스미트 파이처럼 생기고 맛이 난다. 통째로 먹은 크리처는 DC 16 건강 내성 굴림에 성공해야 하며, 실패 시 1d4 + 4시간 동안 지속되는 황홀경에 빠진다. 그 동안 크리처는 무력화(Incapacitated) 상태이며 속도가 0피트가 된다. 영향받은 크리처가 피해를 입거나 다른 누군가가 행동을 사용하여 흔들어 깨우면 황홀경이 끝난다.</p>
+  <p>황홀경 중 크리처는 세상의 악에서 멀리 떨어진 기쁨 가득한 장소에 있는 꿈을 꾼다. 꿈속 장소와 인물은 생생하고 믿을 만하며, 꿈이 끝나면 영향받은 크리처는 그 장소로 돌아가고 싶은 갈망을 경험한다.</p>
+</div>
+
+<h2 id="ch6-approach">풍차에 접근하기(Approaching the Windmill)</h2>
+
+<p>풍차의 석벽은 쉽게 올라갈 수 있다. 나무 바닥이 각 층을 구분한다. 마녀들이 암시야를 가지고 있어 내부에 조명은 없다.</p>
+
+<div class="read-aloud">
+  <p>구 스발리치 가도(Old Svalich Road)가 이곳에서 발리녹 산맥(Balinok Mountains)을 관통하는 구불구불한 길에서 안개 가득한 계곡으로 내려가며 산허리를 따라가는 느긋한 오솔길로 바뀐다. 계곡 한가운데, 크고 어두운 산 호수 기슭 가까이에 성벽으로 둘러싸인 마을이 보이며, 수면은 어둡고 고요하다. 길의 한 갈래가 서쪽 곶으로 이어지며, 그 위에 휘어진 나무 날개가 벗겨진 노후한 석조 풍차가 앉아 있다.</p>
+</div>
+
+<p>풍차를 더 가까이 살피면 몇 가지 세부 사항이 드러난다:</p>
+
+<div class="read-aloud">
+  <p>양파 모양 지붕의 건물이 앞으로, 한쪽으로 기울어져 있다 — 마치 폭풍우 치는 잿빛 하늘에서 돌아서려는 듯하다. 회색 벽돌 벽과 위층의 때 낀 창문이 보인다. 허름한 출입구 위로, 낡은 나무 발판이 풍차를 둘러싸고 있다. 문 위 나무 들보에 까마귀 한 마리가 앉아 있다. 이리저리 뛰며 꽥꽥 울어대는데, 뭔가 초조한 듯하다.</p>
+</div>
+
+<p>DC 12 지혜(통찰) 판정에 성공한 캐릭터는 까마귀가 파티에게 경고하려 한다고 감지한다. 메시지를 전달한 뒤, 까마귀는 아래 계곡의 마을 발라키(제5장 참조)를 향해 날아간다.</p>
+
+<p>풍차 너머에는 숲이 있다. 풍차 언덕 꼭대기에 올라서면, 캐릭터들은 숲 가장자리에 네 개의 낮은 거석이 원을 이루고 있는 것을 볼 수 있다. 돌 위에서 까마귀들이 선회하는 것이 보이며, 이 거석은 이 장의 끝에 설명되어 있다.</p>
+
+<h2 id="ch6-areas">풍차의 구역(Areas of the Windmill)</h2>
+
+<p>아래 구역들은 늙은 뼈 분쇄기 지도의 표시에 해당한다.</p>
+
+<div class="map-container">
+  <div class="map-title">지도 6.1: 늙은 뼈 분쇄기 (O 구역)</div>
+  <div style="position:relative;aspect-ratio:2400/1650;">
+    <img src="map-06.01.old-bonegrinder.jpg" alt="지도 6.1: 늙은 뼈 분쇄기">
+    <div class="map-overlay">
+      <a class="map-label" href="#o4" style="left:75%;top:15%;"><span class="map-tooltip">O4. 돔형 다락</span>4</a>
+      <a class="map-label" href="#o3" style="left:45%;top:15%;"><span class="map-tooltip">O3. 침실</span>3</a>
+      <a class="map-label" href="#o1" style="left:45%;top:68%;"><span class="map-tooltip">O1. 1층</span>1</a>
+      <a class="map-label" href="#o2" style="left:75%;top:68%;"><span class="map-tooltip">O2. 뼈 분쇄기</span>2</a>
+      <a class="map-label" href="#o4" style="left:20%;top:22%;"><span class="map-tooltip">O4. 돔형 다락</span>4</a>
+      <a class="map-label" href="#o3" style="left:20%;top:35%;"><span class="map-tooltip">O3. 침실</span>3</a>
+      <a class="map-label" href="#o2" style="left:16%;top:50%;"><span class="map-tooltip">O2. 뼈 분쇄기</span>2</a>
+      <a class="map-label" href="#o1" style="left:16%;top:63%;"><span class="map-tooltip">O1. 1층</span>1</a>
+    </div>
+  </div>
+</div>
+
+<!-- O1 -->
+<h3 class="area-title" id="o1">O1. 1층(Ground Floor)</h3>
+
+<div class="read-aloud">
+  <p>1층은 임시 주방으로 개조되었지만 방은 불결하다. 바구니와 낡은 식기가 어디에나 쌓여 있다. 어수선함에 더해 행상인의 수레, 닭장, 무거운 나무 궤, 꽃이 그려진 예쁜 나무 캐비닛이 있다. 닭 울음소리에 더해 두꺼비 울음소리가 들린다.</p>
+  <p>과자의 달콤한 냄새가 코를 찌르는 악취와 끔찍하게 섞인다. 그 지독한 냄새는 방 한가운데 세워진 열린 통에서 나온다.</p>
+  <p>한쪽 벽의 벽돌 오븐에서 온기가 나오고, 맞은편 벽을 따라 허물어지는 계단이 올라간다. 더 높은 곳 어딘가에서 비명과 깔깔거림이 들려 낡은 풍차를 흔든다.</p>
+</div>
+
+<p>천장 높이는 8피트이다. 캐릭터들이 방을 탐색하면, 다음을 읽어준다:</p>
+
+<div class="read-aloud">
+  <p>작은 인간 뼈가 판석 바닥에 흩어져 있다.</p>
+</div>
+
+<p>오븐에서 꿈 과자 열두 개가 구워지고 있다. 모르간사는 10분마다 확인한다. 계단은 구역 O2로 올라간다.</p>
+
+<p>통에는 번들거리는 녹흑색 악마 독액(Demon Ichor)이 담겨 있다. 모르간사는 이 통을 <em>투시(Scrying)</em> 주문의 매개체로 사용할 수 있다. 또한 행동으로 통을 세 번 두드려 드레치(Dretch)를 소환할 수 있다. 악마는 모르간사의 턴 끝에 통에서 기어 나와 1시간 동안 밤 마녀의 명령에 복종하며, 이후 독액 웅덩이로 녹아든다. 모르간사는 독액이 바닥나기 전까지 이 방식으로 최대 아홉 마리의 드레치를 소환할 수 있다.</p>
+
+<p>모르간사의 캐비닛에는 허브와 제빵 재료가 든 나무 그릇들이 있으며, 밀가루, 설탕, 뼈 가루가 든 호리병 여러 개가 포함된다. 캐비닛 문 안쪽에 머리카락 타래 열두 개가 걸려 있다. 각종 혼합물 사이에 비약이 든 작은 용기 세 개가 있으며 라벨이 붙어 있다. 첫 번째 비약, "젊음(Youth)"이라 표시된 것은 금빛 시럽으로, 마셔진 자를 마법적으로 24시간 동안 더 젊고 매력적으로 보이게 한다. 두 번째 비약, "웃음(Laughter)"이라 표시된 것은 비마법적 붉은 차로, 마신 자를 깔깔거림 열병(Cackle Fever)에 감염시킨다 (던전 마스터 가이드 제8장 "질병" 참조). 세 번째 비약, "어머니의 젖(Mother's Milk)"이라 표시된 녹빛 유백색 액체는 사실 창백한 팅크(Pale Tincture) 1회분이다 (던전 마스터 가이드 제8장 "독" 참조).</p>
+
+<p>닭장에는 닭 세 마리, 수탉 한 마리, 그리고 낳은 달걀 몇 개가 있다.</p>
+
+<p>나무 궤에는 뚜껑에 작은 구멍이 뚫려 있으며, 꽥꽥 우는 두꺼비 100마리가 들어 있다. 뚜껑을 열면 여러 마리가 탈출하지만 무해하다.</p>
+
+<!-- O2 -->
+<h3 class="area-title" id="o2">O2. 뼈 분쇄기(Bone Mill)</h3>
+
+<p>다른 곳으로 유인되지 않았다면, 모르간사가 이곳에 있다. 이곳은 그녀가 꿈 과자 가루를 만들기 위해 아이들의 뼈를 분쇄하는 곳이다.</p>
+
+<div class="read-aloud">
+  <p>삶은 사과처럼 주름진 얼굴의 비쩍 마르고 덩치 큰 노파가 바닥을 쓸며, 오래된 뼈 몇 개를 밀어내고 빗자루로 하얀 가루 구름을 일으킨다. 피묻은, 밀가루투성이 앞치마를 두르고 있다. 긴 날카로운 뜨개바늘이 동여맨 회색 머리 뭉치를 꿰뚫고 있다.</p>
+  <p>때 낀 창문이 이 8피트 높이 방에 극히 적은 빛만 들여보내며, 방의 대부분은 천장 가운데를 관통하는 나무 기어 축에 연결된 큰 맷돌이 차지하고 있다. 돌 계단이 위로 이어지며, 요란한 깔깔거림 소리를 향해 올라간다.</p>
+</div>
+
+<p>노파는 밤 마녀 모르간사이다. 장사하러 온 것이라면 방문자를 개의치 않는다. 최근 만든 꿈 과자를 하나에 1 gp에 팔려 한다. 자신의 과자를 자랑스러워하며 최상의 재료만 쓴다고 주장한다. 캐릭터들이 물건에 관심이 없어 보이면, "꺼져라!"라고 고함친다. 공격하거나 떠나길 거부하면, 딸들을 부르고 싸움에 나선다.</p>
+
+<p>풍차의 팔이 더 이상 작동하지 않으므로, 마녀들은 맷돌을 수동으로 작동시킨다.</p>
+
+<!-- O3 -->
+<h3 class="area-title" id="o3">O3. 침실(Bedroom)</h3>
+
+<p>밤 마녀 벨라 선베인(Bella Sunbane)과 오팔리아 웜위글(Offalia Wormwiggle)이 이곳에 있으며, 다른 곳으로 유인되지 않은 한이다.</p>
+
+<div class="read-aloud">
+  <p>이 좁은 원형 방 가운데의 두꺼운 나무 기어 축 주위에서 두 명의 못생긴 젊은 여자가 춤을 추고 있다. 비단 숄과 꿰맨 살가죽으로 된 가운을 입고 있다. 엉클어진 검은 머리에 긴 바늘이 꽂혀 있다. 여자들이 기쁨에 겨워 깔깔거린다.</p>
+  <p>썩어가는 나무 옷장 안에 작은 문이 달린 상자 세 개가 하나 위에 하나씩 쌓여 있다. 옷장 옆에는 버린 옷 더미가 있다. 사다리가 9피트 높이 천장의 나무 다락문으로 올라간다. 곁에 곰팡이 핀 캐노피 침대가 서 있다.</p>
+</div>
+
+<p>모르간사의 딸들은 인간 위장을 해도 역겹다. 노래하거나 춤추거나 끔찍한 농담을 주고받지 않을 때는, 잡은 아이들을 바늘로 찔러 울리고 있다. 아이들을 풀어주려는 시도는 마녀들의 분노를 산다.</p>
+
+<p>버린 옷은 밤 마녀들이 이미 잡아먹은 아이들의 것이다. 천장의 다락문을 밀면 구역 O4가 드러난다.</p>
+
+<p>각 상자는 3피트 정사각형이다. 맨 위는 비어 있지만, 가운데와 아래 것에는 각각 사로잡힌 아이가 들어 있다. 각 상자의 바깥쪽에는 철 걸쇠와 철 경첩이 달린 작은 문이 있다. 바깥에서 쉽게 걸쇠를 풀고 열 수 있다.</p>
+
+<p>사로잡힌 두 아이(질서 선 남녀 비전투원)는 바로비아 마을에서 꿈 과자와 교환되어 마녀에게 넘겨진 것이다. 소년 프리크(Freek)는 7살이다. 소녀 머틀(Myrtle)은 겨우 5살이다. 상자에는 빵 부스러기가 가득한데, 마녀들이 살을 찌우고 있기 때문이다. 풀려나도 어느 아이도 부모가 한 짓 때문에 집에 가고 싶어하지 않는다. 둘 다 바로비아의 이스마르크(Ismark)와 이레나(Ireena)에 대해 다정하게 말하며, 그들에게 데려가 달라 바란다.</p>
+
+<div class="treasure">
+  <h4>보물(Treasure)</h4>
+  <p>마녀들은 침대를 잠자는 데 쓰지 않지만, 보물을 그 안에 보관한다. 곰팡이 핀 짚 매트리스에 싸구려 장신구 6점(각 25 gp 가치)이 채워져 있다.</p>
+</div>
+
+<!-- O4 -->
+<h3 class="area-title" id="o4">O4. 돔형 다락(Domed Attic)</h3>
+
+<div class="read-aloud">
+  <p>풍차의 꼭대기에 도달했다 — 낡은 기계장치로 가득 찬 돔형 방이다. 움직일 공간이 별로 없다. 벽의 작은 구멍을 통해 빛이 이 다락에 들어온다.</p>
+</div>
+
+<p>이 공간을 수색하면 버려진 낡은 새 둥지 몇 개를 찾을 수 있다.</p>
+
+<div class="fortunes">
+  <h4>레이븐로프트의 운명(Fortunes of Ravenloft)</h4>
+  <p>카드 점술이 이곳에 보물이 있다고 밝히면, 새 둥지 안에 끼워져 있거나 구석의 흙 아래 묻혀 있어 쉽게 찾을 수 있다.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="ch6-megaliths">거석(The Megaliths)</h2>
+
+<p>풍차 근처의 네 개의 고대 돌은 수 세기 전 계곡의 원래 인간 거주자들이 세웠다. 각 이끼 낀 돌에는 조잡한 도시 조각이 있으며, 각각 다른 계절과 연관되어 있다. 겨울의 도시는 눈으로 덮여 있고, 봄의 도시는 꽃으로 장식되어 있으며, 여름의 도시 위에는 태양이 빛나고, 가을의 도시는 낙엽으로 뒤덮여 있다. 캐릭터들이 바로비아의 사제나 학자 NPC에게 돌에 대해 물으면, 고대 전설에서 말하는 네 도시(Four Cities) — 아침의 군주(Morninglord), 어머니 밤(Mother Night), 그리고 다른 고대 신들이 처음 거주했다는 낙원의 도시 — 에 대한 이야기를 듣는다.</p>
+
+<p>여러 까마귀가 머리 위를 선회하고, 한 마리가 가을의 도시를 묘사한 돌 꼭대기에서 무언가를 쪼고 있다. 살펴보면, 까마귀가 꿈 과자를 쪼고 있고, 돌 원 중앙 바닥에는 아이들의 이빨이 작은 더미로 쌓여 있다. 마녀들이 돌을 모독하고 자신들이 숭배하는 존재 — 삐뚤어진 이빨의 사악한 요정왕 케이틀렌(Ceithlenn of the Crooked Teeth) — 에게 제물로 바치기 위해 이것을 놓아두었다.</p>
+
+<div class="section-divider">&#9830; &#9830; &#9830;</div>
+
+<p style="text-align:center; font-size:0.85em; color:#888; margin-top:40px;">
+  Curse of Strahd — Chapter 6: Old Bonegrinder<br>
+  한국어 번역본
+</p>
+
+
+<div class="sidebar-toc" id="sidebarToc">
+  <button class="toc-close" onclick="toggleSidebar()">✕</button>
+  <h4>목차</h4>
+  <ul id="sidebarTocList"></ul>
+</div>
+<button class="sidebar-toc-toggle" id="sidebarToggle" onclick="toggleSidebar()">목 차</button>
+<script>
+function toggleSidebar() {
+  var toc = document.getElementById('sidebarToc');
+  var btn = document.getElementById('sidebarToggle');
+  toc.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+// Auto-generate TOC from headings
+(function() {
+  var headings = document.querySelectorAll('h2[id], h3[id], h4[id], .area-title[id]');
+  var list = document.getElementById('sidebarTocList');
+  if (!list) return;
+  for (var i = 0; i < headings.length; i++) {
+    var h = headings[i];
+    var li = document.createElement('li');
+    var tag = h.tagName.toLowerCase();
+    if (h.classList.contains('area-title')) tag = 'h3';
+    li.className = 'toc-' + tag;
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent.trim();
+    a.onclick = function() {
+      if (window.innerWidth < 768) toggleSidebar();
+    };
+    li.appendChild(a);
+    list.appendChild(li);
+  }
+})();
+</script>
+
+</body>
+</html>

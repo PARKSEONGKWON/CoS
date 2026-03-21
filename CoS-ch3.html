@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제3장: 바로비아 마을 — 스트라드의 저주</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+  :root {
+    --bg: #faf6f0;
+    --text: #2c2416;
+    --accent: #8b1a1a;
+    --accent2: #a0522d;
+    --heading: #4a0e0e;
+    --border: #c9b99a;
+    --box-bg: #f0e8d8;
+    --quote-bg: #eee6d4;
+    --table-head: #5c3317;
+    --table-alt: #f5edd9;
+    --shadow: rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Serif KR', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-size: 16px;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 28px 80px;
+  }
+
+  h1 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: 2.4em;
+    color: var(--heading);
+    text-align: center;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    border-bottom: 3px double var(--accent);
+    padding-bottom: 16px;
+  }
+
+  h1 .subtitle {
+    display: block;
+    font-size: 0.45em;
+    font-weight: 400;
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+
+  h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 700;
+    font-size: 1.6em;
+    color: var(--accent);
+    margin: 48px 0 16px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  h3 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--heading);
+    margin: 32px 0 10px;
+  }
+
+  h4 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.05em;
+    color: var(--accent2);
+    margin: 24px 0 8px;
+  }
+
+  p { margin: 0 0 14px; text-align: justify; }
+
+  .read-aloud {
+    background: var(--quote-bg);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-style: italic;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .read-aloud p:last-child { margin-bottom: 0; }
+
+  .sidebar {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    box-shadow: 2px 2px 8px var(--shadow);
+  }
+
+  .sidebar h3 {
+    margin-top: 0;
+    color: var(--accent);
+    font-size: 1.1em;
+  }
+
+  blockquote {
+    background: var(--quote-bg);
+    border-left: 3px solid var(--accent2);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-style: italic;
+  }
+
+  blockquote .attribution {
+    display: block;
+    text-align: right;
+    font-style: normal;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin-top: 8px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+  }
+
+  thead th {
+    background: var(--table-head);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  tbody td {
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:nth-child(even) { background: var(--table-alt); }
+
+  .area-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1.08em;
+    color: var(--accent);
+    margin: 28px 0 8px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-divider {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--border);
+    font-size: 1.4em;
+    letter-spacing: 0.5em;
+  }
+
+  .map-note {
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    color: var(--accent2);
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+  }
+
+  .treasure {
+    background: #fdf5e6;
+    border: 1px solid #d4a937;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .treasure h4 { color: #8b6914; margin-top: 0; }
+
+  .fortunes {
+    background: #f0e0f0;
+    border: 1px solid #9c6b9c;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .fortunes h4 { color: #6b3a6b; margin-top: 0; }
+
+  .development {
+    background: #e8f0e8;
+    border: 1px solid #6b9c6b;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .development h4 { color: #3a6b3a; margin-top: 0; }
+
+  strong { color: var(--heading); }
+
+  .stat-block {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+    background: var(--box-bg);
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 10px 0;
+  }
+
+  .toc {
+    background: var(--box-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 24px 0;
+  }
+
+  .toc h3 { margin-top: 0; }
+  .toc ul { list-style: none; padding-left: 0; }
+  .toc li { padding: 3px 0; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  /* Interactive Map Overlay */
+  .map-container {
+    position: relative;
+    margin: 24px 0;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 2px 2px 12px var(--shadow);
+  }
+
+  .map-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .map-container .map-img-wrap-1 { aspect-ratio: 4800 / 6600; }
+  .map-container .map-img-wrap-2 { aspect-ratio: 2400 / 3300; }
+
+  .map-container .map-title {
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    color: #fff;
+    background: var(--table-head);
+    padding: 8px 12px;
+  }
+
+  .map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .map-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(139,26,26,0.85);
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,0.7);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+    z-index: 2;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .map-label:hover {
+    transform: translate(-50%, -50%) scale(1.35);
+    background: #c0392b;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    z-index: 3;
+  }
+
+  .map-label .map-tooltip {
+    display: none;
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30,20,10,0.92);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    pointer-events: none;
+    font-weight: 400;
+  }
+
+  .map-label:hover .map-tooltip { display: block; }
+
+  .map-floor-label {
+    position: absolute;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent2);
+    background: rgba(250,246,240,0.85);
+    padding: 2px 8px;
+    border-radius: 3px;
+    pointer-events: none;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 20px 14px 60px; font-size: 15px; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.3em; }
+    .map-label { width: 18px; height: 18px; font-size: 7px; }
+    .map-label .map-tooltip { font-size: 10px; }
+  }
+
+  /* Tab System */
+  .chapter-nav {
+    display: flex;
+    gap: 0;
+    margin: 0 0 0;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    padding-top: 8px;
+  }
+  .chapter-nav a {
+    padding: 10px 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.95em;
+    font-weight: 700;
+    color: var(--accent2);
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: -2px;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+  }
+  .chapter-nav a:hover { background: var(--box-bg); }
+  .chapter-nav a.active {
+    background: var(--bg);
+    color: var(--accent);
+    border-color: var(--border);
+  }
+
+
+  /* Sidebar TOC */
+  .sidebar-toc-toggle {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 8px;
+    cursor: pointer;
+    font-size: 14px;
+    writing-mode: vertical-rl;
+    letter-spacing: 2px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+  }
+  .sidebar-toc-toggle:hover { background: var(--heading); }
+  .sidebar-toc-toggle.open { left: 280px; }
+
+  .sidebar-toc {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg);
+    border-right: 2px solid var(--border);
+    box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+    z-index: 199;
+    overflow-y: auto;
+    padding: 60px 16px 20px;
+    transition: left 0.3s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85em;
+  }
+  .sidebar-toc.open { left: 0; }
+  .sidebar-toc h4 {
+    color: var(--accent);
+    margin: 0 0 12px;
+    font-size: 1.1em;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .sidebar-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sidebar-toc li {
+    padding: 3px 0;
+  }
+  .sidebar-toc li.toc-h2 {
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--heading);
+  }
+  .sidebar-toc li.toc-h3 {
+    padding-left: 14px;
+    font-size: 0.92em;
+  }
+  .sidebar-toc li.toc-h4 {
+    padding-left: 28px;
+    font-size: 0.85em;
+    color: var(--accent2);
+  }
+  .sidebar-toc a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  .sidebar-toc a:hover {
+    background: var(--box-bg);
+    color: var(--accent);
+  }
+  .sidebar-toc .toc-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--accent2);
+  }
+
+</style>
+</head>
+<body>
+
+<nav class="chapter-nav">
+  <a href="CoS-foreword.html">머리말</a>
+  <a href="CoS-intro.html">서문</a>
+  <a href="CoS-ch1.html">제1장: 안개 속으로</a>
+  <a href="CoS-ch2.html">제2장: 바로비아의 땅</a>
+  <a href="CoS-ch3.html" class="active">제3장: 바로비아 마을</a>
+  <a href="CoS-ch4.html">제4장: 레이븐로프트 성</a>
+  <a href="CoS-ch5.html">제5장: 발라키 마을</a>
+  <a href="CoS-ch6.html">제6장: 늙은 뼈 분쇄기</a>
+  <a href="CoS-ch7.html">제7장: 아르긴보스트홀트</a>
+  <a href="CoS-ch8.html">제8장: 크레즈크 마을</a>
+  <a href="CoS-ch9.html">제9장: 촐렌카 고개</a>
+  <a href="CoS-ch10.html">제10장: 베레즈 폐허</a>
+  <a href="CoS-ch11.html">제11장: 반 리히텐의 탑</a>
+  <a href="CoS-ch12.html">제12장: 포도주 마법사</a>
+  <a href="CoS-ch13.html">제13장: 호박 사원</a>
+  <a href="CoS-ch14.html">제14장: 예스터 힐</a>
+  <a href="CoS-ch15.html">제15장: 늑대인간 소굴</a>
+  <a href="CoS-epilogue.html">에필로그</a>
+  <a href="CoS-appendixA.html">부록 A</a>
+  <a href="CoS-appendixB.html">부록 B</a>
+  <a href="CoS-appendixC.html">부록 C</a>
+  <a href="CoS-appendixD.html">부록 D</a>
+  <a href="CoS-appendixE.html">부록 E</a>
+  <a href="CoS-appendixF.html">부록 F</a>
+</nav>
+
+<h1>
+  제3장: 바로비아 마을(Village of Barovia)
+  <span class="subtitle">Chapter 3: The Village of Barovia</span>
+</h1>
+
+<h2 id="ch3-intro">바로비아 마을(Village of Barovia)</h2>
+
+<p>바로비아 마을(Village of Barovia)은 이 땅에서 가장 슬픈 곳으로, 주민들은 스트라드(Strahd)를 너무나 두려워한 나머지 집 밖으로 좀처럼 나오지 않는다. 마을은 레이븐로프트 성(Castle Ravenloft)의 그늘 아래 놓여 있으며, 안개에 파묻혀 있지만 그래도 뱀파이어의 시선을 피할 수는 없다.</p>
+
+<p>최근까지 스트라드는 마을 촌장의 양녀 이레나 콜리아나(Ireena Kolyana)를 밤마다 찾아오곤 했다. 이레나는 스트라드가 사랑했던 타티아나(Tatyana)의 영혼을 지니고 있으며, 외모도 그녀와 꼭 닮았다. 스트라드는 이레나를 자신의 신부로 삼아 뱀파이어로 만들고, 영원히 성의 지하 납골당에 가두려 한다.</p>
+
+<blockquote>
+  <p>"같은 목소리, 같은 얼굴, 같은 우아한 몸. 그녀는 타티아나가 되살아 돌아온 것이었다. 나는 경악에 넋을 완전히 잃고 말았다."</p>
+  <span class="attribution">— 스트라드 폰 자로비치(Strahd von Zarovich),<br>《나, 스트라드: 뱀파이어의 회고록(I, Strahd: The Memoirs of a Vampire)》 中</span>
+</blockquote>
+
+<h3>마을에 접근하기(Approaching the Village)</h3>
+
+<div class="read-aloud">
+  <p>키 큰 형체들이 모든 것을 감싸는 짙은 안개 속에서 어렴풋이 나타난다. 발밑의 질퍽한 땅이 매끄럽고 젖은 자갈길로 바뀐다. 키 큰 형체들이 마을 가옥임을 알아볼 수 있게 된다. 각 집의 창문은 칠흑 같은 어둠 속에서 응시하고 있다. 멀리서 메아리치는 슬픈 흐느낌 외에는 적막을 깨는 소리가 없다.</p>
+</div>
+
+<p>흐느낌은 미친 메리(Mad Mary)의 연립 주택(구역 E3)에서 흘러나온다. 구역 E1과 E2를 제외하고 마을의 모든 상점은 영구히 문을 닫았으며, 비어 있는 상점들은 가치 있는 것은 모두 약탈당했다. 대부분의 벽에 발톱 자국이 나 있다.</p>
+
+<p>안개가 결국 걷히면, 레이븐로프트 성이 하늘을 꿰뚫는 창처럼 마을 위에 우뚝 솟아 있다.</p>
+
+<h3>가옥 점유자(House Occupants)</h3>
+
+<table>
+  <thead>
+    <tr><th>d20</th><th>점유자</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1–3</td><td>없음</td></tr>
+    <tr><td>4–8</td><td>2d4 쥐 떼(swarms of rats)</td></tr>
+    <tr><td>9–16</td><td>바로비아 마을 주민</td></tr>
+    <tr><td>17–20</td><td>2d4 스트라드 좀비(부록 D 참조)</td></tr>
+  </tbody>
+</table>
+
+<p><strong>쥐.</strong> 쥐가 들끓는 집은 버려진 것처럼 보인다. 쥐들은 스트라드의 하수인이며, 캐릭터들이 집 내부를 탐색하면 공격한다.</p>
+
+<p><strong>바로비아 마을 주민.</strong> 바로비아 마을 주민이 사는 집에는 1d4명의 성인(남녀 인간 평민(commoner))과 1d8 − 1명의 아이(남녀 비전투원)가 있다. 문 앞에서 귀를 기울이면 안에서 낮고 웅얼거리는 속삭임이 들린다. 이 주민들은 낯선 이와 대화할 생각이 없으며 절대 먼저 공격하지 않고, 가능한 한 항상 위험을 피해 도주한다. 밤에는 촛불 곁에 웅크리고 앉아 손수 만든 성물을 가까이 쥐고 있다.</p>
+
+<p><strong>스트라드 좀비.</strong> 캐릭터들이 스트라드 좀비가 들끓는 집의 문이나 덧문을 열면, 죽음의 악취가 덮친다. 캐릭터들이 감히 들어가면, 좀비들이 그 위치로 모여든다.</p>
+
+<div class="section-divider">&#9830; &#9830; &#9830;</div>
+
+<div class="map-container">
+  <div class="map-title">지도 3.1: 바로비아 마을</div>
+  <div style="position:relative;aspect-ratio:1950/2475;">
+    <img src="map-03.01-village-of-barovia.jpg" alt="지도 3.1: 바로비아 마을">
+    <div class="map-overlay">
+      <a class="map-label" href="#e6" style="left:28.41%;top:15.56%;"><span class="map-tooltip">E6. 묘지</span>6</a>
+      <a class="map-label" href="#e5" style="left:24.97%;top:29.05%;"><span class="map-tooltip">E5. 교회</span>5</a>
+      <a class="map-label" href="#e7" style="left:85.18%;top:45.49%;"><span class="map-tooltip">E7. 유령의 집</span>7</a>
+      <a class="map-label" href="#e1" style="left:54.41%;top:49.17%;"><span class="map-tooltip">E1. 빌드라스 상점</span>1</a>
+      <a class="map-label" href="#e2" style="left:49.67%;top:49.72%;"><span class="map-tooltip">E2. 피의 포도주 선술집</span>2</a>
+      <a class="map-label" href="#e3" style="left:48.13%;top:63.52%;"><span class="map-tooltip">E3. 미친 메리의 집</span>3</a>
+      <a class="map-label" href="#e4" style="left:43.0%;top:66.18%;"><span class="map-tooltip">E4. 부르고마스터 저택</span>4</a>
+    </div>
+  </div>
+</div>
+
+<!-- E1 -->
+<h3 class="area-title" id="e1">E1. 빌드라스의 잡화점(Bildrath's Mercantile)</h3>
+
+<div class="read-aloud">
+  <p>이 건물에서 새어 나오는 빈약한 빛이 두꺼운 커튼 뒤에서 흘러나온다. 경첩에 매달려 삐걱거리는 간판에는 "빌드라스의 잡화점(Bildrath's Mercantile)"이라고 적혀 있다.</p>
+</div>
+
+<p>이 가게는 길이 70피트, 폭 40피트이다. 주인 빌드라스 칸테미르(Bildrath Cantemir, LN 남성 인간 평민(commoner))는 플레이어 핸드북의 모험 장비 표에 있는 물품을 판매하지만, 표에서 25 gp 미만인 물품만 취급하며, 가격은 열 배를 받는다. 빌드라스는 비스타니(Vistani)가 지나갈 때 그들과 거래한다. 그는 또한 이곳에 발을 들인 불운한 외지인에게서 이익을 챙기는 것을 기꺼이 한다. 그는 자신의 이익만 챙기며 피난처를 제공하지 않는다. 그의 말마따나 "진짜 원하면 값을 치르겠지"라며 절대 흥정하지 않는다. 마을에 경쟁자가 없다.</p>
+
+<p>캐릭터들이 빌드라스를 곤란하게 하면, 그는 조카이자 물건 나르는 일꾼인 패리윔플(Parriwimple, LG 남성 인간)을 부른다. 패리윔플은 검투사(gladiator)의 능력치를 가지고 있지만, 지능이 6이며 방패를 들지 않는다(AC 14). 패리윔플의 본명은 파르폴 칸테미르(Parpol Cantemir)이지만, 마을에서 그렇게 부르는 사람은 아무도 없다. 가죽 튜닉 아래로 물결치는 근육이 그의 힘을 충분히 짐작하게 해준다. 동시에, 패리윔플은 단순한 마음씨를 가졌다. 그는 삼촌에게 헌신적이며, 빌드라스가 뭐라고 할 것이 있는 한 캐릭터들을 따르지 않는다.</p>
+
+<!-- E2 -->
+<h3 class="area-title" id="e2">E2. 피의 포도주 선술집(Blood of the Vine Tavern)</h3>
+
+<div class="read-aloud">
+  <p>한 줄기 빛이 중앙 광장에 쏟아져, 짙은 안개 속에서 마치 단단한 기둥처럼 보인다. 벌어진 출입구 위에 간판이 위태롭게 비뚤어져 매달려 있으며, 이곳이 "피 위의 포도주(Blood on the Vine)" 선술집임을 알린다.</p>
+</div>
+
+<p>선술집 건물은 대략 60피트 사각형이다. 간판을 자세히 살펴보면 원래 "피의 포도주(Blood of the Vine)"라고 적혀 있었음을 알 수 있다. ("f" 위에 "n"이 긁혀 덮어써져 있다.) 한때 잘 꾸며졌던 이 선술집은 세월이 흐르며 초라해졌다. 난로에서 활활 타는 불이 안에 웅크린 몇몇 사람들에게 미미한 온기를 준다. 그들 중에는 바텐더, 함께 앉은 세 명의 비스타니, 그리고 이스마르크 콜리아노비치(Ismark Kolyanovich)라는 남자가 있다—마침 마을 촌장 콜리안 인디로비치(Kolyan Indirovich)의 아들이다.</p>
+
+<div class="sidebar">
+  <h3>이스마르크 역할 연기(Roleplaying Ismark)</h3>
+  <p>이스마르크(LG 남성 인간 베테랑(veteran))는 구석 테이블에 혼자 앉아 와인을 홀짝이는 젊은 남자다. 다른 주민들은 그를 "이스마르크 더 레서(Ismark the Lesser)"라 부르는데, 평생 대부분 아버지의 그늘 아래 살았기 때문이다. 이스마르크는 전형적인 음울한 바로비아인이 아니다. 그는 캐릭터들을 합류하도록 초대하고, 와인값을 자기가 내겠다고 하며, 양자매 이레나 콜리아나를 보호하는 데 도움을 청한다. 그들이 동의하면, 촌장의 저택(구역 E4)으로 데려간다. 그는 캐릭터들이 이레나를 발라키(Vallaki)—계곡 중심부에 있으며 레이븐로프트 성의 시야 밖이고, (그가 바라건대) 스트라드의 손이 닿지 않는 정착지—까지 호위해 주기를 원한다. 이스마르크는 이레나를 옮기는 것이 도박임을 알고 있다. 집 밖에서는 스트라드에게 취약하기 때문이다. 하지만 발라키가 잘 방비되어 있다는 주장을 들었다. 이스마르크는 이레나나 스트라드에 관한 이야기가 아니면 다른 바로비아 주민들처럼 입이 무겁다. 이스마르크는 다른 주민들이 아는 모든 것을 알고 있다. 또한 어떤 알 수 없는 이유로, 스트라드가 이레나에게 끌리며 누구보다 그녀를 갈망한다는 것도 알고 있다.</p>
+  <p>"도움의 탄원(Plea for Help)" 모험 갈고리를 사용했고 캐릭터들이 이스마르크에게 받은 편지를 보여주면, 그는 촌장의 필체를 잘 알기에 그 편지가 아버지가 쓴 것이 아님을 확인해 준다.</p>
+  <p>이스마르크는 성인이 된 후 대부분의 시간을 무기 훈련에 바쳤으며, 언젠가 스트라드에게 맞서 죽이겠다는 희망을 품고 있다. 캐릭터들이 동행을 제안하면, 이레나가 먼저 안전한 곳에 옮겨진다는 조건하에 이스마르크는 동의한다. 이스마르크가 캐릭터들과 동행하는 한, 각 캐릭터의 경험치 배분을 결정할 때 파티 구성원으로 간주한다(다만 그 자신은 경험치를 얻지 않는다).</p>
+</div>
+
+<h4>기타 NPC</h4>
+
+<p><strong>바텐더 아리크(Arik the Barkeep).</strong> 아리크(CN 남성 인간 평민(commoner))는 아무 생각 없이 잔을 닦으며 바를 지킨다. 작은 와인잔 1 cp, 주전자 1 sp.</p>
+
+<p><strong>세 명의 비스타니.</strong> 알렌카(Alenka), 미라벨(Mirabel), 소르비아(Sorvia)라는 이름의 세 비스타니 첩자(spy)(N 여성 인간)가 선술집을 소유하고 있다.</p>
+
+<!-- E3 -->
+<h3 class="area-title" id="e3">E3. 미친 메리의 연립 주택(Mad Mary's Townhouse)</h3>
+
+<div class="read-aloud">
+  <p>고요하고 잿빛인 거리에 신음 섞인 흐느낌이 떠다니며, 당신의 생각을 슬픔으로 물들인다. 그 소리는 어두운 2층짜리 연립 주택에서 흘러나온다.</p>
+</div>
+
+<p>이 집은 대략 40피트 사각형이며, 안쪽에서 판자로 막고 바리케이드가 쳐져 있다. 미친 메리(Mad Mary, CN 여성 인간 평민(commoner))는 2층 침실 바닥 한가운데 앉아 기형적인 인형을 움켜쥐고 있다. 그녀는 슬픔과 절망에 빠져 있다. 방에 누가 있는지 거의 인식하지 못한다. 분노가 있는 곳에서는 아무 말도 하지 않지만, 부드럽게 말을 건네는 사람에게는 더듬거리며 이야기한다.</p>
+
+<p>메리는 사랑하는 딸 게르트루다(Gertruda)를 이 집에 평생 숨겨 두었다. 이제 십대가 된 게르트루다는 일주일 전 집을 빠져나갔으며, 그 이후 보이지 않는다. 어머니는 최악을 두려워하고 있으며—그 두려움에는 정당한 이유가 있다. 게르트루다의 운명에 대한 자세한 내용은 제4장의 구역 K42를 참조하라.</p>
+
+<p>기형적인 인형은 이상한 비웃음을 띠고 있으며 삼베 원피스를 입고 있다. 이 인형은 메리가 어렸을 때 가지고 있던 것으로, 게르트루다에게 물려주었다. 발라키의 장난감 제작자 가도프 블린스키(Gadof Blinsky)(제5장, 구역 N7 참조)가 이 인형을 만들었다. 인형 원피스 밑단에 헤진 태그가 꿰매져 있으며, "재미 없으면, 블린스키 아니다!(Is No Fun, Is No Blinsky!)"라고 적혀 있다.</p>
+
+<!-- E4 -->
+<h3 class="area-title" id="e4">E4. 촌장의 저택(Burgomaster's Mansion)</h3>
+
+<div class="read-aloud">
+  <p>지친 모습의 저택이 녹슨 철제 울타리 뒤에 웅크리고 있다. 철문은 뒤틀리고 찢겨져 있다. 오른쪽 문은 옆으로 내던져져 있고, 왼쪽 문은 바람에 느릿느릿 흔들린다. 문의 더듬거리는 삐걱임과 쨍그랑 소리가 무심한 정확함으로 반복된다. 잡초가 정원을 뒤덮고 집 자체를 위협하듯 다가서 있다. 그러나 벽을 따라 자란 것들은 짓밟혀 주변을 도는 길이 나 있다. 무거운 발톱 자국이 한때 아름다웠던 벽의 마감을 벗겨 놓았다. 커다란 검은 자국들이 저택을 덮쳤던 화염을 말해준다. 어떤 창에도 유리 한 장, 파편 하나 남아 있지 않다. 모든 창은 판자로 막혀 있으며, 각각에 불길한 징조의 얼룩이 져 있다.</p>
+</div>
+
+<p>정원을 조사하는 캐릭터는 DC 11 지혜(지각) 판정에 성공하면, 저택 주위의 밟힌 잡초와 수많은 늑대 발자국 및 인간의 발자국을 식별할 수 있다. 이 발자국은 스트라드의 지배 아래 있는 좀비와 구울이 남긴 것이다.</p>
+
+<p>촌장의 양녀 이레나 콜리아나(LG 여성 인간 귀족(noble), 14 히트 포인트)는 저택 안에 있으며, 문 밖의 사람들이 스트라드에게 충성하지 않는다는 확신이 들지 않는 한 단단히 빗장을 건 문을 열어주지 않는다. 캐릭터들이 훌륭한 역할 연기나 DC 15 매력(기만 또는 설득) 판정에 성공하여 그녀를 설득하거나, 이스마르크가 함께 있으면, 이레나는 문을 열고 안으로 초대한다.</p>
+
+<div class="read-aloud">
+  <p>저택 내부는 잘 꾸며져 있지만, 비품은 심한 마모의 흔적을 보인다. 눈에 띄는 특이한 점은 판자로 막힌 창문과 모든 방에 있는 성물이다. 촌장은 옆 응접실 바닥에 있다—시든 꽃에 둘러싸인 단순한 나무 관 안에 누워 있으며, 희미한 부패의 냄새가 난다.</p>
+</div>
+
+<p>이스마르크와 이레나가 직접 관을 만들었다.</p>
+
+<div class="sidebar">
+  <h3>이레나 역할 연기(Roleplaying Ireena)</h3>
+  <p>적갈색 머리카락을 가진 매력적인 젊은 여성 이레나는 스트라드에게 두 번 물렸다. 마을 주민들은 그녀를 두려워하며 피한다. 캐릭터들은 이레나에게 보호를 받을 최고의 희망이므로, 그녀는 특정 조건하에 기꺼이 동행한다. 온순해 보이지만 강한 의지를 가지고 있으며, 자신을 구하는 데 최선을 다해 파티를 돕는다.</p>
+  <p>그녀는 자신의 어린 시절을 기억하지 못한다. 어떻게 바로비아에 오게 되었는지도, 어디에서 왔는지도 모른다. 더욱이, 스트라드의 뱀파이어 매혹 때문에 그와의 만남은 흐릿한 기억이지만, 그의 눈에서 타오르던 격렬한 굶주림은 또렷이 기억한다.</p>
+  <p>그녀는 캐릭터들에게 말한다: 늑대와 다른 끔찍한 생물들이 몇 주간 밤마다 집을 공격했다. 촌장의 심장은 끊임없는 공세를 견디지 못하고, 사흘 전 돌아가셨다. 이상하게도, 그가 죽은 이후로 집은 공격을 받지 않았다.</p>
+  <p>그녀는 마을에서 아무도 이스마르크가 콜리안 인디로비치를 묘지에 제대로 매장하는 것을 도울 만큼 용감하지 않았다고 말한다. 이레나는 캐릭터들에게 이스마르크가 아버지의 시신을 지역 사제 도나비치(Donavich)(구역 E5)에게 안전하게 전달하는 것을 도와줄 수 있겠냐고 부탁한다. 촌장이 저택 바닥에 죽어 누워 있는 한, 그녀는 발라키나 다른 어디로든 이동하는 것을 거부한다.</p>
+</div>
+
+<!-- E5 -->
+<h3 class="area-title" id="e5">E5. 교회(Church)</h3>
+
+<div class="read-aloud">
+  <p>레이븐로프트 성을 받치는 기둥 바위의 뿌리에, 완만한 언덕 위에 돌과 나무로 된 회색빛의 처진 건물이 서 있다. 이 교회는 수백 년간 악의 공세를 명백히 견뎌 왔으며, 닳고 지쳐 있다. 뒤쪽으로 종탑이 솟아 있고, 지붕 널빤지의 구멍을 통해 깜박이는 빛이 비친다. 서까래는 무게를 견디며 힘겹게 버티고 있다.</p>
+</div>
+
+<div class="read-aloud">
+  <p>교회의 무거운 나무 문은 발톱 자국으로 뒤덮여 있고 화염에 그을려 있다.</p>
+</div>
+
+<p>마을 사제 도나비치(Donavich)가 이곳에 살고 있다. 다른 바로비아인들은 곧 명백해질 이유로 이 교회를 기피한다.</p>
+
+<div class="map-container">
+  <div class="map-title">지도 3.2: 교회</div>
+  <div style="position:relative;aspect-ratio:2400/1650;">
+    <img src="map-03.02-church.jpg" alt="지도 3.2: 교회">
+    <div class="map-overlay">
+      <a class="map-label" href="#e5c" style="left:11.96%;top:27.55%;"><span class="map-tooltip">E5c. 도나비치의 침실</span>c</a>
+      <a class="map-label" href="#e5b" style="left:19.71%;top:27.67%;"><span class="map-tooltip">E5b. 도루의 침실</span>b</a>
+      <a class="map-label" href="#e5d" style="left:26.58%;top:35.24%;"><span class="map-tooltip">E5d. 다락문</span>d</a>
+      <a class="map-label" href="#e5g" style="left:74.17%;top:39.21%;"><span class="map-tooltip">E5g. 지하실</span>g</a>
+      <a class="map-label" href="#e5f" style="left:34.0%;top:50.21%;"><span class="map-tooltip">E5f. 예배당</span>f</a>
+      <a class="map-label" href="#e5b" style="left:16.54%;top:52.42%;"><span class="map-tooltip">E5b. 도루의 침실</span>b</a>
+      <a class="map-label" href="#e5a" style="left:26.56%;top:56.67%;"><span class="map-tooltip">E5a. 복도</span>a</a>
+      <a class="map-label" href="#e5f" style="left:34.19%;top:60.94%;"><span class="map-tooltip">E5f. 예배당</span>f</a>
+      <a class="map-label" href="#e5e" style="left:16.67%;top:61.18%;"><span class="map-tooltip">E5e. 사무실</span>e</a>
+    </div>
+  </div>
+</div>
+
+<!-- E5a -->
+<h3 class="area-title" id="e5a">E5a. 현관 홀(Hall)</h3>
+
+<div class="read-aloud">
+  <p>문이 열리면 폭 10피트, 길이 20피트의 복도가 밝게 빛나는 예배당으로 이어지는 것이 보인다. 복도는 조명이 없으며 곰팡이 냄새가 진동한다. 복도 양쪽에 두 개씩, 총 네 개의 문이 인접한 방으로 통한다. 예배당에 잔해가 흩어져 있는 것이 보이고, 안에서 기도를 읊조리는 부드러운 목소리가 들린다. 갑자기, 나무 바닥 아래에서 올라오는 비인간적인 비명이 기도를 삼켜 버린다.</p>
+</div>
+
+<p>비명은 교회의 지하 묘실(구역 E5g)에서 나온다. 부드러운 목소리는 도나비치의 것이다.</p>
+
+<!-- E5b -->
+<h3 class="area-title" id="e5b">E5b. 도루의 침실(Doru's Bedroom)</h3>
+
+<div class="read-aloud">
+  <p>이 더럽고 빛이 없는 방에는 짚을 채운 매트리스가 깔린 나무 침대가 있다. 침대 머리판 위에 나무 성물이 걸려 있다.</p>
+</div>
+
+<p>이 방은 한때 도나비치의 아들 도루(Doru)의 것이었으며, 도루는 지하 묘실(구역 E5g)에 갇혀 있다. 1년 넘게 사용되지 않았으며 가치 있는 것은 없다.</p>
+
+<!-- E5c -->
+<h3 class="area-title" id="e5c">E5c. 도나비치의 침실(Donavich's Bedroom)</h3>
+
+<div class="read-aloud">
+  <p>이 더러운 방에는 짚을 채운 매트리스가 깔린 나무 침대가 있고, 그 옆에 밝게 타오르는 기름 램프가 놓인 작은 탁자가 있다. 침대 머리판 위에 나무로 된 태양 모양 성물이 걸려 있다.</p>
+</div>
+
+<p>이곳은 도나비치의 방이며 가치 있는 것은 없다.</p>
+
+<!-- E5d -->
+<h3 class="area-title" id="e5d">E5d. 다락문(Trapdoor)</h3>
+
+<div class="read-aloud">
+  <p>세월과 방치가 이 곰팡이 핀 방의 천장에 구멍을 냈으며, 부서진 지붕 널빤지 몇 조각과 물웅덩이가 있다. 한쪽 구석, 바닥에 박힌 무거운 나무 다락문이 사슬과 자물쇠로 잠겨 있다. 문 너머로 젊은 남자의 고통스러운 비명이 들린다.</p>
+</div>
+
+<p>도나비치는 철제 자물쇠의 열쇠를 잃어버렸다. 사슬을 제거하고 다락문을 열면, 지하 묘실의 비명이 멈춘다. 다락문은 뒤틀려 틀에 끼어 있어, DC 12 근력 판정에 성공해야 열 수 있다. 아래에는 지하 묘실(구역 E5g)로 15피트 내려가는 나무 계단이 있다.</p>
+
+<!-- E5e -->
+<h3 class="area-title" id="e5e">E5e. 사무실(Office)</h3>
+
+<div class="read-aloud">
+  <p>남쪽 벽에 낡은 책상과 의자가 놓여 있고, 그 위에 나무 성물—태양 문양—이 걸려 있다. 북쪽 벽에는 10피트 길이의 철봉이 걸려 있지만 비어 있어, 한때 태피스트리가 걸려 있었음을 짐작하게 한다. 맞은편 벽에는 네 개의 키 큰 문이 달린 나무 캐비닛이 서 있다.</p>
+</div>
+
+<p>빈 나무 헌금함이 의자 좌석 위에 놓여 있다. 책상 서랍에는 빈 양피지 몇 장과 깃펜 두어 개, 말라붙은 잉크병이 들어 있다. 크기에 비해 나무 캐비닛에는 거의 아무것도 없다. 안에는 부싯깃통, 양초가 들어 있는 나무 상자 몇 개, 그리고 많이 사용된 책 두 권이 있다: 아침의 군주(Morninglord)에게 바치는 성가집 《새벽의 찬가(Hymns to the Dawn)》와 《진실의 칼날: 울미스트 종교재판이 수행한 악마론 이단에 맞선 전쟁에서의 논리의 활용(The Blade of Truth: The Uses of Logic in the War Against Diabolist Heresies, as Fought by the Ulmist Inquisition)》이다.</p>
+
+<!-- E5f -->
+<h3 class="area-title" id="e5f">E5f. 예배당(Chapel)</h3>
+
+<div class="read-aloud">
+  <p>예배당은 엉망진창이며, 뒤집히고 부서진 긴 의자들이 먼지 낀 바닥에 흩어져 있다. 촛대와 샹들리에에 꽂힌 수십 개의 양초가 먼지 낀 구석구석을 열성적으로 밝혀 그림자를 몰아내려 한다. 교회의 저편에 발톱 자국 난 제단이 있고, 그 뒤에 더러운 제의를 입은 사제가 무릎을 꿇고 있다. 그 옆에 종탑까지 뻗은 길고 굵은 밧줄이 걸려 있다. 예배당 바닥 아래에서 젊은 남자의 목소리가 외친다, "아버지! 배가 고파요!"</p>
+</div>
+
+<p>도나비치(Donavich, LG 남성 인간 수행사제(acolyte))는 밤새 기도해 왔다. 그의 목소리는 쉬고 약해져 있다. 한마디로, 그는 미쳐 있다. 1년 조금 넘게 전, 스무 살인 아들 도루와 다른 마을 주민 몇 명이 먼 나라에서 바로비아로 온 검은 로브의 마법사에게 이끌려 레이븐로프트 성을 습격했다(제2장, 구역 M 참조). 모든 기록에 따르면, 마법사는 스트라드의 손에 죽었고, 도루도 그리되었으나—뱀파이어 스폰(vampire spawn)이 되어 아버지에게 돌아왔다. 도나비치는 아들을 교회의 지하 묘실에 가둘 수 있었고, 도루는 오늘까지 그곳에 남아 있다. 도루는 감금된 이후 한 번도 피를 먹지 못했으며, 밤낮없이 아버지에게 울부짖는다. 한편, 도나비치는 밤낮으로 기도하며 도루를 파괴하지 않고 구할 방법을 신들이 알려주기를 바라고 있다.</p>
+
+<p>캐릭터들이 도루를 죽이려는 듯하면, 도나비치는 최선을 다해 막으려 한다. 도루가 죽으면, 도나비치는 바닥에 쓰러져 위로받을 수 없이 울며 절망에 빠진다.</p>
+
+<h4>도나비치가 아는 것</h4>
+<ul>
+  <li>이레나 콜리아나는 콜리안 인디로비치의 친딸이 아니다. 콜리안은 레이븐로프트의 기둥 바위 근처, 스발리치 숲(Svalich Woods) 가장자리에서 그녀를 발견했다. 그때 그녀는 어린아이였고, 과거에 대한 기억이 없는 듯했다. 콜리안은 그녀를 입양하고 깊이 사랑했다.</li>
+  <li>매일 밤 자정, 죽은 모험자들의 영혼이 교회 묘지에서 솟아올라, 레이븐로프트 성을 향해 옛 스발리치 도로를 따라 침묵의 행렬을 이룬다. ("특별 이벤트" 항목의 "죽은 자의 행진" 참조.)</li>
+</ul>
+
+<div class="sidebar">
+  <h3>촌장의 장례(Funeral for the Burgomaster)</h3>
+  <p>캐릭터들이 콜리안 인디로비치의 시신을 교회로 가져오면, 도나비치는 캐릭터들에게 새벽에 묘지(구역 E6)에 촌장을 매장하는 것을 도와달라고 청한다. 매장 중에, 도나비치는 콜리안 인디로비치가 바로비아에서 해방되기를 아침의 군주에게 기도를 올린다.</p>
+  <p>콜리안이 땅에 묻히면, 도나비치는 이레나를 레이븐로프트 성에서 최대한 멀리 데려갈 것을 제안한다. 그는 캐릭터들이 그녀를 크레즈크(Krezk)에 있는 성 마르코비아 수도원(Abbey of Saint Markovia)(제8장)으로, 그것이 안 되면 방어가 잘 된 발라키 마을(제5장)로 데려가기를 제안한다. 도나비치는 한때 선의 보루였던 수도원이 악의 소굴이 되었다는 사실을 알지 못한다.</p>
+</div>
+
+<!-- E5g -->
+<h3 class="area-title" id="e5g">E5g. 지하 묘실(Undercroft)</h3>
+
+<div class="read-aloud">
+  <p>교회의 지하 묘실은 거칠게 깎은 벽과 축축한 진흙과 흙으로 된 바닥을 가지고 있다. 썩어가는 나무 기둥들이 나무 천장의 무게를 버티며 끙끙댄다. 위 예배당의 촛불이 틈새로 스며들어, 먼 구석에 있는 야윈 형체를 어렴풋이 볼 수 있게 한다.</p>
+</div>
+
+<p>그 형체는 도루(Doru)로, 도나비치를 괴롭히고 교회를 무너뜨리기 위해 스트라드가 보낸 뱀파이어 스폰이다. 도루는 피에 굶주려 있으며, 혼자 있는 캐릭터를 공격할 만큼 대담하다. 캐릭터들이 무리 지어 접근하면, "너희 피 냄새가 나!" 하고 쉿쉿거리며 최대한 피하려 한다. 퇴로가 막히면, 몸을 내던져 공격한다.</p>
+
+<p>캐릭터들이 도루를 제압하고 피를 약속하거나 파괴하겠다고 위협하면, 혹은 그를 죽인 후 부활시키면, 그는 자신의 몰락에 이른 사건들을 이야기한다(구역 E5f 참조).</p>
+
+<div class="fortunes">
+  <h4>운명의 카드(Fortunes of Ravenloft)</h4>
+  <p>카드 리딩에서 보물이 지하 묘실에 있다고 나왔다면, 방의 남서쪽 구석에 있는 곰팡이 핀 낡은 상자 안에 들어 있다. 상자는 잠기지 않았고 함정도 없다.</p>
+</div>
+
+<!-- E6 -->
+<h3 class="area-title" id="e6">E6. 묘지(Cemetery)</h3>
+
+<div class="read-aloud">
+  <p>허물어져 가는 교회 뒤편에 녹슨 문이 달린 연철 울타리가 직사각형 땅을 둘러싸고 있다. 안개에 휩싸인 빽빽한 묘비에 오래전 떠난 영혼들의 이름이 새겨져 있다. 모든 것이 고요해 보인다.</p>
+</div>
+
+<p>낮 동안 묘지는 고요하고 평화로운 곳이다. 그러나 매일 밤 자정, 유령의 행렬이 벌어진다(아래의 "죽은 자의 행진" 참조).</p>
+
+<!-- E7 -->
+<h3 class="area-title" id="e7">E7. 유령의 집(Haunted House)</h3>
+
+<p>이 유령의 집은 부록 B "죽음의 집(Death House)"에 설명되어 있다.</p>
+
+<div class="section-divider">&#9830; &#9830; &#9830;</div>
+
+<h2 id="ch3-events">특별 이벤트(Special Events)</h2>
+
+<h3>죽은 자의 행진(March of the Dead)</h3>
+
+<p>매일 밤 자정, 백 명의 영혼이 묘지(구역 E6)에서 일어나 옛 스발리치 도로(Old Svalich Road)를 따라 레이븐로프트 성까지 행진한다.</p>
+
+<div class="read-aloud">
+  <p>으스스한 녹색 빛이 묘지를 감싼다. 이 빛에서 유령의 행렬이 나타난다. 대검을 든 당당한 여전사들의 흔들리는 모습, 가느다란 활을 든 숲에 밝은 남자들, 반짝이는 도끼를 든 드워프들, 수염을 기르고 이상한 뾰족한 모자를 쓴 고풍스러운 복장의 마법사들—이 모든 이들과 그 이상이 묘지에서 걸어 나오며, 그 수는 순간마다 불어난다.</p>
+</div>
+
+<p>이들은 이곳에 묻힌 사람들의 영혼이 아니라, 스트라드를 파괴하려다 죽은 이전 모험자들의 영혼이다. 매일 밤, 유령 모험자들은 자신들의 과업을 완수하려 시도하고, 매일 밤 실패한다. 그들은 산 자에게 관심이 없으며, 맞히거나, 피해를 주거나, 퇴치할 수 없다. 캐릭터들과 대화하지 않는다.</p>
+
+<p>성에 도달하면, 영혼들은 곧장 예배당(구역 K15)으로 가서 높은 탑 계단(구역 K18)을 올라 탑 꼭대기(구역 K59)에 이른다. 그곳에서 납골당(구역 K84) 쪽 수직 통로로 몸을 던지며 사라진다.</p>
+
+<h3>꿈 과자(Dream Pastries)</h3>
+
+<p>이 이벤트는 캐릭터들이 마을을 지나갈 때 발생한다.</p>
+
+<div class="read-aloud">
+  <p>축축한 자갈 위를 작은 나무 바퀴가 구르는 소리가 들린다. 외로운 소리의 근원을 따라가면, 넝마를 뒤집어쓴 구부정한 인물이 안개 속으로 삐걱거리는 나무 수레를 밀고 있다.</p>
+</div>
+
+<p>밤 마녀(night hag)인 모르간사(Morgantha)가 늙은 여자의 모습으로, 늙은 뼈 분쇄기(Old Bonegrinder)에서 마을로 와 꿈 과자(dream pastries)를 개당 1 gp에 판매한다(과자에 대한 설명은 제6장 참조). 그녀는 집집마다 돌아다니며 문을 두드린다. 대부분의 경우 아무도 응답하지 않는다. 누군가 응답하면, 모르간사는 자신의 상품을 팔려 하며, 고객에게 바로비아 일상의 비참함과 절망에서 벗어날 수 있다고 제안한다.</p>
+
+<p>캐릭터들이 잠시 그녀를 미행하면, 그녀가 한 가정에서 루시안 야로프(Lucian Jarov, LG 남성 인간 비전투원)라는 일곱 살 소년의 형태로 대금을 받는 것을 목격한다. 루시안의 부모는 모르간사에게 아들을 데려가지 말라고 애원하지만, 그녀는 울부짖는 아이를 부모의 손에서 낚아채 자루에 넣고, 행상인 수레에 묶은 뒤, 태연하게 늙은 뼈 분쇄기로 돌아간다.</p>
+
+<p>모르간사는 캐릭터들이 외지인임을 알아채고 최대한 피하려 한다. 캐릭터들이 아이를 풀어줄 것을 요구하면, 그녀는 마지못해 응하며, 나중에 언제든 소년을 다시 데리러 올 수 있음을 안다. 그녀는 자기 방어로만 싸우며, 목숨을 살려주는 대가로 다음 정보를 제공한다:</p>
+
+<ul>
+  <li>스트라드는 땅과 날씨를 지배하며, 그의 첩자에는 비스타니가 포함된다.</li>
+  <li>서쪽에 체르 웅덩이(Tser Pool) 기슭에 비스타니 야영지가 있고(제2장, 구역 G), 발라키 외곽에도 또 하나가 있다(제5장, 구역 N9).</li>
+  <li>스트라드에게는 바로비아에 언데드 적들이 있는데, 바로 은룡 기사단(Order of the Silver Dragon)의 타락한 기사들이다. 이 레버넌트들은 발라키 서쪽의 폐허가 된 저택에서 찾을 수 있다(제7장, "아르긴보스트홀트(Argynvostholt)" 참조).</li>
+  <li>스트라드가 가장 엄중히 지키는 비밀은 산속에 숨겨진 금단의 지식 사원이다(제13장, "호박 사원(Amber Temple)" 참조). 이 사원은 길고 구불구불한 촐렌카 고개(Tsolenka Pass)를 따라가면 도달할 수 있다(제9장 참조).</li>
+</ul>
+
+<div class="section-divider">&#9830; &#9830; &#9830;</div>
+
+<p style="text-align:center; font-size:0.85em; color:#888; margin-top:40px;">
+  Curse of Strahd — Chapter 3: The Village of Barovia<br>
+  한국어 번역본
+</p>
+
+
+<div class="sidebar-toc" id="sidebarToc">
+  <button class="toc-close" onclick="toggleSidebar()">✕</button>
+  <h4>목차</h4>
+  <ul id="sidebarTocList"></ul>
+</div>
+<button class="sidebar-toc-toggle" id="sidebarToggle" onclick="toggleSidebar()">목 차</button>
+<script>
+function toggleSidebar() {
+  var toc = document.getElementById('sidebarToc');
+  var btn = document.getElementById('sidebarToggle');
+  toc.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+// Auto-generate TOC from headings
+(function() {
+  var headings = document.querySelectorAll('h2[id], h3[id], h4[id], .area-title[id]');
+  var list = document.getElementById('sidebarTocList');
+  if (!list) return;
+  for (var i = 0; i < headings.length; i++) {
+    var h = headings[i];
+    var li = document.createElement('li');
+    var tag = h.tagName.toLowerCase();
+    if (h.classList.contains('area-title')) tag = 'h3';
+    li.className = 'toc-' + tag;
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent.trim();
+    a.onclick = function() {
+      if (window.innerWidth < 768) toggleSidebar();
+    };
+    li.appendChild(a);
+    list.appendChild(li);
+  }
+})();
+</script>
+
+</body>
+</html>
