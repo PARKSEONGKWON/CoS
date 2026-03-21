@@ -265,39 +265,10 @@
   }
 
   /* Tab System */
-  .chapter-nav {
-    display: flex;
-    gap: 0;
-    margin: 0 0 0;
-    border-bottom: 2px solid var(--border);
-    flex-wrap: wrap;
-    position: sticky;
-    top: 0;
-    background: var(--bg);
-    z-index: 100;
-    padding-top: 8px;
-  }
-  .chapter-nav a {
-    padding: 10px 20px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 0.95em;
-    font-weight: 700;
-    color: var(--accent2);
-    text-decoration: none;
-    border: 1px solid transparent;
-    border-bottom: none;
-    border-radius: 6px 6px 0 0;
-    margin-bottom: -2px;
-    cursor: pointer;
-    transition: background 0.15s;
-    user-select: none;
-  }
-  .chapter-nav a:hover { background: var(--box-bg); }
-  .chapter-nav a.active {
-    background: var(--bg);
-    color: var(--accent);
-    border-color: var(--border);
-  }
+  
+  
+  
+  
 
 
   /* Sidebar TOC */
@@ -393,35 +364,83 @@
     color: var(--accent2);
   }
 
+
+  /* Compact Chapter Nav */
+  .chapter-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 24px;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    padding: 8px 0;
+    gap: 8px;
+  }
+  .chapter-nav .nav-btn {
+    padding: 8px 16px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.9em;
+    font-weight: 700;
+    color: var(--accent2);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--box-bg);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+    min-width: 80px;
+    text-align: center;
+  }
+  .chapter-nav .nav-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .chapter-nav .nav-btn.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .chapter-nav .nav-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--heading);
+    text-align: center;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .chapter-nav .nav-home {
+    padding: 8px 12px;
+    font-size: 1.1em;
+    text-decoration: none;
+    color: var(--accent2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--box-bg);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .chapter-nav .nav-home:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
 </style>
 </head>
 <body>
 
 <nav class="chapter-nav">
-  <a href="CoS-foreword.html">머리말</a>
-  <a href="CoS-intro.html" class="active">서문</a>
-  <a href="CoS-ch1.html">제1장: 안개 속으로</a>
-  <a href="CoS-ch2.html">제2장: 바로비아의 땅</a>
-  <a href="CoS-ch3.html">제3장: 바로비아 마을</a>
-  <a href="CoS-ch4.html">제4장: 레이븐로프트 성</a>
-  <a href="CoS-ch5.html">제5장: 발라키 마을</a>
-  <a href="CoS-ch6.html">제6장: 늙은 뼈 분쇄기</a>
-  <a href="CoS-ch7.html">제7장: 아르긴보스트홀트</a>
-  <a href="CoS-ch8.html">제8장: 크레즈크 마을</a>
-  <a href="CoS-ch9.html">제9장: 촐렌카 고개</a>
-  <a href="CoS-ch10.html">제10장: 베레즈 폐허</a>
-  <a href="CoS-ch11.html">제11장: 반 리히텐의 탑</a>
-  <a href="CoS-ch12.html">제12장: 포도주 마법사</a>
-  <a href="CoS-ch13.html">제13장: 호박 사원</a>
-  <a href="CoS-ch14.html">제14장: 예스터 힐</a>
-  <a href="CoS-ch15.html">제15장: 늑대인간 소굴</a>
-  <a href="CoS-epilogue.html">에필로그</a>
-  <a href="CoS-appendixA.html">부록 A</a>
-  <a href="CoS-appendixB.html">부록 B</a>
-  <a href="CoS-appendixC.html">부록 C</a>
-  <a href="CoS-appendixD.html">부록 D</a>
-  <a href="CoS-appendixE.html">부록 E</a>
-  <a href="CoS-appendixF.html">부록 F</a>
+  <a href="CoS-home.html" class="nav-home" title="홈">⌂</a>
+  <a href="CoS-foreword.html" class="nav-btn" title="머리말">◀ 이전</a>
+  <span class="nav-title">서문</span>
+  <a href="CoS-ch1.html" class="nav-btn" title="제1장: 안개 속으로">다음 ▶</a>
 </nav>
 
 <h1>
