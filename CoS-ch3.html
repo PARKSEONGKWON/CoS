@@ -505,12 +505,106 @@
     color: #fff;
   }
 
+
+  /* Search Modal */
+  .nav-search-btn {
+    padding: 8px 12px;
+    font-size: 1.1em;
+    text-decoration: none;
+    color: var(--accent2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--box-bg);
+    cursor: pointer;
+    transition: background 0.15s;
+    line-height: 1;
+  }
+  .nav-search-btn:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+  .search-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 500;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 80px;
+  }
+  .search-overlay.active { display: flex; }
+  .search-modal {
+    background: var(--bg);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    overflow: hidden;
+  }
+  .search-modal-input {
+    width: 100%;
+    padding: 16px 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.1em;
+    border: none;
+    border-bottom: 2px solid var(--border);
+    background: #fff;
+    color: var(--text);
+    outline: none;
+  }
+  .search-modal-input::placeholder { color: #aaa; }
+  .search-modal-results {
+    max-height: 50vh;
+    overflow-y: auto;
+    padding: 0;
+  }
+  .search-modal-item {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: var(--text);
+    border-bottom: 1px solid var(--table-alt);
+    transition: background 0.1s;
+  }
+  .search-modal-item:hover { background: var(--box-bg); }
+  .search-modal-item:last-child { border-bottom: none; }
+  .search-modal-title {
+    font-weight: 700;
+    font-size: 0.95em;
+    color: var(--heading);
+  }
+  .search-modal-title em {
+    font-style: normal;
+    background: #ffe08a;
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+  .search-modal-page {
+    font-size: 0.8em;
+    color: var(--accent2);
+    margin-top: 2px;
+  }
+  .search-modal-empty {
+    padding: 20px;
+    text-align: center;
+    color: #999;
+    font-size: 0.9em;
+  }
+  .search-modal-hint {
+    padding: 16px 20px;
+    text-align: center;
+    color: #bbb;
+    font-size: 0.85em;
+  }
+
 </style>
 </head>
 <body>
 
 <nav class="chapter-nav">
   <a href="CoS-home.html" class="nav-home" title="홈">⌂</a>
+  <button class="nav-search-btn" onclick="openSearch()" title="검색 (Ctrl+K)">🔍</button>
   <a href="CoS-ch2.html" class="nav-btn" title="제2장: 바로비아의 땅">◀ 이전</a>
   <span class="nav-title">제3장: 바로비아 마을</span>
   <a href="CoS-ch4.html" class="nav-btn" title="제4장: 레이븐로프트 성">다음 ▶</a>
@@ -860,6 +954,68 @@ function toggleSidebar() {
     list.appendChild(li);
   }
 })();
+</script>
+
+
+<div class="search-overlay" id="searchOverlay" onclick="if(event.target===this)closeSearch()">
+  <div class="search-modal">
+    <input type="text" class="search-modal-input" id="searchModalInput" placeholder="검색어를 입력하세요..." autocomplete="off">
+    <div class="search-modal-results" id="searchModalResults">
+      <div class="search-modal-hint">한국어 또는 영어로 검색하세요</div>
+    </div>
+  </div>
+</div>
+<script>
+var _sIdx=null;
+function openSearch(){
+  document.getElementById('searchOverlay').classList.add('active');
+  var inp=document.getElementById('searchModalInput');
+  inp.value='';
+  inp.focus();
+  document.getElementById('searchModalResults').innerHTML='<div class="search-modal-hint">한국어 또는 영어로 검색하세요</div>';
+  if(!_sIdx){
+    var base=document.querySelector('a.nav-home')?document.querySelector('a.nav-home').href:'';
+    var dir=base?base.substring(0,base.lastIndexOf('/')+1):'';
+    fetch(dir+'search-index.json').then(function(r){return r.json()}).then(function(d){_sIdx=d}).catch(function(){
+      fetch('search-index.json').then(function(r){return r.json()}).then(function(d){_sIdx=d});
+    });
+  }
+}
+function closeSearch(){document.getElementById('searchOverlay').classList.remove('active')}
+document.addEventListener('keydown',function(e){
+  if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch()}
+  if(e.key==='Escape')closeSearch();
+});
+document.getElementById('searchModalInput').addEventListener('input',function(){
+  var q=this.value.trim().toLowerCase();
+  var res=document.getElementById('searchModalResults');
+  if(!q||!_sIdx){res.innerHTML='<div class="search-modal-hint">한국어 또는 영어로 검색하세요</div>';return;}
+  var terms=q.split(/\s+/);
+  var scored=[];
+  for(var i=0;i<_sIdx.length;i++){
+    var it=_sIdx[i],title=it.title.toLowerCase(),page=it.page.toLowerCase(),sc=0;
+    if(title===q)sc+=100;
+    else if(title.indexOf(q)===0)sc+=50;
+    else if(title.indexOf(q)!==-1)sc+=30;
+    for(var t=0;t<terms.length;t++){
+      if(title.indexOf(terms[t])!==-1)sc+=10;
+      if(page.indexOf(terms[t])!==-1)sc+=3;
+    }
+    if(sc>0)scored.push({item:it,score:sc});
+  }
+  scored.sort(function(a,b){return b.score-a.score});
+  var html='',mx=Math.min(scored.length,20);
+  if(mx===0){html='<div class="search-modal-empty">검색 결과가 없습니다</div>';}
+  else{for(var i=0;i<mx;i++){
+    var s=scored[i],href=s.item.file+'#'+s.item.id,dt=s.item.title;
+    for(var t=0;t<terms.length;t++){
+      var re=new RegExp('('+terms[t].replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+      dt=dt.replace(re,'<em>$1</em>');
+    }
+    html+='<a href="'+href+'" class="search-modal-item" onclick="closeSearch()"><div class="search-modal-title">'+dt+'</div><div class="search-modal-page">'+s.item.page+'</div></a>';
+  }}
+  res.innerHTML=html;
+});
 </script>
 
 </body>
