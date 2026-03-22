@@ -514,6 +514,74 @@
   }
 
 
+  /* Search */
+  .search-wrap {
+    position: relative;
+    margin: 0 0 32px;
+  }
+  .search-input {
+    width: 100%;
+    padding: 14px 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1em;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-input:focus { border-color: var(--accent); }
+  .search-input::placeholder { color: #aaa; }
+  .search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    max-height: 400px;
+    overflow-y: auto;
+    display: none;
+    z-index: 300;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+  .search-results.active { display: block; }
+  .search-result-item {
+    display: block;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: var(--text);
+    border-bottom: 1px solid var(--table-alt);
+    transition: background 0.1s;
+  }
+  .search-result-item:hover { background: var(--box-bg); }
+  .search-result-item:last-child { border-bottom: none; }
+  .search-result-title {
+    font-weight: 700;
+    font-size: 0.95em;
+    color: var(--heading);
+  }
+  .search-result-title em {
+    font-style: normal;
+    background: #ffe08a;
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+  .search-result-page {
+    font-size: 0.8em;
+    color: var(--accent2);
+    margin-top: 2px;
+  }
+  .search-no-result {
+    padding: 16px;
+    text-align: center;
+    color: #999;
+    font-size: 0.9em;
+  }
+
   .home-header {
     text-align: center;
     margin: 40px 0 30px;
@@ -563,6 +631,12 @@
   <p>D&D 5e 어드벤처 모듈 전체 번역</p>
 </div>
 
+<!-- Search Bar -->
+<div class="search-wrap">
+  <input type="text" id="searchInput" class="search-input" placeholder="검색어를 입력하세요 (한국어/영어)..." autocomplete="off">
+  <div id="searchResults" class="search-results"></div>
+</div>
+
 <h2>본편</h2>
 <div class="home-grid">
   <a href="CoS-foreword.html" class="home-card">머리말</a>
@@ -598,6 +672,98 @@
 
 
 <div class="section-divider">&#9830; &#9830; &#9830;</div>
+
+<script>
+var searchIndex = null;
+
+// Load search index
+fetch('search-index.json')
+  .then(function(r) { return r.json(); })
+  .then(function(data) { searchIndex = data; });
+
+var input = document.getElementById('searchInput');
+var resultsDiv = document.getElementById('searchResults');
+
+input.addEventListener('input', function() {
+  var query = this.value.trim().toLowerCase();
+  if (!query || query.length < 1 || !searchIndex) {
+    resultsDiv.className = 'search-results';
+    resultsDiv.innerHTML = '';
+    return;
+  }
+
+  var terms = query.split(/\s+/);
+  var scored = [];
+
+  for (var i = 0; i < searchIndex.length; i++) {
+    var item = searchIndex[i];
+    var title = item.title.toLowerCase();
+    var page = item.page.toLowerCase();
+    var score = 0;
+
+    for (var t = 0; t < terms.length; t++) {
+      var term = terms[t];
+      // Exact match in title
+      if (title === query) { score += 100; }
+      // Starts with query
+      else if (title.indexOf(query) === 0) { score += 50; }
+      // Contains full query
+      else if (title.indexOf(query) !== -1) { score += 30; }
+      // Individual term match
+      if (title.indexOf(term) !== -1) { score += 10; }
+      // Page name match
+      if (page.indexOf(term) !== -1) { score += 3; }
+    }
+
+    if (score > 0) {
+      scored.push({ item: item, score: score });
+    }
+  }
+
+  // Sort by score descending
+  scored.sort(function(a, b) { return b.score - a.score; });
+
+  // Render results (max 20)
+  var html = '';
+  var max = Math.min(scored.length, 20);
+
+  if (max === 0) {
+    html = '<div class="search-no-result">검색 결과가 없습니다</div>';
+  } else {
+    for (var i = 0; i < max; i++) {
+      var s = scored[i];
+      var href = s.item.file + '#' + s.item.id;
+      // Highlight matching parts
+      var displayTitle = s.item.title;
+      for (var t = 0; t < terms.length; t++) {
+        var re = new RegExp('(' + terms[t].replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+        displayTitle = displayTitle.replace(re, '<em>$1</em>');
+      }
+      html += '<a href="' + href + '" class="search-result-item">';
+      html += '<div class="search-result-title">' + displayTitle + '</div>';
+      html += '<div class="search-result-page">' + s.item.page + '</div>';
+      html += '</a>';
+    }
+  }
+
+  resultsDiv.innerHTML = html;
+  resultsDiv.className = 'search-results active';
+});
+
+// Close results when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.search-wrap')) {
+    resultsDiv.className = 'search-results';
+  }
+});
+
+// Re-show results on focus
+input.addEventListener('focus', function() {
+  if (this.value.trim() && resultsDiv.innerHTML) {
+    resultsDiv.className = 'search-results active';
+  }
+});
+</script>
 
 </body>
 </html>
